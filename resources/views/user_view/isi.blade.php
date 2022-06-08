@@ -274,7 +274,7 @@
                     <div class="row">
                       <div class="col-4"><img src="{{ asset($d->foto) }}" alt="" width="100 px"></div>
                       <div class="col-8">
-                        <li class="function">Fasilitas = {{$d->fasilitas}}</li> 
+                        <li class="function">Fasilitas = {{$d->fasilitas_id}}</li> 
                         <li class="function">Deskripsi = {{$d->deskripsi}}</li>
                         <li class="function">Sisa Kuota = {{$d->kuota}}</li>
                         <li class="function">Harga = {{$d->harga}}</li>
@@ -336,9 +336,9 @@
           <div class="mb-3">
             <label>Fasilitas</label>
             <br>
-            @foreach ($f as $d)
+            @foreach ($datas as $d)
               <input name="fasilitas_id" class="form-check-input" type="checkbox" id="inlineCheckbox1" value="{{$d->id}}">
-              <label class="form-check-label" for="inlineCheckbox1">{{$d->fasilitas}}</label>
+              <label class="form-check-label" for="inlineCheckbox1">{{$d->fasilitas_id}}</label>
             @endforeach
           </div>
           <div class="mb-3">
