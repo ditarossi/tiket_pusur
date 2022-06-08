@@ -36,16 +36,14 @@ $data_fas = $dfas->keyBy('id')->toArray();
                           @foreach($datas as $value)
                           <tr>
                               <td>{{ $value->nama_wisata }}</td>
-                              <!-- <td>{{ $value->fasilitas_id}}</td> -->
                               <td>
-                                <!-- @php
+                                @php
                                 $hasil_split = explode(',', $value->fasilitas_id);
-                                @endphp -->
+                                @endphp
                                 @foreach($hasil_split as $h)
-                                  <div>{{ json_encode($data_fas[$h])}}</div>
+                                  <div>{{ $h }}</div>
                                 @endforeach
                               </td>
-                              <!-- <td>{{$value->fas->fasilitas}}</td> -->
                               <td>{{ $value->deskripsi }}</td>
                               <td>{{ $value->kuota }}</td>
                               <td>{{ $value->harga }}</td>

@@ -46,13 +46,13 @@ class WisataControllers extends Controller
     public function store(Request $request)
     {
         $path = $request->file('foto')->move('fotowisata', $request->file('foto')->getClientOriginalName());
-        //$join = join(',',$request->input('fasilitas_id'));
-        $hasil_split = explode(',', $value->fasilitas_id);
+        $join = join(',',$request->input('fasilitas_id'));
+        //$hasil_split = explode(',', $value->fasilitas_id);
         // $data_fas = $fas->keyBy('id')->toArray();
         //$a = implode(",",$request->$join);
         $model = new Wisata;
         $model->nama_wisata = $request->nama_wisata;
-        $model->fasilitas_id = $hasil_split;
+        $model->fasilitas_id = $join;
         $model->deskripsi = $request->deskripsi;
         $model->kuota = $request->kuota;
         $model->harga = $request->harga;
