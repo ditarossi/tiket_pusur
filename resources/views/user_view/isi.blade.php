@@ -248,7 +248,7 @@
         <div class="col-lg-4">
           <div class="pricing-item-regular">
             <div class="icon">
-              <img src="{{asset('layout')}}/assets/images/pricing-table-01.png" alt="">
+              <img src="{{ asset($d->foto) }}" alt="" width="100 px">
             </div>
             <ul>
               <h4>{{$d->nama_wisata}}</h4>
@@ -337,7 +337,7 @@
             <label>Fasilitas</label>
             <br>
             @foreach ($datas as $d)
-              <input name="fasilitas_id" class="form-check-input" type="checkbox" id="inlineCheckbox1" value="{{$d->id}}">
+              <input name="fasilitas_id[]" class="form-check-input" type="checkbox" id="inlineCheckbox1" value="{{$d->id}}">
               <label class="form-check-label" for="inlineCheckbox1">{{$d->fasilitas_id}}</label>
             @endforeach
           </div>

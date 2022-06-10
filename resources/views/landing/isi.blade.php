@@ -546,7 +546,7 @@
         <div class="col-lg-4">
           <div class="pricing-item-regular">
             <div class="icon">
-              <img src="{{asset('layout')}}/assets/images/pricing-table-01.png" alt="">
+              <img src="{{ asset($d->foto) }}" alt="" width="100 px">
             </div>
             <ul>
               <h4>{{$d->nama_wisata}}</h4>
@@ -573,7 +573,7 @@
                       <div class="row">
                         <div class="col-4"><img src="{{ asset($d->foto) }}" alt="" width="100 px"></div>
                         <div class="col-8">
-                          <li class="function">Fasilitas = {{$d->fasilitas}}</li> 
+                          <li class="function">Fasilitas = {{$d->fasilitas_id}}</li> 
                           <li class="function">Deskripsi = {{$d->deskripsi}}</li>
                           <li class="function">Sisa Kuota = {{$d->kuota}}</li>
                           <li class="function">Harga = {{$d->harga}}</li>
