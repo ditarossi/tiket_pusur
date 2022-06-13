@@ -17,7 +17,7 @@
         <th scope="row">1</th>
         <td>{{ $value->user->name }}</td>
         <td>{{ $value->wisata->nama_wisata }}</td>
-        <td>{{ $value->wisata->fasilitas->fasilitas }}</td>
+        <td>{{ $value->fasilitas->fasilitas }}</td>
         <td>{{ $value->Tanggal_Kunjungan }}</td>
         <td>{{ $value->jumlah }}</td>
         <td>{{ $value->tagihan }}</td>

@@ -47,10 +47,11 @@ class Pemesanan_user extends Controller
      */
     public function store(Request $request)
     {
+        $join = join(',',$request->input('fasilitas_id'));
         $model = new Pemesanan;
         $model->users_id = Auth::user()->id;
         $model->wisata_id = $request->wisata_id;
-        $model->fasilitas_id = $request->fasilitas_id;
+        $model->fasilitas_id = $join;
         $model->Tanggal_Kunjungan = $request->Tanggal_Kunjungan;
         $model->jumlah = $request->jumlah;
         $model->tagihan = $request->tagihan;

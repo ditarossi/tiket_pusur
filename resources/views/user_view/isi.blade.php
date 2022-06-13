@@ -336,9 +336,9 @@
           <div class="mb-3">
             <label>Fasilitas</label>
             <br>
-            @foreach ($datas as $d)
+            @foreach ($f as $d)
               <input name="fasilitas_id[]" class="form-check-input" type="checkbox" id="inlineCheckbox1" value="{{$d->id}}">
-              <label class="form-check-label" for="inlineCheckbox1">{{$d->fasilitas_id}}</label>
+              <label class="form-check-label" for="inlineCheckbox1">{{$d->fasilitas}}</label>
             @endforeach
           </div>
           <div class="mb-3">

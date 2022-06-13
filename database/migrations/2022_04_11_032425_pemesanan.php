@@ -17,7 +17,7 @@ class Pemesanan extends Migration
             $table->id();
             $table->foreignID('users_id');
             $table->foreignID('wisata_id');
-            $table->foreignID('fasilitas_id'); 
+            $table->string('fasilitas_id'); 
             $table->date('Tanggal_Kunjungan');         
             $table->integer('jumlah');  
             $table->char('tagihan', 15);  

@@ -31,6 +31,9 @@
                                     <a class="dropdown-item" href="{{ url('tiket') }}">
                                         {{ __('Lihat Tiket') }}
                                     </a>
+                                    <a class="dropdown-item" href="{{ url('tiket') }}">
+                                        {{ __('Riwayat Pemesanan') }}
+                                    </a>
                                     <!-- <a class="dropdown-item" href="#modal" data-bs-toggle="modal" data-bs-target="\">
                                         {{ __('Riwayat Transaksi') }}
                                     </a> -->
