@@ -39,7 +39,12 @@
                               {{ $value->wisata->nama_wisata }}
                             </td>
                             <td>
-                              {{ $value->fasilitas->fasilitas }}
+                                @php
+                                $hasil_split = explode(',', $value->fasilitas_id);
+                                @endphp
+                                @foreach($hasil_split as $h)
+                                  <div>{{ $h }}</div>
+                                @endforeach
                             </td>
                             <td>{{ $value->Tanggal_Kunjungan }}</td>
                             <td>{{ $value->jumlah }}</td>
