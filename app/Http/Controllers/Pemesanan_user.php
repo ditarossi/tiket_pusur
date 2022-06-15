@@ -81,7 +81,7 @@ class Pemesanan_user extends Controller
     public function edit($id)
     {
         $model = Pemesanan::find($id);
-        return view('admin2.pemesanan.update_pemesanan', compact(
+        return view('user_view.reschedule', compact(
             'model'
         ));
     }
@@ -95,7 +95,18 @@ class Pemesanan_user extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $model = Pemesanan::find($id);
+
+        $model->users_id = $request->users_id;
+        $model->wisata_id = $request->wisata_id;
+        $model->fasilitas_id = $request->fasilitas_id;
+        $model->Tanggal_Kunjungan = $request->Tanggal_Kunjungan;
+        $model->jumlah = $request->jumlah;
+        $model->tagihan = $request->tagihan;
+        $model->status_pembayaran = 'belum dibayar';
+        $model->save();
+
+        return redirect('tiket');
     }
 
     /**
@@ -106,6 +117,8 @@ class Pemesanan_user extends Controller
      */
     public function destroy($id)
     {
-        //
+        $model = Pemesanan::find($id);
+        $model->delete();
+        return redirect('tiket');
     }
 }

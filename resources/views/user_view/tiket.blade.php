@@ -1,15 +1,10 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Tiket</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
-  </head>
-  <body>
+@extends('user_view.home_user')
+@section('content')
+<br>
+<br>
+<br>
+<br>
+<br>
     <div class="col-xl-12 ui-sortable">
     <a type="button" href="{{url('user_view')}}" class="btn btn-outline-success">Back</a>
     <br>
@@ -45,14 +40,21 @@
             <td>{{ $value->tagihan }}</td>
             <td>
               <a class="btn btn-outline-primary" href="cetak">Cetak</a>
-              <a class="btn btn-outline-warning" href="#modal" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Reschedule</a>
-              <a class="btn btn-outline-danger" href="refund">Batal</a>
+              <a class="btn btn-outline-warning" href="{{ url('pemesanan/'.$value->id.'/edit') }}">Reschedule</a>
+              <form action="{{ url('pemesanan/'.$value->id) }}" method="post">
+                                @csrf 
+                                <input type="hidden" name="_method" value="delete">
+                                <button class="btn btn-outline-danger" type="submit" onclick="return confirm('Yakin ingin membatalkan pesanan ?')">Delete</button>
+                              </form>
             </td>
           </tr>
           @endforeach
         </tbody>
       </table>
     </div>
+
+    <!--MODAL-->
+
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -66,7 +68,7 @@
               <div class="mb-3">
                 <label>Nama Wisata</label>
                 <select name="wisata_id" type="text" class="form-control" id="exampleInputUsername1" placeholder="Nama Wisata">
-                  <option value="{{ $t->wisata_id }}"></option>
+                  <option value="{{ $value->wisata->nama_wisata }}"></option>
                 </select>
               </div>
               <div class="mb-3">
@@ -96,5 +98,4 @@
         </div>
       </div>
     </div>
-  </body>
-</html>
+@endsection
