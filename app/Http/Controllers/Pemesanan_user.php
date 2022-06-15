@@ -80,7 +80,10 @@ class Pemesanan_user extends Controller
      */
     public function edit($id)
     {
-        //
+        $model = Pemesanan::find($id);
+        return view('admin2.pemesanan.update_pemesanan', compact(
+            'model'
+        ));
     }
 
     /**

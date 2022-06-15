@@ -63,6 +63,7 @@ class HomeController extends Controller
         return view('user_view.tiket', compact(
             'tiket'
         ));
+
     }
 
 }

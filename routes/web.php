@@ -43,6 +43,8 @@ Route::group([
     Route::resource('pemesanan', '\App\Http\Controllers\Pemesanan_user');
     Route::get('cetak', [App\Http\Controllers\HomeController::class, 'download']);
     Route::get('tiket', [App\Http\Controllers\HomeController::class, 'tiket']);
+
+    //Route::get('reschedule', [App\Http\Controllers\Pemesanan_user::class, 'edit']);
 }
 );
 

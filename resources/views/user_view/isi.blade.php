@@ -315,51 +315,51 @@
 
   <!-- MODAL -->
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Pemesanan</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form class="forms-sample" action="{{ url('pemesanan') }}" method="post">
-        @csrf
-          <div class="mb-3">
-            <label>Nama Wisata</label>
-            <select name="wisata_id" type="text" class="form-control" id="exampleInputUsername1" placeholder="Nama Wisata">
-              <option value=""> -- Pilih --</option>
-              @foreach ($datas as $d)
-              <option value="{{$d->id}}">{{$d->nama_wisata}}</option>
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Pemesanan</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form class="forms-sample" action="{{ url('pemesanan') }}" method="post">
+          @csrf
+            <div class="mb-3">
+              <label>Nama Wisata</label>
+              <select name="wisata_id" type="text" class="form-control" id="exampleInputUsername1" placeholder="Nama Wisata">
+                <option value=""> -- Pilih --</option>
+                @foreach ($datas as $d)
+                <option value="{{$d->id}}">{{$d->nama_wisata}}</option>
+                @endforeach
+              </select>
+            </div>
+            <div class="mb-3">
+              <label>Fasilitas</label>
+              <br>
+              @foreach ($f as $d)
+                <input name="fasilitas_id[]" class="form-check-input" type="checkbox" id="inlineCheckbox1" value="{{$d->id}}">
+                <label class="form-check-label" for="inlineCheckbox1">{{$d->fasilitas}}</label>
               @endforeach
-            </select>
-          </div>
-          <div class="mb-3">
-            <label>Fasilitas</label>
-            <br>
-            @foreach ($f as $d)
-              <input name="fasilitas_id[]" class="form-check-input" type="checkbox" id="inlineCheckbox1" value="{{$d->id}}">
-              <label class="form-check-label" for="inlineCheckbox1">{{$d->fasilitas}}</label>
-            @endforeach
-          </div>
-          <div class="mb-3">
-            <label>Tanggal Kunjungan</label>
-            <input name="Tanggal_Kunjungan" type="date" class="form-control" id="Tanggal_Kunjungan"></input>
-          </div>
-          <div class="mb-3">
-            <label>Jumlah</label>
-            <input name="jumlah" type="text" class="form-control" id="jumlah"></input>
-          </div>
-          <div class="mb-3">
-            <label>Tagihan</label>
-            <input name="tagihan" type="text" class="form-control" id="tagihan"></input>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Send message</button>
-          </div>
-        </form>
+            </div>
+            <div class="mb-3">
+              <label>Tanggal Kunjungan</label>
+              <input name="Tanggal_Kunjungan" type="date" class="form-control" id="Tanggal_Kunjungan"></input>
+            </div>
+            <div class="mb-3">
+              <label>Jumlah</label>
+              <input name="jumlah" type="text" class="form-control" id="jumlah"></input>
+            </div>
+            <div class="mb-3">
+              <label>Tagihan</label>
+              <input name="tagihan" type="text" class="form-control" id="tagihan"></input>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Send message</button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   </div>
-</div>
   @endsection
