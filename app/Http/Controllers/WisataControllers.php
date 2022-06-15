@@ -111,8 +111,10 @@ class WisataControllers extends Controller
             $path = $request->file('foto')->move('fotowisata', $request->file('foto')->getClientOriginalName());
             $model->foto = $path;
         }
+        $join = join(',',$request->input('fasilitas_id'));
+
         $model->nama_wisata = $request->nama_wisata;
-        $model->fasilitas_id = $request->fasilitas_id;
+        $model->fasilitas_id = $join;
         $model->deskripsi = $request->deskripsi;
         $model->kuota = $request->kuota;
         $model->harga = $request->harga;
