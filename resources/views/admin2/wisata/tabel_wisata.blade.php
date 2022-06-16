@@ -53,6 +53,7 @@ $data_fas = $dfas->keyBy('id')->toArray();
                               </td>
                               <td>
                                 <a class="btn btn-outline-warning" href="{{ url('tbl_wisata/'.$value->id.'/edit') }}">Update</a>
+                                
                                 <form action="{{ url('tbl_wisata/'.$value->id) }}" method="post">
                                   @csrf 
                                   <input type="hidden" name="_method" value="delete">

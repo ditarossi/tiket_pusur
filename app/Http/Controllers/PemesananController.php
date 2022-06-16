@@ -117,4 +117,20 @@ class PemesananController extends Controller
         $model->delete();
         return redirect('tbl_pemesanan');
     }
+    public function gantistatus($id)
+    {
+        $datawisata = Pemesanan::find($id);
+        $datawisata->status_pembayaran = 'Berhasil Pesan';
+        $datawisata->save();
+        $dw = Wisata::where('id', $datawisata->wisata_id)->first();
+        $dw->kuota -=(int)$datawisata->jumlah;
+        $dw->save();
+
+        // if($product_attribute == 'Berhasil Pesan'){
+        //     $kuota = $model->kuota - (int) $request->jumlah;
+        //     $model->save();
+
+        // dd($datawisata);
+        return redirect('tbl_pemesanan');
+    }
 }

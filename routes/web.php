@@ -33,6 +33,8 @@ Route::group([
     'middleware' => ['auth', 'is_admin'],
 ], function() {
     Route::get('/admin', [App\Http\Controllers\AdminControllers::class, 'index'])->name('admin');
+    Route::get('gantistatus/{id}', [App\Http\Controllers\PemesananController::class, 'gantistatus']);
+
 }
 );
 

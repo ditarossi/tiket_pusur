@@ -55,7 +55,7 @@ class Pemesanan_user extends Controller
         $model->Tanggal_Kunjungan = $request->Tanggal_Kunjungan;
         $model->jumlah = $request->jumlah;
         $model->tagihan = $request->tagihan;
-        $model->status_pembayaran = 'Berhasil Pesan';
+        $model->status_pembayaran = 'Menunggu Verifikasi';
         $model->save();
 
         return redirect('user_view');

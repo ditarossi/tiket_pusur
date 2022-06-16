@@ -114,24 +114,21 @@ class WisataControllers extends Controller
         }
         $join = join(',',$request->input('fasilitas_id'));
         
-        $product_attribute = Pemesanan::where([
-            'users_id' => $model['users_id'], 
-            'wisata_id' => $model['wisata_id'],
-            'fasilitas_id' => $model['fasilitas_id'],
-            'Tanggal_Kunjungan' => $model['Tanggal_Kunjungan'],
-            'jumlah' => $model['jumlah'],
-            'tagihan' => $model['tagihan'],
-            'status_pembayaran' => $model['status_pembayaran']
-            ])->first();
-        if($product_attribute){
-            $kuota = $product_attribute->kuota - (int) $request->jumlah;
-            $product_attribute->update(['kuota' => $kuota]);
-        }
+        // //PENGURANGAN STOK
+        // $product_attribute = Pemesanan::where([
+        //     'status_pembayaran' => $model['status_pembayaran']
+        //     ])->first();
+        //     dd($product_attribute);
+        //     if($product_attribute == 'Berhasil Pesan'){
+        //         $kuota = $model->kuota - (int) $request->jumlah;
+        //         $model->save();
+        //     }
+        // //END PENGURANGAN STOK
 
         $model->nama_wisata = $request->nama_wisata;
         $model->fasilitas_id = $join;
         $model->deskripsi = $request->deskripsi;
-        //$model->kuota = $request->kuota;
+        $model->kuota = $request->kuota;
         $model->harga = $request->harga;
         $model->keterangan = $request->keterangan;
 
@@ -152,4 +149,6 @@ class WisataControllers extends Controller
         $model->delete();
         return redirect('tbl_wisata');
     }
+ 
+
 }
