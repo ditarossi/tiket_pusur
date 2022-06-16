@@ -55,7 +55,7 @@ class Pemesanan_user extends Controller
         $model->Tanggal_Kunjungan = $request->Tanggal_Kunjungan;
         $model->jumlah = $request->jumlah;
         $model->tagihan = $request->tagihan;
-        $model->status_pembayaran = 'belum dibayar';
+        $model->status_pembayaran = 'Berhasil Pesan';
         $model->save();
 
         return redirect('user_view');
@@ -97,14 +97,13 @@ class Pemesanan_user extends Controller
     {
         $model = Pemesanan::find($id);
         $join = join(',',$request->input('fasilitas_id'));
-
         $model->users_id = $request->users_id;
         $model->wisata_id = $request->wisata_id;
         $model->fasilitas_id = $join;
         $model->Tanggal_Kunjungan = $request->Tanggal_Kunjungan;
         $model->jumlah = $request->jumlah;
         $model->tagihan = $request->tagihan;
-        $model->status_pembayaran = 'belum dibayar';
+        $model->status_pembayaran = 'Berhasil Mengubah Jadwal';
         $model->save();
 
         return redirect('tiket');

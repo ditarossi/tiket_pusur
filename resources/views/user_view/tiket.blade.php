@@ -18,6 +18,7 @@
             <th scope="col">Tanggal Kunjungan</th>
             <th scope="col">Jumlah</th>
             <th scope="col">Tagihan</th>
+            <th scope="col">Status Pemesanan</th>
             <th scope="col">Action</th>
           </tr>
         </thead>
@@ -38,13 +39,14 @@
             <td>{{ $value->Tanggal_Kunjungan }}</td>
             <td>{{ $value->jumlah }}</td>
             <td>{{ $value->tagihan }}</td>
+            <td ><button class=" btn-success">{{ $value->status_pembayaran }}</button></td>
             <td>
-              <a class="btn btn-outline-primary" href="cetak">Cetak</a>
-              <a class="btn btn-outline-warning" href="{{ url('pemesanan/'.$value->id.'/edit') }}">Reschedule</a>
+              <a class=" btn-primary" href="cetak">Cetak</a>
+              <a class=" btn-warning" href="{{ url('pemesanan/'.$value->id.'/edit') }}">Reschedule</a>
               <form action="{{ url('pemesanan/'.$value->id) }}" method="post">
                                 @csrf 
                                 <input type="hidden" name="_method" value="delete">
-                                <button class="btn btn-outline-danger" type="submit" onclick="return confirm('Yakin ingin membatalkan pesanan ?')">Delete</button>
+                                <button class=" btn-danger" type="submit" onclick="return confirm('Yakin ingin membatalkan pesanan ?')">Batal</button>
                               </form>
             </td>
           </tr>

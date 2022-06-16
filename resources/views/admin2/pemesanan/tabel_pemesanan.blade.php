@@ -25,7 +25,7 @@
                             <th>Tanggal Kunjungan</th>
                             <th>Jumlah</th>
                             <th>Tagihan</th>
-                            <th>Status Pembayaran</th>
+                            <th>Status Pemesanan</th>
                             <th>Actions</th>
                         </tr>
                       </thead>

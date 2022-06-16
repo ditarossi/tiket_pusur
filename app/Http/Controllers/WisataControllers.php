@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Wisata;
 use App\Models\Fasilitas;
+use App\Models\Pemesanan;
 
 class WisataControllers extends Controller
 {
@@ -112,11 +113,25 @@ class WisataControllers extends Controller
             $model->foto = $path;
         }
         $join = join(',',$request->input('fasilitas_id'));
+        
+        $product_attribute = Pemesanan::where([
+            'users_id' => $model['users_id'], 
+            'wisata_id' => $model['wisata_id'],
+            'fasilitas_id' => $model['fasilitas_id'],
+            'Tanggal_Kunjungan' => $model['Tanggal_Kunjungan'],
+            'jumlah' => $model['jumlah'],
+            'tagihan' => $model['tagihan'],
+            'status_pembayaran' => $model['status_pembayaran']
+            ])->first();
+        if($product_attribute){
+            $kuota = $product_attribute->kuota - (int) $request->jumlah;
+            $product_attribute->update(['kuota' => $kuota]);
+        }
 
         $model->nama_wisata = $request->nama_wisata;
         $model->fasilitas_id = $join;
         $model->deskripsi = $request->deskripsi;
-        $model->kuota = $request->kuota;
+        //$model->kuota = $request->kuota;
         $model->harga = $request->harga;
         $model->keterangan = $request->keterangan;
 
