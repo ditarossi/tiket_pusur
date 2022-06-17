@@ -27,6 +27,8 @@
                             <th>Jumlah</th>
                             <th>Tagihan</th>
                             <th>Status Pembayaran</th>
+                            <th>Pengajuan Reschedule</th>
+                            <th>Pengajuan Refund</th>
                             <!-- <th>Actions</th> -->
                         </tr>
                       </thead>
@@ -47,7 +49,9 @@
                             <td>{{ $value->Tanggal_Kunjungan }}</td>
                             <td>{{ $value->jumlah }}</td>
                             <td>{{ $value->tagihan }}</td>
-                            <td>{{ $value->status_pembayaran }}</td>
+                            <td>{{ $value->status_pemesanan }}</td>
+                            <td>{{ $value->reschedule }}</td>
+                            <td>{{ $value->refund }}</td>
                             <!-- <td>
                               <a class="btn btn-outline-warning" href="{{ url('tbl_resi/'.$value->id.'/edit') }}">Update</a>
                               <form action="{{ url('tbl_resi/'.$value->id) }}" method="post">

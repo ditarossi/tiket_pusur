@@ -51,7 +51,9 @@ class PemesananController extends Controller
         $model->Tanggal_Kunjungan = $request->Tanggal_Kunjungan;
         $model->jumlah = $request->jumlah;
         $model->tagihan = $request->tagihan;
-        $model->status_pembayaran = $request->status_pembayaran;
+        $model->status_pemesanan = $request->status_pemesanan;
+        $model->reschedule = $request->reschedule;
+        $model->refund = $request->refund;
         $model->save();
 
         return redirect('tbl_pemesanan');
@@ -99,7 +101,9 @@ class PemesananController extends Controller
         $model->Tanggal_Kunjungan = $request->Tanggal_Kunjungan;
         $model->jumlah = $request->jumlah;
         $model->tagihan = $request->tagihan;
-        $model->status_pembayaran = $request->status_pembayaran;
+        $model->status_pemesanan = $request->status_pemesanan;
+        $model->reschedule = $request->reschedule;
+        $model->refund = $request->refund;
         $model->save();
 
         return redirect('tbl_pemesanan');
@@ -117,13 +121,48 @@ class PemesananController extends Controller
         $model->delete();
         return redirect('tbl_pemesanan');
     }
+    
     public function gantistatus($id)
     {
         $datawisata = Pemesanan::find($id);
-        $datawisata->status_pembayaran = 'Berhasil Pesan';
+        $datawisata->status_pemesanan = 'Berhasil Pesan';
         $datawisata->save();
         $dw = Wisata::where('id', $datawisata->wisata_id)->first();
         $dw->kuota -=(int)$datawisata->jumlah;
+        $dw->save();
+
+        // if($product_attribute == 'Berhasil Pesan'){
+        //     $kuota = $model->kuota - (int) $request->jumlah;
+        //     $model->save();
+
+        // dd($datawisata);
+        return redirect('tbl_pemesanan');
+    }
+    
+    public function gantirefund($id)
+    {
+        $datawisata = Pemesanan::find($id);
+        $datawisata->refund = 'Pemesanan Berhasil Dibatalkan';
+        $datawisata->save();
+        $dw = Wisata::where('id', $datawisata->wisata_id)->first();
+        $dw->kuota +=(int)$datawisata->jumlah;
+        $dw->save();
+
+        // if($product_attribute == 'Berhasil Pesan'){
+        //     $kuota = $model->kuota - (int) $request->jumlah;
+        //     $model->save();
+
+        // dd($datawisata);
+        return redirect('tbl_pemesanan');
+    }
+
+    public function selesai($id)
+    {
+        $datawisata = Pemesanan::find($id);
+        $datawisata->status_pemesanan = 'Pemesanan Selesai';
+        $datawisata->save();
+        $dw = Wisata::where('id', $datawisata->wisata_id)->first();
+        $dw->kuota +=(int)$datawisata->jumlah;
         $dw->save();
 
         // if($product_attribute == 'Berhasil Pesan'){

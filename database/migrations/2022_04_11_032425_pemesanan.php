@@ -21,7 +21,9 @@ class Pemesanan extends Migration
             $table->date('Tanggal_Kunjungan');         
             $table->integer('jumlah');  
             $table->char('tagihan', 15);  
-            $table->string('status_pembayaran'); 
+            $table->string('status_pemesanan'); 
+            $table->string('reschedule'); 
+            $table->string('refund'); 
             $table->timestamps();
         });
     }

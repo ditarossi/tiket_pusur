@@ -34,7 +34,8 @@ Route::group([
 ], function() {
     Route::get('/admin', [App\Http\Controllers\AdminControllers::class, 'index'])->name('admin');
     Route::get('gantistatus/{id}', [App\Http\Controllers\PemesananController::class, 'gantistatus']);
-
+    Route::get('gantirefund/{id}', [App\Http\Controllers\PemesananController::class, 'gantirefund']);
+    Route::get('selesai/{id}', [App\Http\Controllers\PemesananController::class, 'selesai']);
 }
 );
 
@@ -43,6 +44,7 @@ Route::group([
 ], function() {
     Route::get('/user_view', [App\Http\Controllers\HomeController::class, 'index'])->name('user_view');
     Route::resource('pemesanan', '\App\Http\Controllers\Pemesanan_user');
+    Route::get('persetujuan/{id}', [App\Http\Controllers\Pemesanan_user::class, 'refund']);
     Route::get('cetak', [App\Http\Controllers\HomeController::class, 'download']);
     Route::get('tiket', [App\Http\Controllers\HomeController::class, 'tiket']);
 

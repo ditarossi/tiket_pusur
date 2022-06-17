@@ -38,8 +38,16 @@
                       <input name="tagihan" type="text" class="form-control" id="exampleInputPassword1" placeholder="Kuota">
                     </div>
                     <div class="form-group">
-                      <label for="exampleInputPassword1">Status Pembayaran</label>
-                      <input name="status_pembayaran" type="text" class="form-control" id="exampleInputPassword1" placeholder="Kuota">
+                      <label for="exampleInputPassword1">Status Pemesanan</label>
+                      <input name="status_pemesanan" type="text" class="form-control" id="exampleInputPassword1" placeholder="Kuota">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Pengajuan Reschedule</label>
+                      <input name="reschedule" type="text" class="form-control" id="exampleInputPassword1" placeholder="Kuota">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Pengajuan Refund</label>
+                      <input name="refund" type="text" class="form-control" id="exampleInputPassword1" placeholder="Kuota">
                     </div>
                     <div class="form-check">
                       <label class="form-check-label text-muted">

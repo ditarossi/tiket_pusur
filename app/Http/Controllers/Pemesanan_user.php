@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Pemesanan;
+use App\Models\Wisata;
 
 use Auth;
 
@@ -55,7 +56,9 @@ class Pemesanan_user extends Controller
         $model->Tanggal_Kunjungan = $request->Tanggal_Kunjungan;
         $model->jumlah = $request->jumlah;
         $model->tagihan = $request->tagihan;
-        $model->status_pembayaran = 'Menunggu Verifikasi';
+        $model->status_pemesanan = 'Menunggu Verifikasi';
+        $model->reschedule = '-';
+        $model->refund = '-';
         $model->save();
 
         return redirect('user_view');
@@ -97,14 +100,25 @@ class Pemesanan_user extends Controller
     {
         $model = Pemesanan::find($id);
         $join = join(',',$request->input('fasilitas_id'));
-        $model->users_id = $request->users_id;
-        $model->wisata_id = $request->wisata_id;
-        $model->fasilitas_id = $join;
+        // $model->users_id = $request->users_id;
+        // $model->wisata_id = $request->wisata_id;
+        // $model->fasilitas_id = $join;
         $model->Tanggal_Kunjungan = $request->Tanggal_Kunjungan;
-        $model->jumlah = $request->jumlah;
-        $model->tagihan = $request->tagihan;
-        $model->status_pembayaran = 'Berhasil Mengubah Jadwal';
+        // $model->jumlah = $request->jumlah;
+        // $model->tagihan = $request->tagihan;
+        // $model->status_pemesanan = '-';
+        $model->reschedule = 'Berhasil Reschedule';
+        // $model->refund = '-';
         $model->save();
+
+        return redirect('tiket');
+    }
+
+    public function refund($id)
+    {
+        $datawisata = Pemesanan::find($id);
+        $datawisata->refund = 'Menunggu Persetujuan';
+        $datawisata->save();
 
         return redirect('tiket');
     }
