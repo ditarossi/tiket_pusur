@@ -8,6 +8,7 @@ use App\Models\Wisata;
 // use App\Models\Resi;
 use App\Models\Fasilitas;
 use App\Models\Pemesanan;
+use App\Models\Kegiatan;
 use PDF;
 
 class HomeController extends Controller
@@ -31,8 +32,9 @@ class HomeController extends Controller
     {
         $datas = Wisata::all();
         $f = Fasilitas::all();
+        $keg = Kegiatan::all();
         return view('user_view.isi', compact(
-            'datas', 'f'
+            'datas', 'f', 'keg'
         ));
     }
 
