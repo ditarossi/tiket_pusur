@@ -55,128 +55,105 @@
 
         <div class="row portfolio-container" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
 
-          <div class="col-lg-4 col-md-6 portfolio-wrap filter-app">
+        @foreach($datas as $d)
+          <div class="col-lg-4 col-md-6 portfolio-wrap filter-app" >
             <div class="portfolio-item">
-              <img src="{{asset('pict')}}/assets/img/portfolio/portfolio-1.jpg" class="img-fluid" alt="">
+              <img src="{{ asset($d->foto) }}" class="img-fluid" alt="" height="120px">
               <div class="portfolio-info">
-                <h3>App 1</h3>
+                <h3>{{ $d->nama_wisata }}</h3>
                 <div>
-                  <a href="{{asset('pict')}}/assets/img/portfolio/portfolio-1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 1"><i class="bx bx-plus"></i></a>
-                  <a href="detail" title="Portfolio Details"><i class="bx bx-link"></i></a>
+                  <a href="{{ asset($d->foto) }}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="{{ $d->nama_wisata }}"><i class="bx bx-plus"></i></a>
+                  <a href="#modal" data-bs-toggle="modal" data-bs-target="#showdetail{{$d->id}}"><i class="bx bx-link"></i></a>
                 </div>
               </div>
             </div>
           </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-wrap filter-web">
-            <div class="portfolio-item">
-              <img src="{{asset('pict')}}/assets/img/portfolio/portfolio-2.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h3>Web 3</h3>
-                <div>
-                  <a href="{{asset('pict')}}/assets/img/portfolio/portfolio-2.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details.html" title="Portfolio Details"><i class="bx bx-link"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-wrap filter-app">
-            <div class="portfolio-item">
-              <img src="{{asset('pict')}}/assets/img/portfolio/portfolio-3.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h3>App 2</h3>
-                <div>
-                  <a href="{{asset('pict')}}/assets/img/portfolio/portfolio-3.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 2"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details.html" title="Portfolio Details"><i class="bx bx-link"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-wrap filter-card">
-            <div class="portfolio-item">
-              <img src="{{asset('pict')}}/assets/img/portfolio/portfolio-4.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h3>Card 2</h3>
-                <div>
-                  <a href="{{asset('pict')}}/assets/img/portfolio/portfolio-4.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 1"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details.html" title="Portfolio Details"><i class="bx bx-link"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-wrap filter-web">
-            <div class="portfolio-item">
-              <img src="{{asset('pict')}}/assets/img/portfolio/portfolio-5.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h3>Web 2</h3>
-                <div>
-                  <a href="{{asset('pict')}}/assets/img/portfolio/portfolio-5.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 2"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details.html" title="Portfolio Details"><i class="bx bx-link"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-wrap filter-app">
-            <div class="portfolio-item">
-              <img src="{{asset('pict')}}/assets/img/portfolio/portfolio-6.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h3>App 3</h3>
-                <div>
-                  <a href="{{asset('pict')}}/assets/img/portfolio/portfolio-6.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 3"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details.html" title="Portfolio Details"><i class="bx bx-link"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-wrap filter-card">
-            <div class="portfolio-item">
-              <img src="{{asset('pict')}}/assets/img/portfolio/portfolio-7.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h3>Card 1</h3>
-                <div>
-                  <a href="{{asset('pict')}}/assets/img/portfolio/portfolio-7.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 1"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details.html" title="Portfolio Details"><i class="bx bx-link"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-wrap filter-card">
-            <div class="portfolio-item">
-              <img src="{{asset('pict')}}/assets/img/portfolio/portfolio-8.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h3>Card 3</h3>
-                <div>
-                  <a href="{{asset('pict')}}/assets/img/portfolio/portfolio-8.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 3"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details.html" title="Portfolio Details"><i class="bx bx-link"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-wrap filter-web">
-            <div class="portfolio-item">
-              <img src="{{asset('pict')}}/assets/img/portfolio/portfolio-9.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h3>Web 1</h3>
-                <div>
-                  <a href="{{asset('pict')}}/assets/img/portfolio/portfolio-9.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 1"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details.html" title="Portfolio Details"><i class="bx bx-link"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
+        @endforeach
         </div>
 
       </div>
   </section><!-- End Portfolio Section -->
 </main>
+
+
+@foreach($datas as $d)
+        <!-- <div class="col-lg-4">
+          <div class="pricing-item-regular">
+            <div class="icon">
+              <img src="{{ asset($d->foto) }}" alt="" width="100 px">
+            </div>
+            <ul>
+              <h4>{{$d->nama_wisata}}</h4>
+              <li class="function">Harga Tiket = {{$d->harga}}</li>
+              <li class="function">Sisa Kuota = {{$d->kuota}}</li>
+            </ul>
+            <div class="border-button">
+              <a href="#modal" data-bs-toggle="modal" data-bs-target="#showdetail{{$d->id}}">Show Detail</a>
+            </div>
+          </div>
+        </div> -->
+
+        <!--MODAL SHOW DETAIL-->
+        <div class="modal fade bd-example-modal-lg" id="showdetail{{$d->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">{{$d->nama_wisata}}</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  
+                <section id="portfolio-details" class="portfolio-details">
+            <div class="container">
+
+                <div class="row gy-4">
+
+                <div class="col-lg-8">
+                    <div class="portfolio-details-slider swiper">
+                    <div class="swiper-wrapper align-items-center">
+
+                        <div class="swiper-slide">
+                        <img src="{{ asset($d->foto) }}" alt="">
+                        </div>
+
+                    </div>
+                    <div class="swiper-pagination"></div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="portfolio-info">
+                    <h3>{{$d->nama_wisata}}</h3>
+                    <ul>
+                        <li><strong>Fasilitas</strong>: {{$d->fasilitas}}</li>
+                        <li><strong>Kuota</strong>: {{$d->kuota}}</li>
+                        <li><strong>Harga</strong>: {{$d->harga}}</li>
+                        <li><strong>Keterngan</strong>: {{$d->keterangan}}</a></li>
+                    </ul>
+                    </div>
+                    <div class="portfolio-description">
+                    <h2>Deskripsi</h2>
+                    <p>
+                        {{$d->deskripsi}}
+                    </p>
+                    </div>
+                </div>
+
+                </div>
+
+            </div>
+            </section>
+
+                </div>               
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button href="#modal" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap" type="button" class="btn btn-primary">Order Now</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        @endforeach
+
 
 
 
@@ -193,56 +170,31 @@
             </p>
           </div>
         </div>
-        @foreach($datas as $d)
-        <div class="col-lg-4">
-          <div class="pricing-item-regular">
-            <div class="icon">
-              <img src="{{ asset($d->foto) }}" alt="" width="100 px">
-            </div>
-            <ul>
-              <h4>{{$d->nama_wisata}}</h4>
-              <li class="function">Harga Tiket = {{$d->harga}}</li>
-              <li class="function">Sisa Kuota = {{$d->kuota}}</li>
-            </ul>
-            <div class="border-button">
-              <a href="#modal" data-bs-toggle="modal" data-bs-target="#showdetail{{$d->id}}">Show Detail</a>
-            </div>
-          </div>
-        </div>
-        <!--MODAL SHOW DETAIL -->
-        <div class="modal fade" id="showdetail{{$d->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">{{$d->nama_wisata}}</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-
-                  <div class="container">
-                    <div class="row">
-                      <div class="col-4"><img src="{{ asset($d->foto) }}" alt="" width="100 px"></div>
-                      <div class="col-8">
-                        <li class="function">Fasilitas = {{$d->fasilitas_id}}</li> 
-                        <li class="function">Deskripsi = {{$d->deskripsi}}</li>
-                        <li class="function">Sisa Kuota = {{$d->kuota}}</li>
-                        <li class="function">Harga = {{$d->harga}}</li>
-                        <li class="function">Keterangan = {{$d->keterangan}}</li>
-                      </div>
-                    </div>
-                  </div>
-                  
-                </div>               
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                  <button href="#modal" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap" type="button" class="btn btn-primary">Order Now</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        @endforeach
 
       </div>
+      <!-- ======= About Section ======= -->
+      <section class="about" data-aos="fade-up">
+          <div class="container">
+
+            <div class="row">
+              <div class="col-lg-6">
+                <img src="{{asset('pict')}}/assets/img/about.jpg" class="img-fluid" alt="">
+              </div>
+              <div class="col-lg-6 pt-4 pt-lg-0">
+                <h3>Bagaimana cara melakukan pemesanan wisata ?</h3>
+                <ul>
+                  <li><i class="bi bi-check2-circle"></i> Melakukan registrasi sebagai user</li>
+                  <li><i class="bi bi-check2-circle"></i> Login ke sistem, dengan menggunakan email dan password yang sama ketika user melakukan registrasi</li>
+                  <li><i class="bi bi-check2-circle"></i> Memilih menu pemesanan, kemudian mengisikan form sesuai dengan kebutuhan</li>
+                  <li><i class="bi bi-check2-circle"></i> Memilih menu user, kemudian memilih lihat tiket, untuk mendapatkan informasi pemesanan</li>
+                  <li><i class="bi bi-check2-circle"></i> Menunggu hingga status pemesanan berubah menjadi berhasil pesan</li>
+                  <li><i class="bi bi-check2-circle"></i> Datang ke tempat wisata, kemudian tunjukkan e-tiket yang sudah didapatkan bisa melalui sistem/file .pdf</li>
+                </ul>
+              </div>
+            </div>
+
+          </div>
+        </section><!-- End About Section -->
     </div>
   </div> 
 
@@ -263,8 +215,8 @@
   </div>
 
   <!-- MODAL -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+  <div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Pemesanan</h5>
@@ -337,8 +289,8 @@
           </div>
         </div>
          <!-- Modal -->
-         <div class="modal fade" id="showsejarah" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+         <div class="modal fade bd-example-modal-lg" id="showsejarah" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
             <div class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Sejarah Pusur Institute</h5>
@@ -385,8 +337,8 @@
           </div>
         </div>
         <!-- Modal -->
-        <div class="modal fade" id="showso" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal fade bd-example-modal-lg" id="showso" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
             <div class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Struktur Organisasi</h5>
@@ -415,8 +367,8 @@
           </div>
         </div>
         <!-- Modal -->
-        <div class="modal fade" id="showkegiatan" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal fade bd-example-modal-lg" id="showkegiatan" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
             <div class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Kegiatan</h5>
@@ -480,8 +432,8 @@
           </div>
         </div>
         <!-- Modal -->
-        <div class="modal fade" id="showkerjasama" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal fade bd-example-modal-lg" id="showkerjasama" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
             <div class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Sumber Daya</h5>
@@ -504,6 +456,87 @@
           </div>
         </div>
 
+      </div>
+    </div>
+  </div>
+
+  <div id="contact" class="services section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+          <div class="section-heading  wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.5s">
+            <h4>Contact Us</h4>
+            <img src="{{asset('layout')}}/assets/images/heading-line-dec.png" alt="">
+            <main id="main">
+
+    <!-- ======= Contact Section ======= -->
+    <!-- ======= Contact Section ======= -->
+    <section class="contact" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
+      <div class="container">
+
+        <div class="row">
+
+          <div class="col-lg-6">
+
+            <div class="row">
+              <div class="col-md-12">
+                <div class="info-box">
+                  <i class="bx bx-map"></i>
+                  <h3>Our Address</h3>
+                  <p>A108 Adam Street, New York, NY 535022</p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="info-box">
+                  <i class="bx bx-envelope"></i>
+                  <h3>Email Us</h3>
+                  <p>info@example.com<br>contact@example.com</p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="info-box">
+                  <i class="bx bx-phone-call"></i>
+                  <h3>Call Us</h3>
+                  <p>+1 5589 55488 55<br>+1 6678 254445 41</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="col-lg-6">
+            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+              <div class="row">
+                <div class="col-md-6 form-group">
+                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+                </div>
+                <div class="col-md-6 form-group mt-3 mt-md-0">
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+                </div>
+              </div>
+              <div class="form-group mt-3">
+                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+              </div>
+              <div class="form-group mt-3">
+                <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+              </div>
+              <div class="my-3">
+                <div class="loading">Loading</div>
+                <div class="error-message"></div>
+                <div class="sent-message">Your message has been sent. Thank you!</div>
+              </div>
+              <div class="text-center"><button type="submit">Send Message</button></div>
+            </form>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Contact Section -->
+
+  </main><!-- End #main -->
+          </div>
+        </div>
       </div>
     </div>
   </div>

@@ -15,6 +15,7 @@
               <!--<li class="scroll-to-section"><a href="#services">History</a></li>-->
               <li class="scroll-to-section"><a href="#pricing">Wisata</a></li>
               <li class="scroll-to-section"><a href="#services">Pusur Institute</a></li>
+              <li class="scroll-to-section"><a href="#contact">Contact Us</a></li>
               <!--<li class="scroll-to-section"><a href="#pricing">Struktur Organisasi</a></li>-->
               <li><div class="gradient-button"><a id="modal_trigger" href="#modal"><i class="fa fa-sign-in-alt"></i> Sign In Now</a></div></li> 
             </ul>       

@@ -21,7 +21,7 @@
                         <tr>
                             <th>Name</th>
                             <th>E-Mail</th>
-                            <th>Password</th>
+                            <!-- <th>Password</th> -->
                             <th>Role</th>
                             <th>Actions</th>
                         </tr>
@@ -31,7 +31,7 @@
                         <tr>
                             <td>{{ $value->name }}</td>
                             <td>{{ $value->email }}</td>
-                            <td>{{ $value->password }}</td>
+                            <!-- <td>{{ $value->password }}</td> -->
                             <td>{{ $value->is_admin }}</td>
                             <td>
                               <a class="btn btn-outline-warning" href="{{ url('tbl_user/'.$value->id.'/edit') }}">Update</a>

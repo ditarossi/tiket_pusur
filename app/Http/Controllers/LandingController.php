@@ -15,8 +15,11 @@ class LandingController extends Controller
         ));
     }
 
-    public function detail()
+    public function detail($id)
     {
-        return view('landing.detail');
+        $datas = Wisata::all();
+        return view('landing.detail', compact(
+            'datas'
+        ));
     }
 }

@@ -48,7 +48,7 @@ Route::group([
     Route::get('persetujuan/{id}', [App\Http\Controllers\Pemesanan_user::class, 'refund']);
     Route::get('cetak', [App\Http\Controllers\HomeController::class, 'download']);
     Route::get('tiket', [App\Http\Controllers\HomeController::class, 'tiket']);
-    Route::get('detail', [App\Http\Controllers\HomeController::class, 'detail']);
+    Route::get('detail/{id}', [App\Http\Controllers\HomeController::class, 'detail']);
 
     //Route::get('reschedule', [App\Http\Controllers\Pemesanan_user::class, 'edit']);
 }
