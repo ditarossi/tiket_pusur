@@ -16,7 +16,7 @@
               <!--<li class="scroll-to-section"><a href="#services">History</a></li>-->
               <li class="scroll-to-section"><a href="#pricing">Wisata</a></li>
               <li class="scroll-to-section"><a href="#order">Pemesanan</a></li>
-              <li class="scroll-to-section"><a href="#services">Visi</a></li>
+              <li class="scroll-to-section"><a href="#services">Pusur Institute</a></li>
               <!--<li class="scroll-to-section"><a href="#pricing">Struktur Organisasi</a></li>-->
               <li class="nav-item dropdown">
               

@@ -66,4 +66,9 @@ class HomeController extends Controller
 
     }
 
+    public function detail()
+    {
+        return view('user_view.detail');
+    }
+
 }

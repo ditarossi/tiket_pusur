@@ -61,7 +61,7 @@
                 <h3>App 1</h3>
                 <div>
                   <a href="{{asset('pict')}}/assets/img/portfolio/portfolio-1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 1"><i class="bx bx-plus"></i></a>
-                  <a href="portfolio-details.html" title="Portfolio Details"><i class="bx bx-link"></i></a>
+                  <a href="detail" title="Portfolio Details"><i class="bx bx-link"></i></a>
                 </div>
               </div>
             </div>
@@ -174,7 +174,8 @@
         </div>
 
       </div>
-  </section><!-- End Portfolio Section -->
+    </section>
+  <!-- End Portfolio Section -->
 </main>
 
 

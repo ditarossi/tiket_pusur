@@ -23,6 +23,7 @@ use App\Http\Controllers\Auth\LoginController;
 // });
 
 Route::get('/', [App\Http\Controllers\LandingController::class, 'index']);
+Route::get('detail', [App\Http\Controllers\LandingController::class, 'detail']);
 
 //LOGIN === REGISTER
 Auth::routes();
@@ -47,6 +48,7 @@ Route::group([
     Route::get('persetujuan/{id}', [App\Http\Controllers\Pemesanan_user::class, 'refund']);
     Route::get('cetak', [App\Http\Controllers\HomeController::class, 'download']);
     Route::get('tiket', [App\Http\Controllers\HomeController::class, 'tiket']);
+    Route::get('detail', [App\Http\Controllers\HomeController::class, 'detail']);
 
     //Route::get('reschedule', [App\Http\Controllers\Pemesanan_user::class, 'edit']);
 }

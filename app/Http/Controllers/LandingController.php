@@ -14,4 +14,9 @@ class LandingController extends Controller
             'datas'
         ));
     }
+
+    public function detail()
+    {
+        return view('landing.detail');
+    }
 }

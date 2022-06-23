@@ -33,6 +33,11 @@
     <link href="{{asset('pict')}}/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
     <link href="{{asset('pict')}}/assets/css/style.css" rel="stylesheet">
+    <!-- <style>
+      .body{
+        margin-top: 0px;
+      }
+    </style> -->
 </head>
 
     <body>
