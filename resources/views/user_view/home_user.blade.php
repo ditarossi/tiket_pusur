@@ -17,6 +17,20 @@
     <!-- Bootstrap core CSS -->
     <link href="{{asset('layout')}}/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
+    <!-- CSS TEMPLATE GAMBAR -->
+    <!-- Favicons -->
+    <link href="{{asset('pict')}}/assets/img/favicon.png" rel="icon">
+    <link href="{{asset('pict')}}/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="{{asset('pict')}}/assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+    <!-- <link href="{{asset('pict')}}/assets/vendor/aos/aos.css" rel="stylesheet"> -->
+    <link href="{{asset('pict')}}/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{asset('pict')}}/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="{{asset('pict')}}/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="{{asset('pict')}}/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="{{asset('pict')}}/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    
+    <link href="{{asset('pict')}}/assets/css/style.css" rel="stylesheet">
+
 <!--
 
 TemplateMo 570 Chain App Dev
@@ -155,5 +169,17 @@ https://templatemo.com/tm-570-chain-app-dev
   <script src="{{asset('layout')}}/assets/js/imagesloaded.js"></script>
   <script src="{{asset('layout')}}/assets/js/popup.js"></script>
   <script src="{{asset('layout')}}/assets/js/custom.js"></script>
+
+  <!-- SCRIPT TEMPLATE GAMBAR -->
+  <!-- Vendor JS Files -->
+  <script src="{{asset('pict')}}/assets/vendor/purecounter/purecounter.js"></script>
+  <script src="{{asset('pict')}}/assets/vendor/aos/aos.js"></script>
+  <!-- <script src="{{asset('pict')}}/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>-->
+  <script src="{{asset('pict')}}/assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="{{asset('pict')}}/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="{{asset('pict')}}/assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="{{asset('pict')}}/assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="{{asset('pict')}}/assets/vendor/php-email-form/validate.js"></script>
+  <script src="{{asset('pict')}}/assets/js/main.js"></script> -->
 </body>
 </html>
