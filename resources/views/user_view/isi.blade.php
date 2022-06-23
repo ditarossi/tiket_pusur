@@ -36,6 +36,137 @@
     </div>
   </div>
 
+  <div id="pricing" class="pricing-tables">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+          <div class="section-heading">
+            <h4>Wisata</h4>
+            <img src="{{asset('layout')}}/assets/images/heading-line-dec.png" alt="">
+            <p>
+              wisata adalah bepergian secara bersama-sama dengan tujuan untuk bersenang-senang, menambah pengetahuan, dan lain-lain. Selain itu juga dapat diartikan sebagai bertamasya atau piknik.
+            </p>
+          </div>
+        </div>
+        @foreach($datas as $d)
+        <div class="col-lg-4">
+          <div class="pricing-item-regular">
+            <div class="icon">
+              <img src="{{ asset($d->foto) }}" alt="" width="100 px">
+            </div>
+            <ul>
+              <h4>{{$d->nama_wisata}}</h4>
+              <li class="function">Harga Tiket = {{$d->harga}}</li>
+              <li class="function">Sisa Kuota = {{$d->kuota}}</li>
+            </ul>
+            <div class="border-button">
+              <a href="#modal" data-bs-toggle="modal" data-bs-target="#showdetail{{$d->id}}">Show Detail</a>
+            </div>
+          </div>
+        </div>
+        <!--MODAL SHOW DETAIL -->
+        <div class="modal fade" id="showdetail{{$d->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">{{$d->nama_wisata}}</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-4"><img src="{{ asset($d->foto) }}" alt="" width="100 px"></div>
+                      <div class="col-8">
+                        <li class="function">Fasilitas = {{$d->fasilitas_id}}</li> 
+                        <li class="function">Deskripsi = {{$d->deskripsi}}</li>
+                        <li class="function">Sisa Kuota = {{$d->kuota}}</li>
+                        <li class="function">Harga = {{$d->harga}}</li>
+                        <li class="function">Keterangan = {{$d->keterangan}}</li>
+                      </div>
+                    </div>
+                  </div>
+                  
+                </div>               
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button href="#modal" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap" type="button" class="btn btn-primary">Order Now</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        @endforeach
+
+      </div>
+    </div>
+  </div> 
+
+  <div id="order" class="order-form">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+          <div class="section-heading" align="center">
+            <h4>Pemesanan Wisata</h4>
+            <img src="{{asset('layout')}}/assets/images/heading-line-dec.png" alt="">
+            <div class="border-button">
+              <a href="#modal" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Order Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Pemesanan</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form class="forms-sample" action="{{ url('pemesanan') }}" method="post">
+          @csrf
+            <div class="mb-3">
+              <label>Nama Wisata</label>
+              <select name="wisata_id" type="text" class="form-control" id="exampleInputUsername1" placeholder="Nama Wisata">
+                <option value=""> -- Pilih --</option>
+                @foreach ($datas as $d)
+                <option value="{{$d->id}}">{{$d->nama_wisata}}</option>
+                @endforeach
+              </select>
+            </div>
+            <div class="mb-3">
+              <label>Fasilitas</label>
+              <br>
+              @foreach ($f as $d)
+                <input name="fasilitas_id[]" class="form-check-input" type="checkbox" id="inlineCheckbox1" value="{{$d->id}}">
+                <label class="form-check-label" for="inlineCheckbox1">{{$d->fasilitas}}</label>
+              @endforeach
+            </div>
+            <div class="mb-3">
+              <label>Tanggal Kunjungan</label>
+              <input name="Tanggal_Kunjungan" type="date" class="form-control" id="Tanggal_Kunjungan"></input>
+            </div>
+            <div class="mb-3">
+              <label>Jumlah</label>
+              <input name="jumlah" type="text" class="form-control" id="jumlah"></input>
+            </div>
+            <div class="mb-3">
+              <label>Tagihan</label>
+              <input name="tagihan" type="text" class="form-control" id="tagihan"></input>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Send message</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
   <div id="services" class="services section">
     <div class="container">
       <div class="row">
@@ -228,137 +359,6 @@
           </div>
         </div>
 
-      </div>
-    </div>
-  </div>
-
-  <div id="pricing" class="pricing-tables">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 offset-lg-2">
-          <div class="section-heading">
-            <h4>Wisata</h4>
-            <img src="{{asset('layout')}}/assets/images/heading-line-dec.png" alt="">
-            <p>
-              wisata adalah bepergian secara bersama-sama dengan tujuan untuk bersenang-senang, menambah pengetahuan, dan lain-lain. Selain itu juga dapat diartikan sebagai bertamasya atau piknik.
-            </p>
-          </div>
-        </div>
-        @foreach($datas as $d)
-        <div class="col-lg-4">
-          <div class="pricing-item-regular">
-            <div class="icon">
-              <img src="{{ asset($d->foto) }}" alt="" width="100 px">
-            </div>
-            <ul>
-              <h4>{{$d->nama_wisata}}</h4>
-              <li class="function">Harga Tiket = {{$d->harga}}</li>
-              <li class="function">Sisa Kuota = {{$d->kuota}}</li>
-            </ul>
-            <div class="border-button">
-              <a href="#modal" data-bs-toggle="modal" data-bs-target="#showdetail{{$d->id}}">Show Detail</a>
-            </div>
-          </div>
-        </div>
-        <!--MODAL SHOW DETAIL -->
-        <div class="modal fade" id="showdetail{{$d->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">{{$d->nama_wisata}}</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-
-                  <div class="container">
-                    <div class="row">
-                      <div class="col-4"><img src="{{ asset($d->foto) }}" alt="" width="100 px"></div>
-                      <div class="col-8">
-                        <li class="function">Fasilitas = {{$d->fasilitas_id}}</li> 
-                        <li class="function">Deskripsi = {{$d->deskripsi}}</li>
-                        <li class="function">Sisa Kuota = {{$d->kuota}}</li>
-                        <li class="function">Harga = {{$d->harga}}</li>
-                        <li class="function">Keterangan = {{$d->keterangan}}</li>
-                      </div>
-                    </div>
-                  </div>
-                  
-                </div>               
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                  <button href="#modal" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap" type="button" class="btn btn-primary">Order Now</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        @endforeach
-
-      </div>
-    </div>
-  </div> 
-
-  <div id="order" class="order-form">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 offset-lg-2">
-          <div class="section-heading" align="center">
-            <h4>Pemesanan Wisata</h4>
-            <img src="{{asset('layout')}}/assets/images/heading-line-dec.png" alt="">
-            <div class="border-button">
-              <a href="#modal" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Order Now</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- MODAL -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Pemesanan</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <form class="forms-sample" action="{{ url('pemesanan') }}" method="post">
-          @csrf
-            <div class="mb-3">
-              <label>Nama Wisata</label>
-              <select name="wisata_id" type="text" class="form-control" id="exampleInputUsername1" placeholder="Nama Wisata">
-                <option value=""> -- Pilih --</option>
-                @foreach ($datas as $d)
-                <option value="{{$d->id}}">{{$d->nama_wisata}}</option>
-                @endforeach
-              </select>
-            </div>
-            <div class="mb-3">
-              <label>Fasilitas</label>
-              <br>
-              @foreach ($f as $d)
-                <input name="fasilitas_id[]" class="form-check-input" type="checkbox" id="inlineCheckbox1" value="{{$d->id}}">
-                <label class="form-check-label" for="inlineCheckbox1">{{$d->fasilitas}}</label>
-              @endforeach
-            </div>
-            <div class="mb-3">
-              <label>Tanggal Kunjungan</label>
-              <input name="Tanggal_Kunjungan" type="date" class="form-control" id="Tanggal_Kunjungan"></input>
-            </div>
-            <div class="mb-3">
-              <label>Jumlah</label>
-              <input name="jumlah" type="text" class="form-control" id="jumlah"></input>
-            </div>
-            <div class="mb-3">
-              <label>Tagihan</label>
-              <input name="tagihan" type="text" class="form-control" id="tagihan"></input>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary">Send message</button>
-            </div>
-          </form>
-        </div>
       </div>
     </div>
   </div>

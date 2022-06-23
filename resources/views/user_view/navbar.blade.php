@@ -14,10 +14,10 @@
             <ul class="nav">
               <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
               <!--<li class="scroll-to-section"><a href="#services">History</a></li>-->
-              <li class="scroll-to-section"><a href="#services">Visi</a></li>
-              <!--<li class="scroll-to-section"><a href="#pricing">Struktur Organisasi</a></li>-->
               <li class="scroll-to-section"><a href="#pricing">Wisata</a></li>
               <li class="scroll-to-section"><a href="#order">Pemesanan</a></li>
+              <li class="scroll-to-section"><a href="#services">Visi</a></li>
+              <!--<li class="scroll-to-section"><a href="#pricing">Struktur Organisasi</a></li>-->
               <li class="nav-item dropdown">
               
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

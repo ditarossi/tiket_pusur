@@ -53,8 +53,8 @@
             <td>{{ $value->refund }}</td>
             <td>
               <a class="btn btn-primary" href="cetak">Cetak</a>
-              <a class="btn btn-warning" href="{{ url('pemesanan/'.$value->id.'/edit') }}">Reschedule</a>
-              <a class="btn btn-danger" href="persetujuan/{{$value->id}}">Refund</a>
+              <!-- <a class="btn btn-warning" href="{{ url('pemesanan/'.$value->id.'/edit') }}">Reschedule</a>
+              <a class="btn btn-danger" href="persetujuan/{{$value->id}}">Refund</a> -->
               <!-- <form action="{{ url('pemesanan/'.$value->id) }}" method="post">
                   @csrf 
                   <input type="hidden" name="_method" value="delete">
