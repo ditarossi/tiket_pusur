@@ -13,6 +13,12 @@
             </a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="/tbl_kegiatan">
+              <i class="#"></i>
+              <span class="menu-title">Daftar Kegiatan</span>
+            </a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="/tbl_fasilitas">
               <i class="#"></i>
               <span class="menu-title">Fasilitas Wisata</span>

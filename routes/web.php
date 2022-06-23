@@ -64,7 +64,10 @@ Route::group([
 //CRUD USER
 Route::resource('tbl_user', '\App\Http\Controllers\UserController');
 
-//CRUD WISATA
+//CRUD KEGIATAB
+Route::resource('tbl_kegiatan', '\App\Http\Controllers\KegiatanController');
+
+//CRUD FASILITAS
 Route::resource('tbl_fasilitas', '\App\Http\Controllers\FasilitasController');
 
 //CRUD WISATA

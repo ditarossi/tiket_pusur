@@ -67,6 +67,20 @@
             </div>
           </div>
         @endforeach
+        @foreach($keg as $k)
+          <div class="col-lg-4 col-md-6 portfolio-wrap filter-card" >
+            <div class="portfolio-item">
+              <img src="{{ asset($k->foto) }}" class="img-fluid" alt="" height="120px">
+              <div class="portfolio-info">
+                <h3>{{ $k->nama_kegiatan }}</h3>
+                <div>
+                  <a href="{{ asset($k->foto) }}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="{{ $k->nama_kegiatan }}"><i class="bx bx-plus"></i></a>
+                  <a href="#modal" data-bs-toggle="modal" data-bs-target="#showdetail2{{$k->id}}"><i class="bx bx-link"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        @endforeach
         </div>
 
       </div>
@@ -75,22 +89,6 @@
 </main>
 
 @foreach($datas as $d)
-        <!-- <div class="col-lg-4">
-          <div class="pricing-item-regular">
-            <div class="icon">
-              <img src="{{ asset($d->foto) }}" alt="" width="100 px">
-            </div>
-            <ul>
-              <h4>{{$d->nama_wisata}}</h4>
-              <li class="function">Harga Tiket = {{$d->harga}}</li>
-              <li class="function">Sisa Kuota = {{$d->kuota}}</li>
-            </ul>
-            <div class="border-button">
-              <a href="#modal" data-bs-toggle="modal" data-bs-target="#showdetail{{$d->id}}">Show Detail</a>
-            </div>
-          </div>
-        </div> -->
-
         <!--MODAL SHOW DETAIL-->
         <div class="modal fade bd-example-modal-lg" id="showdetail{{$d->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
@@ -151,6 +149,65 @@
             </div>
           </div>
         @endforeach
+
+        <!--SHOW DETAIL2-->
+        @foreach($keg as $k)
+        <!--MODAL SHOW DETAIL-->
+        <div class="modal fade bd-example-modal-lg" id="showdetail2{{$k->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">{{$k->nama_kegiatan}}</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  
+                <section id="portfolio-details" class="portfolio-details">
+            <div class="container">
+
+                <div class="row gy-4">
+
+                <div class="col-lg-8">
+                    <div class="portfolio-details-slider swiper">
+                    <div class="swiper-wrapper align-items-center">
+
+                        <div class="swiper-slide">
+                        <img src="{{ asset($k->foto) }}" alt="">
+                        </div>
+
+                    </div>
+                    <div class="swiper-pagination"></div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="portfolio-info">
+                    <h3>{{$k->nama_kegiatan}}</h3>
+                    </div>
+                    <div class="portfolio-description">
+                    <h2>Deskripsi</h2>
+                    <p>
+                        {{$d->deskripsi}}
+                    </p>
+                    </div>
+                </div>
+
+                </div>
+
+            </div>
+            </section>
+
+                </div>               
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <!-- <button href="#modal" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap" type="button" class="btn btn-primary">Order Now</button> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        @endforeach
+
+
 
   <div id="pricing" class="pricing-tables">
     <div class="container">
