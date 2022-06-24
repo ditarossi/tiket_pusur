@@ -200,10 +200,10 @@
                 </div>
 
                 <div class="col-lg-4">
-                    <div class="portfolio-info">
+                    <!-- <div class="portfolio-info">
                     <h3>{{$k->nama_kegiatan}}</h3>
-                    </div>
-                    <div class="portfolio-description">
+                    </div> -->
+                    <div class="portfolio-info">
                     <h2>Deskripsi</h2>
                     <p>
                         {{$k->deskripsi}}
