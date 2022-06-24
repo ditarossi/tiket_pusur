@@ -246,9 +246,21 @@
           <div class="container">
 
             <div class="row">
-              <div class="col-lg-6">
+            <div class="col-lg-6">           
+                    <div class="portfolio-details-slider swiper">                   
+                      <div class="swiper-wrapper align-items-center">
+                      @foreach($datas as $d)
+                          <div class="swiper-slide">
+                          <img src="{{ asset($d->foto) }}" alt="">
+                          </div>
+                      @endforeach
+                      </div>
+                      <div class="swiper-pagination"></div>                     
+                    </div>           
+            </div>
+              <!-- <div class="col-lg-6">
                 <img src="{{asset('pict')}}/assets/img/about.jpg" class="img-fluid" alt="">
-              </div>
+              </div> -->
               <div class="col-lg-6 pt-4 pt-lg-0">
                 <h3>Bagaimana cara melakukan pemesanan wisata ?</h3>
                 <ul>
