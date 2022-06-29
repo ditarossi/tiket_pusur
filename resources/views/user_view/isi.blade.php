@@ -1,5 +1,7 @@
 @extends('user_view.home_user')
 @section('content')
+
+<!--HOME-->
 <div class="main-banner wow fadeIn" id="top" data-wow-duration="1s" data-wow-delay="0.5s">
     <div class="container">
       <div class="row">
@@ -34,12 +36,10 @@
         </div>
       </div>
     </div>
-  </div>
+</div>
 
-
-
-  <main id="main">
 <!-- ======= Portfolio Section ======= -->
+<main id="main">
   <section class="portfolio">
       <div class="container">
         <div class="row">
@@ -48,14 +48,12 @@
               <li data-filter="*" class="filter-active">All</li>
               <li data-filter=".filter-app">Wisata</li>
               <li data-filter=".filter-card">Kegiatan</li>
-              <!-- <li data-filter=".filter-web">Web</li> -->
             </ul>
           </div>
         </div>
-
+        <!--PERULANGAN WISATA-->
         <div class="row portfolio-container" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
-
-        @foreach($datas as $d)
+          @foreach($datas as $d)
           <div class="col-lg-4 col-md-6 portfolio-wrap filter-app" >
             <div class="portfolio-item">
               <img src="{{ asset($d->foto) }}" class="img-fluid" alt="" height="120px">
@@ -68,8 +66,9 @@
               </div>
             </div>
           </div>
-        @endforeach
-        @foreach($keg as $k)
+          @endforeach
+          <!--PERULANGAN KEGIATAN-->
+          @foreach($keg as $k)
           <div class="col-lg-4 col-md-6 portfolio-wrap filter-card" >
             <div class="portfolio-item">
               <img src="{{ asset($k->foto) }}" class="img-fluid" alt="" height="120px">
@@ -82,187 +81,144 @@
               </div>
             </div>
           </div>
-        @endforeach
+          @endforeach
         </div>
-
       </div>
-  </section><!-- End Portfolio Section -->
+  </section>
 </main>
+<!-- End Portfolio Section -->
 
-
+<!--MODAL SHOW DETAIL WISATA-->
 @foreach($datas as $d)
-        <!-- <div class="col-lg-4">
-          <div class="pricing-item-regular">
-            <div class="icon">
-              <img src="{{ asset($d->foto) }}" alt="" width="100 px">
-            </div>
-            <ul>
-              <h4>{{$d->nama_wisata}}</h4>
-              <li class="function">Harga Tiket = {{$d->harga}}</li>
-              <li class="function">Sisa Kuota = {{$d->kuota}}</li>
-            </ul>
-            <div class="border-button">
-              <a href="#modal" data-bs-toggle="modal" data-bs-target="#showdetail{{$d->id}}">Show Detail</a>
-            </div>
-          </div>
-        </div> -->
-
-        <!--MODAL SHOW DETAIL-->
-        <div class="modal fade bd-example-modal-lg" id="showdetail{{$d->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">{{$d->nama_wisata}}</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                  
-                <section id="portfolio-details" class="portfolio-details">
+  <div class="modal fade bd-example-modal-lg" id="showdetail{{$d->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">{{$d->nama_wisata}}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">  
+          <section id="portfolio-details" class="portfolio-details">
             <div class="container">
-
-                <div class="row gy-4">
-
+              <div class="row gy-4">
                 <div class="col-lg-8">
-                    <div class="portfolio-details-slider swiper">
+                  <div class="portfolio-details-slider swiper">
                     <div class="swiper-wrapper align-items-center">
-
-                        <div class="swiper-slide">
+                      <div class="swiper-slide">
                         <img src="{{ asset($d->foto) }}" alt="">
-                        </div>
-
+                      </div>
                     </div>
                     <div class="swiper-pagination"></div>
-                    </div>
+                  </div>
                 </div>
-
                 <div class="col-lg-4">
-                    <div class="portfolio-info">
+                  <div class="portfolio-info">
                     <h3>{{$d->nama_wisata}}</h3>
                     <ul>
-                        <li><strong>Fasilitas</strong>: {{$d->fasilitas}}</li>
-                        <li><strong>Kuota</strong>: {{$d->kuota}}</li>
-                        <li><strong>Harga</strong>: {{$d->harga}}</li>
-                        <li><strong>Keterngan</strong>: {{$d->keterangan}}</a></li>
+                      <li><strong>Fasilitas</strong>: {{$d->fasilitas}}</li>
+                      <li><strong>Kuota</strong>: {{$d->kuota}}</li>
+                      <li><strong>Harga</strong>: {{$d->harga}}</li>
+                      <li><strong>Keterngan</strong>: {{$d->keterangan}}</a></li>
                     </ul>
-                    </div>
-                    <div class="portfolio-description">
+                  </div>
+                  <div class="portfolio-description">
                     <h2>Deskripsi</h2>
                     <p>
                         {{$d->deskripsi}}
                     </p>
-                    </div>
-                </div>
-
-                </div>
-
-            </div>
-            </section>
-
-                </div>               
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                  <button href="#modal" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap" type="button" class="btn btn-primary">Order Now</button>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        @endforeach
+          </section>
+        </div>               
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button href="#modal" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap" type="button" class="btn btn-primary">Order Now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+@endforeach
 
-
-        <!--SHOW DETAIL2-->
-        @foreach($keg as $k)
-        <!--MODAL SHOW DETAIL-->
-        <div class="modal fade bd-example-modal-lg" id="showdetail2{{$k->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">{{$k->nama_wisata}}</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                  
-                <section id="portfolio-details" class="portfolio-details">
+<!--SHOW DETAIL KEGIATAN-->
+@foreach($keg as $k)
+  <div class="modal fade bd-example-modal-lg" id="showdetail2{{$k->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">{{$k->nama_wisata}}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <section id="portfolio-details" class="portfolio-details">
             <div class="container">
-
-                <div class="row gy-4">
-
+              <div class="row gy-4">
                 <div class="col-lg-8">
-                    <div class="portfolio-details-slider swiper">
+                  <div class="portfolio-details-slider swiper">
                     <div class="swiper-wrapper align-items-center">
-
-                        <div class="swiper-slide">
+                      <div class="swiper-slide">
                         <img src="{{ asset($k->foto) }}" alt="">
-                        </div>
-
+                      </div>
                     </div>
                     <div class="swiper-pagination"></div>
-                    </div>
+                  </div>
                 </div>
-
                 <div class="col-lg-4">
-                    <!-- <div class="portfolio-info">
-                    <h3>{{$k->nama_kegiatan}}</h3>
-                    </div> -->
-                    <div class="portfolio-info">
+                  <div class="portfolio-info">
                     <h2>Deskripsi</h2>
                     <p>
                         {{$k->deskripsi}}
                     </p>
-                    </div>
-                </div>
-
-                </div>
-
-            </div>
-            </section>
-
-                </div>               
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                  <button href="#modal" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap" type="button" class="btn btn-primary">Order Now</button>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        @endforeach
-
-
-  <div id="pricing" class="pricing-tables">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 offset-lg-2">
-          <div class="section-heading">
-            <h4>Wisata</h4>
-            <img src="{{asset('layout')}}/assets/images/heading-line-dec.png" alt="">
-            <p>
-              wisata adalah bepergian secara bersama-sama dengan tujuan untuk bersenang-senang, menambah pengetahuan, dan lain-lain. Selain itu juga dapat diartikan sebagai bertamasya atau piknik.
-            </p>
-          </div>
+          </section>
+        </div>               
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button href="#modal" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap" type="button" class="btn btn-primary">Order Now</button>
         </div>
-
       </div>
-      <!-- ======= About Section ======= -->
-      <section class="about" data-aos="fade-up">
-          <div class="container">
+    </div>
+  </div>
+@endforeach
 
-            <div class="row">
+<!--WISATA-->
+<div id="pricing" class="pricing-tables">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 offset-lg-2">
+        <div class="section-heading">
+          <h4>Wisata</h4>
+          <img src="{{asset('layout')}}/assets/images/heading-line-dec.png" alt="">
+          <p>
+            wisata adalah bepergian secara bersama-sama dengan tujuan untuk bersenang-senang, menambah pengetahuan, dan lain-lain. Selain itu juga dapat diartikan sebagai bertamasya atau piknik.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ======= About Section ======= -->
+      <section class="about" data-aos="fade-up">
+        <div class="container">
+          <div class="row">
             <div class="col-lg-6">           
-                    <div class="portfolio-details-slider swiper">                   
-                      <div class="swiper-wrapper align-items-center">
-                      @foreach($datas as $d)
-                          <div class="swiper-slide">
-                          <img src="{{ asset($d->foto) }}" alt="">
-                          </div>
-                      @endforeach
-                      </div>
-                      <div class="swiper-pagination"></div>                     
-                    </div>           
+              <div class="portfolio-details-slider swiper">                   
+                <div class="swiper-wrapper align-items-center">
+                  <!--PERULANGAN SLIDER-->
+                  @foreach($datas as $d)
+                    <div class="swiper-slide">
+                      <img src="{{ asset($d->foto) }}" alt="">
+                    </div>
+                  @endforeach
+                </div>
+                <div class="swiper-pagination"></div>                     
+              </div>           
             </div>
-              <!-- <div class="col-lg-6">
-                <img src="{{asset('pict')}}/assets/img/about.jpg" class="img-fluid" alt="">
-              </div> -->
-              <div class="col-lg-6 pt-4 pt-lg-0">
-                <h3>Bagaimana cara melakukan pemesanan wisata ?</h3>
+            <div class="col-lg-6 pt-4 pt-lg-0">
+              <h3>Bagaimana cara melakukan pemesanan wisata ?</h3>
                 <ul>
                   <li><i class="bi bi-check2-circle"></i> Melakukan registrasi sebagai user</li>
                   <li><i class="bi bi-check2-circle"></i> Login ke sistem, dengan menggunakan email dan password yang sama ketika user melakukan registrasi</li>
@@ -273,29 +229,28 @@
                 </ul>
               </div>
             </div>
-
           </div>
-        </section><!-- End About Section -->
-    </div>
-  </div> 
+      </section>
+    <!-- End About Section -->
+  </div>
+</div> 
 
-  <div id="order" class="order-form">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 offset-lg-2">
-          <div class="section-heading" align="center">
-            <h4>Pemesanan Wisata</h4>
-            <img src="{{asset('layout')}}/assets/images/heading-line-dec.png" alt="">
-            <div class="border-button">
-              <a href="#modal" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Order Now</a>
-            </div>
+<!--PEMESANAN-->
+<div id="order" class="order-form">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 offset-lg-2">
+        <div class="section-heading" align="center">
+          <div class="border-button">
+            <a href="#modal" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Order Now</a>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>
 
-  <!-- MODAL -->
+<!-- MODAL PEMESANAN-->
   <div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
       <div class="modal-content">
@@ -318,9 +273,9 @@
             <div class="mb-3">
               <label>Fasilitas</label>
               <br>
-              @foreach ($f as $d)
-                <input name="fasilitas_id[]" class="form-check-input" type="checkbox" id="inlineCheckbox1" value="{{$d->id}}">
-                <label class="form-check-label" for="inlineCheckbox1">{{$d->fasilitas}}</label>
+              @foreach ($datas as $d)
+                <input name="fasilitas_id[]" class="form-check-input" type="checkbox" id="inlineCheckbox1" value="{{$d->fasilitas}}">
+                <label class="form-check-label" for="inlineCheckbox1">{{$d->fasilitas_id}}</label>
               @endforeach
             </div>
             <div class="mb-3">
@@ -333,7 +288,9 @@
             </div>
             <div class="mb-3">
               <label>Tagihan</label>
-              <input name="tagihan" type="text" class="form-control" id="tagihan"></input>
+              @foreach ($datas as $d)
+              <input value="{{$d->harga}}" name="tagihan" type="text" class="form-control" id="tagihan"></input>
+              @endforeach
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -344,7 +301,9 @@
       </div>
     </div>
   </div>
-  
+<!-- END MODAL PEMESANAN-->
+
+<!--PUSUR INSTITUTE-->
   <div id="services" class="services section">
     <div class="container">
       <div class="row">
@@ -541,6 +500,7 @@
     </div>
   </div>
 
+<!--CONTACT US-->
   <div id="contact" class="services section">
     <div class="container">
       <div class="row">
@@ -549,73 +509,70 @@
             <h4>Contact Us</h4>
             <img src="{{asset('layout')}}/assets/images/heading-line-dec.png" alt="">
             <main id="main">
-
-    <!-- ======= Contact Section ======= -->
-    <!-- ======= Contact Section ======= -->
-    <section class="contact" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
-      <div class="container">
-
-        <div class="row">
-
-          <div class="col-lg-6">
-
-            <div class="row">
-              <div class="col-md-12">
-                <div class="info-box">
-                  <i class="bx bx-map"></i>
-                  <h3>Our Address</h3>
-                  <p>A108 Adam Street, New York, NY 535022</p>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="info-box">
-                  <i class="bx bx-envelope"></i>
-                  <h3>Email Us</h3>
-                  <p>info@example.com<br>contact@example.com</p>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="info-box">
-                  <i class="bx bx-phone-call"></i>
-                  <h3>Call Us</h3>
-                  <p>+1 5589 55488 55<br>+1 6678 254445 41</p>
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-          <div class="col-lg-6">
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
-              <div class="row">
-                <div class="col-md-6 form-group">
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
-                </div>
-                <div class="col-md-6 form-group mt-3 mt-md-0">
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
-                </div>
-              </div>
-              <div class="form-group mt-3">
-                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
-              </div>
-              <div class="form-group mt-3">
-                <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
-              </div>
-              <div class="my-3">
-                <div class="loading">Loading</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Your message has been sent. Thank you!</div>
-              </div>
-              <div class="text-center"><button type="submit">Send Message</button></div>
-            </form>
-          </div>
-
-        </div>
-
-      </div>
-    </section><!-- End Contact Section -->
-
-  </main><!-- End #main -->
+              <!-- ======= Contact Section ======= -->
+                <section class="contact" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-lg-6">
+                        <div class="row">
+                          <div class="col-md-12">
+                            <div class="info-box">
+                              <i class="bx bx-map"></i>
+                              <h3>Our Address</h3>
+                              <p>A108 Adam Street, New York, NY 535022</p>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="info-box">
+                              <i class="bx bx-envelope"></i>
+                              <h3>Email Us</h3>
+                              <p>info@example.com<br>contact@example.com</p>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="info-box">
+                              <i class="bx bx-phone-call"></i>
+                              <h3>Call Us</h3>
+                              <p>+1 5589 55488 55<br>+1 6678 254445 41</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <form action="{{ url('contact-form') }}" method="post">
+                          @csrf
+                          <div class="row">
+                            <div class="col-md-6 form-group">
+                              <input type="text" value="{{ old('name') }}" name="name" class="form-control" id="name" placeholder="Your Name" required>
+                            </div>
+                            <div class="col-md-6 form-group mt-3 mt-md-0">
+                              <input type="email" value="{{ old('email') }}" class="form-control" name="email" id="email" placeholder="Your Email" required>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-6 form-group">
+                              <input type="text" class="form-control" value="{{ old('subject') }}" name="subject" id="subject" placeholder="Subject" required>
+                            </div>
+                            <div class="col-md-6 form-group mt-3 mt-md-0">
+                              <input type="text" class="form-control" value="{{ old('phone') }}" name="phone" id="phone" placeholder="Phone" required>
+                            </div>
+                          </div>
+                          <div class="form-group mt-3">
+                            <textarea class="form-control" value="{{ old('message') }}" name="message" rows="5" placeholder="Message" required></textarea>
+                          </div>
+                          <div class="my-3">
+                            <div class="loading">Loading</div>
+                            <div class="error-message"></div>
+                            <div class="sent-message">Your message has been sent. Thank you!</div>
+                          </div>
+                          <div class="text-center"><button type="submit">Send Message</button></div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+              <!-- End Contact Section -->
+            </main>
           </div>
         </div>
       </div>

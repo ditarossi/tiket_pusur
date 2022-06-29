@@ -88,6 +88,7 @@ class KegiatanController extends Controller
     public function update(Request $request, $id)
     {
         $model = Kegiatan::find($id);
+        $model->update($request->all());
         //NOT YET
         // if($request->hasFile('foto'))
         // {
@@ -95,13 +96,14 @@ class KegiatanController extends Controller
         //      $model->foto = $request->file('foto')->getClientOriginalName();
         //      $model->save();
         // }
-        if($request->hasFile('foto')){
+        if($request->hasFile('foto'))
+        {
             $path = $request->file('foto')->move('fotowisata', $request->file('foto')->getClientOriginalName());
             $model->foto = $path;
         }
 
-        $model->nama_kegiatan = $request->nama_kegiatan;
-        $model->deskripsi = $request->deskripsi;
+        // $model->nama_kegiatan = $request->nama_kegiatan;
+        // $model->deskripsi = $request->deskripsi;
 
         $model->save();
 

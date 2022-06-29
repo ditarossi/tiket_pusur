@@ -7,6 +7,8 @@ use App\Models\Pemesanan;
 use App\Models\Fasilitas;
 use App\Models\Wisata;
 use App\Models\User;
+use Illuminate\Support\Str;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class PemesananController extends Controller
 {
@@ -31,8 +33,9 @@ class PemesananController extends Controller
     public function create()
     {
         $model = new Pemesanan;
+        $dfas = Fasilitas::all();
         return view('admin2.pemesanan.create_pemesanan', compact(
-            'model'
+            'model','dfas'
         ));
     }
 
@@ -44,10 +47,11 @@ class PemesananController extends Controller
      */
     public function store(Request $request)
     {
+        $join = join(',',$request->input('fasilitas_id'));
         $model = new Pemesanan;
         $model->users_id = $request->users_id;
         $model->wisata_id = $request->wisata_id;
-        $model->fasilitas_id = $request->fasilitas_id;
+        $model->fasilitas_id = $join;
         $model->Tanggal_Kunjungan = $request->Tanggal_Kunjungan;
         $model->jumlah = $request->jumlah;
         $model->tagihan = $request->tagihan;
@@ -79,8 +83,9 @@ class PemesananController extends Controller
     public function edit($id)
     {
         $model = Pemesanan::find($id);
+        $fas = Fasilitas::all();
         return view('admin2.pemesanan.update_pemesanan', compact(
-            'model'
+            'model', 'fas'
         ));
     }
 
@@ -93,11 +98,12 @@ class PemesananController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $join = join(',',$request->input('fasilitas_id'));
         $model = Pemesanan::find($id);
 
         $model->users_id = $request->users_id;
         $model->wisata_id = $request->wisata_id;
-        $model->fasilitas_id = $request->fasilitas_id;
+        $model->fasilitas_id = $join;
         $model->Tanggal_Kunjungan = $request->Tanggal_Kunjungan;
         $model->jumlah = $request->jumlah;
         $model->tagihan = $request->tagihan;
@@ -172,4 +178,44 @@ class PemesananController extends Controller
         // dd($datawisata);
         return redirect('tbl_pemesanan');
     }
+
+    public function cetakLaporan()
+    {
+        return view('admin2.pemesanan.cetak');
+    }
+
+    public function sortir(Request $request)
+    {
+        $startDate = Str::before($request->tanggal_awal, ' -');
+        $endDate = Str::after($request->tanggal_akhir, '- ');
+        switch ($request->submit) {
+            case 'table':
+
+                $data = Pemesanan::all()
+                    ->whereBetween('Tanggal_Kunjungan', [$startDate, $endDate]);
+             
+                return view('admin2.pemesanan.cetak', compact( 'data', 'startDate', 'endDate'));
+                break;
+        }
+    }
+
+    public function cetakLaporanPemesanan($start, $end)
+    {
+        $startDate = $start;
+        $endDate = $end;
+        $data = Pemesanan::get()->whereBetween('Tanggal_Kunjungan', [$startDate, $endDate]);
+        // // dd($datas);
+        // // view()->share('datas', $datas);
+        $pdf = PDF::loadview('admin2.pemesanan.cetak-pertanggal', ['data'=>$data]);
+        return $pdf->download('laporan.pdf');
+
+        //return view('admin2.pemesanan.cetak-pertanggal', compact('data'));
+    }
+
+    // public function tanggal($tanggal_awal, $tanggal_akhir)
+    // {
+    //     //dd("tanggal awal : ".$tanggal_awal, "tanggal akhir : ".$tanggal_akhir);
+    //     $cetakpertanggal = Pemesanan::wherebetween('Tanggal_Kunjungan', [$tanggal_awal, $tanggal_akhir])->latest()->get();
+    //     return view('admin2.pemesanan.cetak-pertanggal', compact('cetakpertanggal'));
+    // }
 }

@@ -1,23 +1,12 @@
-@extends('admin2.v_template')
-@section('title')
-<title>Tabel Pemesanan</title>
-@endsection
-
-@section('content')
-<!-- partial -->
 <div class="main-panel">
         <div class="content-wrapper">
           <div class="card">
             <div class="card-body">
-              <h4 class="card-title">Data Pemesanan</h4>
+              <h4 class="card-title">Preview Laporan Data Pemesanan</h4>
               <div class="row">
                 <div class="col-12"></div>
                   <div class="table-responsive">
-                  <a class="btn btn-outline-success" href="{{ url('tbl_pemesanan/create') }}">Tambah Data</a>
-                  <a class="btn btn-outline-primary" href="{{ route('laporan') }}">Cetak Laporan</a>
-                    <br>
-                    <br>
-                    <table id="order-listing" class="table">
+                    <table class="static" align="center" rules="all" border="1px" style="width: 95%;">
                       <thead>
                         <tr>
                             <th>ID User</th>
@@ -29,11 +18,10 @@
                             <th>Status Pemesanan</th>
                             <th>Pengajuan Reschedule</th>
                             <th>Pengajuan Refund</th>
-                            <th>Actions</th>
                         </tr>
                       </thead>
                       <tbody>
-                        @foreach($datas as $value)
+                        @foreach($data as $value)
                         <tr>
                             <td>
                               {{ $value->user->name }}
@@ -55,17 +43,6 @@
                             <td>{{ $value->status_pemesanan }}</td>
                             <td>{{ $value->reschedule }}</td>
                             <td>{{ $value->refund }}</td>
-                            <td>
-                              <a class="btn btn-outline-warning" href="gantistatus/{{$value->id}}" onclick="return confirm('Yakin mengubah status pemesanan ?')">Ganti Status</a>
-                              <a class="btn btn-outline-warning" href="gantirefund/{{$value->id}}" onclick="return confirm('Yakin mengubah status pemesanan ?')">Setuju Refund</a>
-                              <a class="btn btn-outline-warning" href="selesai/{{$value->id}}" onclick="return confirm('Yakin mengubah status pemesanan ?')">Selesai</a>
-                              <a class="btn btn-outline-warning" href="{{ url('tbl_pemesanan/'.$value->id.'/edit') }}">Update</a>
-                              <form action="{{ url('tbl_pemesanan/'.$value->id) }}" method="post">
-                                @csrf 
-                                <input type="hidden" name="_method" value="delete">
-                                <button class="btn btn-outline-danger" type="submit" onclick="return confirm('Yakin ingin menghapus data ?')">Delete</button>
-                              </form>
-                            </td>
                         </tr>
                         @endforeach
                       </tbody>
@@ -76,4 +53,3 @@
             </div>
           </div>
         </div>
-@endsection

@@ -1,59 +1,58 @@
 @extends('landing.landing')
 @section('content')
+<!--HOME-->
 <div class="main-banner wow fadeIn" id="top" data-wow-duration="1s" data-wow-delay="0.5s">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="row">
-            <div class="col-lg-6 align-self-center">
-              <div class="left-content show-up header-text wow fadeInLeft" data-wow-duration="1s" data-wow-delay="1s">
-                <div class="row">
-                  <div class="col-lg-12">
-                    <h2>Pusur Institute</h2>
-                    <p>Merupakan wadah kolaborasi parapihak yang memiliki kepedulian terhadap pelestarian Sungai Pusur.
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="row">
+          <div class="col-lg-6 align-self-center">
+            <div class="left-content show-up header-text wow fadeInLeft" data-wow-duration="1s" data-wow-delay="1s">
+              <div class="row">
+                <div class="col-lg-12">
+                  <h2>Pusur Institute</h2>
+                  <p>Merupakan wadah kolaborasi parapihak yang memiliki kepedulian terhadap pelestarian Sungai Pusur.
                     Penggunaan istilah Institut adalah untuk memfokuskan wadah yang khusus bergerak dalam pelestarian Sungai Pusur
-                    </p>
+                  </p>
+                </div>
+                <div class="col-lg-12">
+                  <div class="white-button first-button scroll-to-section">
+                    <a href="#contact">Instagram <i class="fab fa-instagram"></i></a>
                   </div>
-                  <div class="col-lg-12">
-                    <div class="white-button first-button scroll-to-section">
-                      <a href="#contact">Instagram <i class="fab fa-instagram"></i></a>
-                    </div>
-                    <div class="white-button scroll-to-section">
-                      <a href="#contact">WhatsApp <i class="fab fa-whatsapp"></i></a>
-                    </div>
+                  <div class="white-button scroll-to-section">
+                    <a href="#contact">WhatsApp <i class="fab fa-whatsapp"></i></a>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col-lg-6">
-              <div class="right-image wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
-                <img src="{{asset('layout')}}/assets/images/slider-dec.png" alt="">
-              </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="right-image wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
+              <img src="{{asset('layout')}}/assets/images/slider-dec.png" alt="">
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>
 
-
-<main id="main">
 <!-- ======= Portfolio Section ======= -->
+<main id="main">
   <section class="portfolio">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12">
-            <ul id="portfolio-flters">
-              <li data-filter="*" class="filter-active">All</li>
-              <li data-filter=".filter-app">Wisata</li>
-              <li data-filter=".filter-card">Kegiatan</li>
-              <!-- <li data-filter=".filter-web">Web</li> -->
-            </ul>
-          </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <ul id="portfolio-flters">
+            <li data-filter="*" class="filter-active">All</li>
+            <li data-filter=".filter-app">Wisata</li>
+            <li data-filter=".filter-card">Kegiatan</li>
+          </ul>
         </div>
-
-        <div class="row portfolio-container" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
-        @foreach($datas as $d)
+      </div>
+      <div class="row portfolio-container" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
+      <!--PERULANGAN WISATA-->  
+      @foreach($datas as $d)
           <div class="col-lg-4 col-md-6 portfolio-wrap filter-app" >
             <div class="portfolio-item">
               <img src="{{ asset($d->foto) }}" class="img-fluid" alt="" height="120px">
@@ -67,6 +66,7 @@
             </div>
           </div>
         @endforeach
+        <!--PERULANGAN KEGIATAN-->
         @foreach($keg as $k)
           <div class="col-lg-4 col-md-6 portfolio-wrap filter-card" >
             <div class="portfolio-item">
@@ -81,44 +81,38 @@
             </div>
           </div>
         @endforeach
-        </div>
-
       </div>
-    </section>
-  <!-- End Portfolio Section -->
+    </div>
+  </section>
 </main>
+<!-- End Portfolio Section -->
 
+<!--MODAL SHOW DETAIL WISATA-->
 @foreach($datas as $d)
-        <!--MODAL SHOW DETAIL-->
-        <div class="modal fade bd-example-modal-lg" id="showdetail{{$d->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">{{$d->nama_wisata}}</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                  
-                <section id="portfolio-details" class="portfolio-details">
+  <div class="modal fade bd-example-modal-lg" id="showdetail{{$d->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">{{$d->nama_wisata}}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <section id="portfolio-details" class="portfolio-details">
             <div class="container">
-
-                <div class="row gy-4">
-
+              <div class="row gy-4">
                 <div class="col-lg-8">
-                    <div class="portfolio-details-slider swiper">
+                  <div class="portfolio-details-slider swiper">
                     <div class="swiper-wrapper align-items-center">
-
-                        <div class="swiper-slide">
+                      <div class="swiper-slide">
+                        <!-- PERULANGAN GAMBAR-->
                         <img src="{{ asset($d->foto) }}" alt="">
-                        </div>
-
+                      </div>
                     </div>
                     <div class="swiper-pagination"></div>
                     </div>
-                </div>
-
+                  </div>
                 <div class="col-lg-4">
-                    <div class="portfolio-info">
+                  <div class="portfolio-info">
                     <h3>{{$d->nama_wisata}}</h3>
                     <ul>
                         <li><strong>Fasilitas</strong>: {{$d->fasilitas}}</li>
@@ -126,89 +120,70 @@
                         <li><strong>Harga</strong>: {{$d->harga}}</li>
                         <li><strong>Keterngan</strong>: {{$d->keterangan}}</a></li>
                     </ul>
-                    </div>
-                    <div class="portfolio-description">
+                  </div>
+                  <div class="portfolio-description">
                     <h2>Deskripsi</h2>
                     <p>
                         {{$d->deskripsi}}
                     </p>
-                    </div>
-                </div>
-
-                </div>
-
-            </div>
-            </section>
-
-                </div>               
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                  <!-- <button href="#modal" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap" type="button" class="btn btn-primary">Order Now</button> -->
+                  </div>
                 </div>
               </div>
             </div>
+          </section>
+          </div>               
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>                 
+            </div>
+        </div>
+      </div>
+    </div>
+  @endforeach
+
+<!--SHOW DETAIL KEGIATAN-->
+  @foreach($keg as $k)
+    <div class="modal fade bd-example-modal-lg" id="showdetail2{{$k->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">{{$k->nama_kegiatan}}</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-        @endforeach
-
-        <!--SHOW DETAIL2-->
-        @foreach($keg as $k)
-        <!--MODAL SHOW DETAIL-->
-        <div class="modal fade bd-example-modal-lg" id="showdetail2{{$k->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">{{$k->nama_kegiatan}}</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                  
-                <section id="portfolio-details" class="portfolio-details">
+        <div class="modal-body">                 
+          <section id="portfolio-details" class="portfolio-details">
             <div class="container">
-
                 <div class="row gy-4">
-
-                <div class="col-lg-8">
+                  <div class="col-lg-8">
                     <div class="portfolio-details-slider swiper">
-                    <div class="swiper-wrapper align-items-center">
-
+                      <div class="swiper-wrapper align-items-center">
                         <div class="swiper-slide">
-                        <img src="{{ asset($k->foto) }}" alt="">
+                          <img src="{{ asset($k->foto) }}" alt="">
                         </div>
-
-                    </div>
-                    <div class="swiper-pagination"></div>
-                    </div>
-                </div>
-
+                      </div>
+                      <div class="swiper-pagination"></div>
+                      </div>
+                  </div>
                 <div class="col-lg-4">
-                    <!-- <div class="portfolio-info">
-                    <h3>{{$k->nama_kegiatan}}</h3>
-                    </div> -->
-                    <div class="portfolio-info">
+                  <div class="portfolio-info">
                     <h2>Deskripsi</h2>
                     <p>
                         {{$k->deskripsi}}
                     </p>
-                    </div>
-                </div>
-
-                </div>
-
-            </div>
-            </section>
-
-                </div>               
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                  <!-- <button href="#modal" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap" type="button" class="btn btn-primary">Order Now</button> -->
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        @endforeach
+          </section>
+          </div>               
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>                 
+            </div>
+        </div>
+      </div>
+    </div>
+  @endforeach
 
-
-
+<!--WISATA-->
   <div id="pricing" class="pricing-tables">
     <div class="container">
       <div class="row">
@@ -221,31 +196,23 @@
             </p>
           </div>
         </div>
-
-        
       </div>
       <!-- ======= About Section ======= -->
         <section class="about" data-aos="fade-up">
           <div class="container">
-
             <div class="row">
-            
-            <div class="col-lg-6">           
-                    <div class="portfolio-details-slider swiper">                   
-                      <div class="swiper-wrapper align-items-center">
-                      @foreach($datas as $d)
-                          <div class="swiper-slide">
-                          <img src="{{ asset($d->foto) }}" alt="">
-                          </div>
-                      @endforeach
+              <div class="col-lg-6">           
+                <div class="portfolio-details-slider swiper">                   
+                  <div class="swiper-wrapper align-items-center">
+                    @foreach($datas as $d)
+                      <div class="swiper-slide">
+                        <img src="{{ asset($d->foto) }}" alt="">
                       </div>
-                      <div class="swiper-pagination"></div>                     
-                    </div>           
-            </div>
-            
-              <!-- <div class="col-lg-6">
-                <img src="{{asset('pict')}}/assets/img/about.jpg" class="img-fluid" alt="">
-              </div> -->
+                    @endforeach
+                  </div>
+                  <div class="swiper-pagination"></div>                     
+                  </div>           
+              </div>
               <div class="col-lg-6 pt-4 pt-lg-0">
                 <h3>Bagaimana cara melakukan pemesanan wisata ?</h3>
                 <ul>
@@ -258,12 +225,13 @@
                 </ul>
               </div>
             </div>
-
           </div>
-        </section><!-- End About Section -->
+        </section>
+      <!-- End About Section -->
     </div>
   </div>
 
+  <!--PUSUR INSTITUTE-->
   <div id="services" class="services section">
     <div class="container">
       <div class="row">
@@ -468,374 +436,74 @@
             <h4>Contact Us</h4>
             <img src="{{asset('layout')}}/assets/images/heading-line-dec.png" alt="">
             <main id="main">
-
-    <!-- ======= Contact Section ======= -->
-    <!-- ======= Contact Section ======= -->
-    <section class="contact" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
-      <div class="container">
-
-        <div class="row">
-
-          <div class="col-lg-6">
-
-            <div class="row">
-              <div class="col-md-12">
-                <div class="info-box">
-                  <i class="bx bx-map"></i>
-                  <h3>Our Address</h3>
-                  <p>A108 Adam Street, New York, NY 535022</p>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="info-box">
-                  <i class="bx bx-envelope"></i>
-                  <h3>Email Us</h3>
-                  <p>info@example.com<br>contact@example.com</p>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="info-box">
-                  <i class="bx bx-phone-call"></i>
-                  <h3>Call Us</h3>
-                  <p>+1 5589 55488 55<br>+1 6678 254445 41</p>
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-          <div class="col-lg-6">
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
-              <div class="row">
-                <div class="col-md-6 form-group">
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
-                </div>
-                <div class="col-md-6 form-group mt-3 mt-md-0">
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
-                </div>
-              </div>
-              <div class="form-group mt-3">
-                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
-              </div>
-              <div class="form-group mt-3">
-                <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
-              </div>
-              <div class="my-3">
-                <div class="loading">Loading</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Your message has been sent. Thank you!</div>
-              </div>
-              <div class="text-center"><button type="submit">Send Message</button></div>
-            </form>
-          </div>
-
-        </div>
-
-      </div>
-    </section><!-- End Contact Section -->
-
-  </main><!-- End #main -->
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!--<div id="about" class="about-us section">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-6 align-self-center">
-          <div class="section-heading">
-            <h4>About <em>What We Do</em> &amp; Who We Are</h4>
-            <img src="{{asset('layout')}}/assets/images/heading-line-dec.png" alt="">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eismod tempor incididunt ut labore et dolore magna.</p>
-          </div>
-          <div class="row">
-            <div class="col-lg-6">
-              <div class="box-item">
-                <h4><a href="#">Maintance Problems</a></h4>
-                <p>Lorem Ipsum Text</p>
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <div class="box-item">
-                <h4><a href="#">24/7 Support &amp; Help</a></h4>
-                <p>Lorem Ipsum Text</p>
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <div class="box-item">
-                <h4><a href="#">Fixing Issues About</a></h4>
-                <p>Lorem Ipsum Text</p>
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <div class="box-item">
-                <h4><a href="#">Co. Development</a></h4>
-                <p>Lorem Ipsum Text</p>
-              </div>
-            </div>
-            <div class="col-lg-12">
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eismod tempor idunte ut labore et dolore adipiscing  magna.</p>
-              <div class="gradient-button">
-                <a href="#">Start 14-Day Free Trial</a>
-              </div>
-              <span>*No Credit Card Required</span>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-6">
-          <div class="right-image">
-            <img src="{{asset('layout')}}/assets/images/about-right-dec.png" alt="">
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div id="clients" class="the-clients">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 offset-lg-2">
-          <div class="section-heading">
-            <h4>Check What <em>The Clients Say</em> About Our App Dev</h4>
-            <img src="{{asset('layout')}}/assets/images/heading-line-dec.png" alt="">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eismod tempor incididunt ut labore et dolore magna.</p>
-          </div>
-        </div>
-        <div class="col-lg-12">
-          <div class="naccs">
-            <div class="grid">
-              <div class="row">
-                <div class="col-lg-7 align-self-center">
-                  <div class="menu">
-                    <div class="first-thumb active">
-                      <div class="thumb">
-                        <div class="row">
-                          <div class="col-lg-4 col-sm-4 col-12">
-                            <h4>David Martino Co</h4>
-                            <span class="date">30 November 2021</span>
-                          </div>
-                          <div class="col-lg-4 col-sm-4 d-none d-sm-block">
-                            <span class="category">Financial Apps</span>
-                          </div>
-                          <div class="col-lg-4 col-sm-4 col-12">
-                              <i class="fa fa-star"></i>
-                              <i class="fa fa-star"></i>
-                              <i class="fa fa-star"></i>
-                              <i class="fa fa-star"></i>
-                              <i class="fa fa-star"></i>
-                              <span class="rating">4.8</span>
-                          </div>
+            <!-- ======= Contact Section ======= -->
+              <section class="contact" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <div class="row">
+                      <div class="col-md-12">
+                        <div class="info-box">
+                          <i class="bx bx-map"></i>
+                          <h3>Our Address</h3>
+                          <p>A108 Adam Street, New York, NY 535022</p>
                         </div>
                       </div>
-                    </div>
-                    <div>
-                      <div class="thumb">
-                        <div class="row">
-                          <div class="col-lg-4 col-sm-4 col-12">
-                            <h4>Jake Harris Nyo</h4>
-                            <span class="date">29 November 2021</span>
-                          </div>
-                          <div class="col-lg-4 col-sm-4 d-none d-sm-block">
-                            <span class="category">Digital Business</span>
-                          </div>
-                          <div class="col-lg-4 col-sm-4 col-12">
-                              <i class="fa fa-star"></i>
-                              <i class="fa fa-star"></i>
-                              <i class="fa fa-star"></i>
-                              <i class="fa fa-star"></i>
-                              <i class="fa fa-star"></i>
-                              <span class="rating">4.5</span>
-                          </div>
+                      <div class="col-md-6">
+                        <div class="info-box">
+                          <i class="bx bx-envelope"></i>
+                          <h3>Email Us</h3>
+                          <p>info@example.com<br>contact@example.com</p>
                         </div>
                       </div>
-                    </div>
-                    <div>
-                      <div class="thumb">
-                        <div class="row">
-                          <div class="col-lg-4 col-sm-4 col-12">
-                            <h4>May Catherina</h4>
-                            <span class="date">27 November 2021</span>
-                          </div>
-                          <div class="col-lg-4 col-sm-4 d-none d-sm-block">
-                            <span class="category">Business &amp; Economics</span>
-                          </div>
-                          <div class="col-lg-4 col-sm-4 col-12">
-                              <i class="fa fa-star"></i>
-                              <i class="fa fa-star"></i>
-                              <i class="fa fa-star"></i>
-                              <i class="fa fa-star"></i>
-                              <i class="fa fa-star"></i>
-                              <span class="rating">4.7</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div>
-                      <div class="thumb">
-                        <div class="row">
-                          <div class="col-lg-4 col-sm-4 col-12">
-                            <h4>Random User</h4>
-                            <span class="date">24 November 2021</span>
-                          </div>
-                          <div class="col-lg-4 col-sm-4 d-none d-sm-block">
-                            <span class="category">New App Ecosystem</span>
-                          </div>
-                          <div class="col-lg-4 col-sm-4 col-12">
-                              <i class="fa fa-star"></i>
-                              <i class="fa fa-star"></i>
-                              <i class="fa fa-star"></i>
-                              <i class="fa fa-star"></i>
-                              <i class="fa fa-star"></i>
-                              <span class="rating">3.9</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="last-thumb">
-                      <div class="thumb">
-                        <div class="row">
-                          <div class="col-lg-4 col-sm-4 col-12">
-                            <h4>Mark Amber Do</h4>
-                            <span class="date">21 November 2021</span>
-                          </div>
-                          <div class="col-lg-4 col-sm-4 d-none d-sm-block">
-                            <span class="category">Web Development</span>
-                          </div>
-                          <div class="col-lg-4 col-sm-4 col-12">
-                              <i class="fa fa-star"></i>
-                              <i class="fa fa-star"></i>
-                              <i class="fa fa-star"></i>
-                              <i class="fa fa-star"></i>
-                              <i class="fa fa-star"></i>
-                              <span class="rating">4.3</span>
-                          </div>
+                      <div class="col-md-6">
+                        <div class="info-box">
+                          <i class="bx bx-phone-call"></i>
+                          <h3>Call Us</h3>
+                          <p>+1 5589 55488 55<br>+1 6678 254445 41</p>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div> 
-                <div class="col-lg-5">
-                  <ul class="nacc">
-                    <li class="active">
-                      <div>
-                        <div class="thumb">
-                          <div class="row">
-                            <div class="col-lg-12">
-                              <div class="client-content">
-                                <img src="{{asset('layout')}}/assets/images/quote.png" alt="">
-                                <p>“Lorem ipsum dolor sit amet, consectetur adpiscing elit, sed do eismod tempor idunte ut labore et dolore magna aliqua darwin kengan
-                                  lorem ipsum dolor sit amet, consectetur picing elit massive big blasta.”</p>
-                              </div>
-                              <div class="down-content">
-                                <img src="{{asset('layout')}}/assets/images/client-image.jpg" alt="">
-                                <div class="right-content">
-                                  <h4>David Martino</h4>
-                                  <span>CEO of David Company</span>
-                                </div>
-                              </div>
-                            </div>
+                    <div class="col-lg-6">
+                      <form action="{{ url('contact') }}" method="post">
+                        @csrf
+                        <div class="row">
+                          <div class="col-md-6 form-group">
+                            <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+                          </div>
+                          <div class="col-md-6 form-group mt-3 mt-md-0">
+                            <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
                           </div>
                         </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div>
-                        <div class="thumb">
-                          <div class="row">
-                            <div class="col-lg-12">
-                              <div class="client-content">
-                                <img src="{{asset('layout')}}/assets/images/quote.png" alt="">
-                                <p>“CTO, Lorem ipsum dolor sit amet, consectetur adpiscing elit, sed do eismod tempor idunte ut labore et dolore magna aliqua darwin kengan
-                                  lorem ipsum dolor sit amet, consectetur picing elit massive big blasta.”</p>
-                              </div>
-                              <div class="down-content">
-                                <img src="{{asset('layout')}}/assets/images/client-image.jpg" alt="">
-                                <div class="right-content">
-                                  <h4>Jake H. Nyo</h4>
-                                  <span>CTO of Digital Company</span>
-                                </div>
-                              </div>
+                        <div class="row">
+                            <div class="col-md-6 form-group">
+                              <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+                            </div>
+                            <div class="col-md-6 form-group mt-3 mt-md-0">
+                              <input type="text" class="form-control" name="phone" id="phone" placeholder="Phone" required>
                             </div>
                           </div>
+                        <div class="form-group mt-3">
+                          <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
                         </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div>
-                        <div class="thumb">
-                          <div class="row">
-                            <div class="col-lg-12">
-                              <div class="client-content">
-                                <img src="{{asset('layout')}}/assets/images/quote.png" alt="">
-                                <p>“May, Lorem ipsum dolor sit amet, consectetur adpiscing elit, sed do eismod tempor idunte ut labore et dolore magna aliqua darwin kengan
-                                  lorem ipsum dolor sit amet, consectetur picing elit massive big blasta.”</p>
-                              </div>
-                              <div class="down-content">
-                                <img src="{{asset('layout')}}/assets/images/client-image.jpg" alt="">
-                                <div class="right-content">
-                                  <h4>May C.</h4>
-                                  <span>Founder of Catherina Co.</span>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
+                        <div class="my-3">
+                          <div class="loading">Loading</div>
+                          <div class="error-message"></div>
+                          <div class="sent-message">Your message has been sent. Thank you!</div>
                         </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div>
-                        <div class="thumb">
-                          <div class="row">
-                            <div class="col-lg-12">
-                              <div class="client-content">
-                                <img src="{{asset('layout')}}/assets/images/quote.png" alt="">
-                                <p>“Lorem ipsum dolor sit amet, consectetur adpiscing elit, sed do eismod tempor idunte ut labore et dolore magna aliqua darwin kengan
-                                  lorem ipsum dolor sit amet, consectetur picing elit massive big blasta.”</p>
-                              </div>
-                              <div class="down-content">
-                                <img src="{{asset('layout')}}/assets/images/client-image.jpg" alt="">
-                                <div class="right-content">
-                                  <h4>Random Staff</h4>
-                                  <span>Manager, Digital Company</span>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div>
-                        <div class="thumb">
-                          <div class="row">
-                            <div class="col-lg-12">
-                              <div class="client-content">
-                                <img src="{{asset('layout')}}/assets/images/quote.png" alt="">
-                                <p>“Mark, Lorem ipsum dolor sit amet, consectetur adpiscing elit, sed do eismod tempor idunte ut labore et dolore magna aliqua darwin kengan
-                                  lorem ipsum dolor sit amet, consectetur picing elit massive big blasta.”</p>
-                              </div>
-                              <div class="down-content">
-                                <img src="{{asset('layout')}}/assets/images/client-image.jpg" alt="">
-                                <div class="right-content">
-                                  <h4>Mark Am</h4>
-                                  <span>CTO, Amber Do Company</span>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                  </ul>
-                </div>          
+                        <div class="text-center"><button type="submit">Send Message</button></div>
+                      </form>
+                    </div>
+                </div>
               </div>
-            </div>
-          </div>
-        </div>
+            </section>
+          <!-- End Contact Section -->
+        </main>
       </div>
     </div>
-  </div>--> 
+  </div>
+</div>
+
 </div>
   @endsection

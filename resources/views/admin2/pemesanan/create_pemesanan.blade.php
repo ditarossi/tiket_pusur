@@ -23,7 +23,10 @@
                     </div>
                     <div class="form-group">
                       <label for="#">Fasilitas</label>
-                      <input name="fasilitas_id" type="text" class="form-control" id="#" placeholder="Fasilitas">
+                      @foreach ($dfas as $f)
+                      <input name="fasilitas_id[]" type="checkbox" class="form-check-inputl" id="#" placeholder="Fasilitas" value="{{$f->fasilitas}}">
+                      <label class="form-check-label" for="inlineCheckbox1">{{$f->fasilitas}}</label>
+                      @endforeach
                     </div>
                     <div class="form-group">
                       <label for="exampleInputUsername1">Tanggal Kunjungan</label>

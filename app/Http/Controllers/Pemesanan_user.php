@@ -99,14 +99,9 @@ class Pemesanan_user extends Controller
     public function update(Request $request, $id)
     {
         $model = Pemesanan::find($id);
+        
         $join = join(',',$request->input('fasilitas_id'));
-        // $model->users_id = $request->users_id;
-        // $model->wisata_id = $request->wisata_id;
-        // $model->fasilitas_id = $join;
         $model->Tanggal_Kunjungan = $request->Tanggal_Kunjungan;
-        // $model->jumlah = $request->jumlah;
-        // $model->tagihan = $request->tagihan;
-        // $model->status_pemesanan = '-';
         $model->reschedule = 'Berhasil Reschedule';
         // $model->refund = '-';
         $model->save();

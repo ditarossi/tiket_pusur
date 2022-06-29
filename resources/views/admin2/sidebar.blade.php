@@ -42,6 +42,12 @@
               <span class="menu-title">Tiket</span>
             </a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/tbl_contact">
+              <i class="#"></i>
+              <span class="menu-title">User Feedback</span>
+            </a>
+          </li>
           <!-- <li class="nav-item">
             <a class="nav-link" href="/tbl_bukti">
               <i class="#"></i>

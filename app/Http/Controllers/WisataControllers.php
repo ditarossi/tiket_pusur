@@ -100,41 +100,22 @@ class WisataControllers extends Controller
      */
     public function update(Request $request, $id)
     {
-        $model = Wisata::find($id);
-        //NOT YET
-        // if($request->hasFile('foto'))
-        // {
-        //      $request->file('foto')->move('fotowisata', $request->file('foto')->getClientOriginalName());
-        //      $model->foto = $request->file('foto')->getClientOriginalName();
-        //      $model->save();
-        // }
-        if($request->hasFile('foto')){
-            $path = $request->file('foto')->move('fotowisata', $request->file('foto')->getClientOriginalName());
-            $model->foto = $path;
-        }
-        $join = join(',',$request->input('fasilitas_id'));
         
-        // //PENGURANGAN STOK
-        // $product_attribute = Pemesanan::where([
-        //     'status_pembayaran' => $model['status_pembayaran']
-        //     ])->first();
-        //     dd($product_attribute);
-        //     if($product_attribute == 'Berhasil Pesan'){
-        //         $kuota = $model->kuota - (int) $request->jumlah;
-        //         $model->save();
-        //     }
-        // //END PENGURANGAN STOK
+        $model = Wisata::find($id);
+        $data = $request->all();
 
-        $model->nama_wisata = $request->nama_wisata;
-        $model->fasilitas_id = $join;
-        $model->deskripsi = $request->deskripsi;
-        $model->kuota = $request->kuota;
-        $model->harga = $request->harga;
-        $model->keterangan = $request->keterangan;
+        $join = join(',',$request->input('fasilitas_id'));
 
-        $model->save();
+        if($request->file('foto'))
+        {
+            $path = $request->file('foto')->move('fotowisata', $request->file('foto')->getClientOriginalName());
+            $data['foto'] = $path;
+        }
+        $data['fasilitas_id'] = $join;
+        $model->update($data);
 
         return redirect('tbl_wisata');
+
     }
 
     /**
