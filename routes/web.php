@@ -1,13 +1,15 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\WisataController;
-use App\Http\Controllers\ResiPembayaran;
-use App\Http\Controllers\Auth\LoginController;
 use App\Mail\welcomeMail;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ResiPembayaran;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\KontakController;
+use App\Http\Controllers\WisataController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\Auth\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -67,7 +69,7 @@ Route::group([
     Route::resource('tbl_tiket', '\App\Http\Controllers\TiketController');
 
     //CRUD TIKET
-    Route::resource('tbl_contact', '\App\Http\Controllers\ContactController');
+    // Route::resource('tbl_contact', '\App\Http\Controllers\ContactController');
 
     //cetak laporan
     Route::get('laporan', [App\Http\Controllers\PemesananController::class, 'cetakLaporan'])->name('laporan');
@@ -82,20 +84,23 @@ Route::group([
 ], function() {
     Route::get('/user_view', [App\Http\Controllers\HomeController::class, 'index'])->name('user_view');
     Route::resource('pemesanan', '\App\Http\Controllers\Pemesanan_user');
+    
+    //Route::post('pemesanan', [App\Http\Controllers\Pemesanan_user::class, 'coba']);
+    
     Route::get('persetujuan/{id}', [App\Http\Controllers\Pemesanan_user::class, 'refund']);
     Route::get('cetak/{id}', [App\Http\Controllers\HomeController::class, 'download']);
     Route::get('tiket', [App\Http\Controllers\HomeController::class, 'tiket']);
     Route::get('detail/{id}', [App\Http\Controllers\HomeController::class, 'detail']);
 
-    Route::match(['get', 'post'], 'contact-form', [App\Http\Controllers\HomeController::class,  'storeContactForm']);
-    Route::get('sendem', Function()
-    {
-        Mail::to('ditarossiyana12@gmail.com')->send(new welcomeMail());
-        return new welcomeMail();
-    });
-
-    //Route::get('reschedule', [App\Http\Controllers\Pemesanan_user::class, 'edit']);
+    Route::post('/user_view', [App\Http\Controllers\ContactController::class, 'storeContactForm'])->name('contact-form.store'); 
+    // Route::match(['get', 'post'], 'contact-form', [App\Http\Controllers\HomeController::class,  'storeContactForm']);
+    // Route::get('sendem', Function()
+    // {
+    //     Mail::to('ditarossiyana12@gmail.com')->send(new welcomeMail());
+    //     return new welcomeMail();
+    // });
 }
+   
 );
 
 //LOGOUT
@@ -108,3 +113,8 @@ Route::get('/email', Function()
     return new welcomeMail();
 });
 
+//Route::get('/contact-forms', [App\Http\Controllers\ContactController::class, 'contactForm'])->name('contact-form'); 
+
+Route::post('/', [App\Http\Controllers\ContactController::class, 'storeContactForm'])->name('contact-form.store'); 
+// Route::post('/', [App\Http\Controllers\HomeController::class, 'storeContactForm'])->name('contact-form.store'); 
+// Route::post('/', [App\Http\Controllers\ContactController::class, 'storeContactForm'])->name('contact-form.store'); 

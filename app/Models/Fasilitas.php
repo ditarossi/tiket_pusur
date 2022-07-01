@@ -29,4 +29,9 @@ class Fasilitas extends Model
     {
         return $this->belongsTo('App\Models\Tiket');
     }
+
+    public function wisata()
+    {
+        return $this->hasMany('App\Models\Wisata');
+    }
 }

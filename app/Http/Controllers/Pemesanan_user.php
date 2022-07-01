@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 use App\Models\Pemesanan;
 use App\Models\Wisata;
@@ -129,5 +130,20 @@ class Pemesanan_user extends Controller
         $model = Pemesanan::find($id);
         $model->delete();
         return redirect('tiket');
+    }
+
+    public function coba(Request $request)
+    {
+        $value = $request->wisata_id;
+        //dd($request);
+        //$datas = Wisata::find($value);
+        $datas = DB::table('wisata')
+            ->join('fasilitas', 'wisata.id', '=', 'fasilitas.id')
+            ->where('fasilitas_id')
+            ->get();
+        //dd($datas);
+        return view('user_view.pemesanan', compact(
+            'datas', 'value'
+        ));
     }
 }

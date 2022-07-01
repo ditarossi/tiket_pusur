@@ -18,6 +18,7 @@
               <li class="scroll-to-section"><a href="#order">Pemesanan</a></li>
               <li class="scroll-to-section"><a href="#services">Pusur Institute</a></li>
               <li class="scroll-to-section"><a href="#contact">Contact Us</a></li>
+              <!-- <li class="scroll-to-section"><a href="/contact-forms">Contact Us</a></li> -->
               <!--<li class="scroll-to-section"><a href="#pricing">Struktur Organisasi</a></li>-->
               <li class="nav-item dropdown">
               

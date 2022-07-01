@@ -465,35 +465,142 @@
                       </div>
                     </div>
                   </div>
-                    <div class="col-lg-6">
-                      <form action="{{ url('contact') }}" method="post">
-                        @csrf
-                        <div class="row">
-                          <div class="col-md-6 form-group">
-                            <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
-                          </div>
-                          <div class="col-md-6 form-group mt-3 mt-md-0">
-                            <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
-                          </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6 form-group">
-                              <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
-                            </div>
-                            <div class="col-md-6 form-group mt-3 mt-md-0">
-                              <input type="text" class="form-control" name="phone" id="phone" placeholder="Phone" required>
-                            </div>
-                          </div>
-                        <div class="form-group mt-3">
-                          <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
-                        </div>
-                        <div class="my-3">
-                          <div class="loading">Loading</div>
-                          <div class="error-message"></div>
-                          <div class="sent-message">Your message has been sent. Thank you!</div>
-                        </div>
-                        <div class="text-center"><button type="submit">Send Message</button></div>
-                      </form>
+                  <div class="col-lg-6">
+                      @if(Session::has('success')) 
+
+                        <div class="alert alert-success"> 
+
+                            {{ Session::get('success') }} 
+
+                            @php 
+
+                                Session::forget('success'); 
+
+                            @endphp 
+
+                        </div> 
+
+                        @endif 
+
+                    
+
+                        <form method="POST" action="{{ route('contact-form.store') }}"> 
+
+                   
+
+                            {{ csrf_field() }} 
+
+                            <div class="row"> 
+
+                                <div class="col-md-6"> 
+
+                                    <div class="form-group"> 
+
+                                        <strong>Name:</strong> 
+
+                                        <input type="text" name="name" class="form-control" placeholder="Name" value="{{ old('name') }}"> 
+
+                                        @if ($errors->has('name')) 
+
+                                            <span class="text-danger">{{ $errors->first('name') }}</span> 
+
+                                        @endif 
+
+                                    </div> 
+
+                                </div> 
+
+                                <div class="col-md-6"> 
+
+                                    <div class="form-group"> 
+
+                                        <strong>Email:</strong> 
+
+                                        <input type="text" name="email" class="form-control" placeholder="Email" value="{{ old('email') }}"> 
+
+                                        @if ($errors->has('email')) 
+
+                                            <span class="text-danger">{{ $errors->first('email') }}</span> 
+
+                                        @endif 
+
+                                    </div> 
+
+                                </div> 
+
+                            </div> 
+
+                            <div class="row"> 
+
+                                <div class="col-md-6"> 
+
+                                    <div class="form-group"> 
+
+                                        <strong>Phone:</strong> 
+
+                                        <input type="text" name="phone" class="form-control" placeholder="Phone" value="{{ old('phone') }}"> 
+
+                                        @if ($errors->has('phone')) 
+
+                                            <span class="text-danger">{{ $errors->first('phone') }}</span> 
+
+                                        @endif 
+
+                                    </div> 
+
+                                </div> 
+
+                                <div class="col-md-6"> 
+
+                                    <div class="form-group"> 
+
+                                        <strong>Subject:</strong> 
+
+                                        <input type="text" name="subject" class="form-control" placeholder="Subject" value="{{ old('subject') }}"> 
+
+                                        @if ($errors->has('subject')) 
+
+                                            <span class="text-danger">{{ $errors->first('subject') }}</span> 
+
+                                        @endif 
+
+                                    </div> 
+
+                                </div> 
+
+                            </div> 
+
+                            <div class="row"> 
+
+                                <div class="col-md-12"> 
+
+                                    <div class="form-group"> 
+
+                                        <strong>Message:</strong> 
+
+                                        <textarea name="message" rows="3" class="form-control">{{ old('message') }}</textarea> 
+
+                                        @if ($errors->has('message')) 
+
+                                            <span class="text-danger">{{ $errors->first('message') }}</span> 
+
+                                        @endif 
+
+                                    </div>   
+
+                                </div> 
+
+                            </div> 
+
+                    
+
+                            <div class="form-group text-center"> 
+
+                                <button class="btn btn-success btn-submit">Save</button> 
+
+                            </div> 
+
+                        </form> 
                     </div>
                 </div>
               </div>
