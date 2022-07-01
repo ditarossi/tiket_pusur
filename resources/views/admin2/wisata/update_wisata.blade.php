@@ -21,7 +21,7 @@
                     <div class="form-group">
                       <label for="exampleInputUsername1">Fasilitas</label>
                         @foreach ($fas as $f)
-                            <input name="fasilitas_id[]" class="form-check-input" type="checkbox" id="inlineCheckbox1" value="{{$f->fasilitas}}">
+                            <input name="fasilitas_id[]" class="form-check-input" type="checkbox" id="inlineCheckbox1" value="{{$f->id}}">
                             <label class="form-check-label" for="inlineCheckbox1">{{$f->fasilitas}}</label>
                         @endforeach
                     </div>

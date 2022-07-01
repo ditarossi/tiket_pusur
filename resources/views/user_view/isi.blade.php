@@ -53,20 +53,20 @@
         </div>
         <!--PERULANGAN WISATA-->
         <div class="row portfolio-container" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
-          @foreach($datas as $d)
-          <div class="col-lg-4 col-md-6 portfolio-wrap filter-app" >
-            <div class="portfolio-item">
-              <img src="{{ asset($d->foto) }}" class="img-fluid" alt="" height="120px">
-              <div class="portfolio-info">
-                <h3>{{ $d->nama_wisata }}</h3>
-                <div>
-                  <a href="{{ asset($d->foto) }}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="{{ $d->nama_wisata }}"><i class="bx bx-plus"></i></a>
-                  <a href="#modal" data-bs-toggle="modal" data-bs-target="#showdetail{{$d->id}}"><i class="bx bx-link"></i></a>
+            @foreach($datas as $d)
+              <div class="col-lg-4 col-md-6 portfolio-wrap filter-app" >
+                <div class="portfolio-item">
+                  <img src="{{ asset($d->foto) }}" class="img-fluid" alt="" height="120px">
+                  <div class="portfolio-info">
+                    <h3>{{ $d->nama_wisata }}</h3>
+                    <div>
+                      <a href="{{ asset($d->foto) }}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="{{ $d->nama_wisata }}"><i class="bx bx-plus"></i></a>
+                      <a href="#modal" data-bs-toggle="modal" data-bs-target="#showdetail{{$d->id}}"><i class="bx bx-link"></i></a>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-          @endforeach
+            @endforeach
           <!--PERULANGAN KEGIATAN-->
           @foreach($keg as $k)
           <div class="col-lg-4 col-md-6 portfolio-wrap filter-card" >
@@ -244,6 +244,9 @@
           <div class="border-button">
             <a href="#modal" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Order Now</a>
           </div>
+          <!-- <div class="border-button">
+            <a href="/order" >Order Now</a>
+          </div> -->
         </div>
       </div>
     </div>

@@ -69,7 +69,7 @@ Route::group([
     Route::resource('tbl_tiket', '\App\Http\Controllers\TiketController');
 
     //CRUD TIKET
-    // Route::resource('tbl_contact', '\App\Http\Controllers\ContactController');
+    Route::resource('tbl_contact', '\App\Http\Controllers\KontakController');
 
     //cetak laporan
     Route::get('laporan', [App\Http\Controllers\PemesananController::class, 'cetakLaporan'])->name('laporan');
@@ -84,8 +84,7 @@ Route::group([
 ], function() {
     Route::get('/user_view', [App\Http\Controllers\HomeController::class, 'index'])->name('user_view');
     Route::resource('pemesanan', '\App\Http\Controllers\Pemesanan_user');
-    
-    //Route::post('pemesanan', [App\Http\Controllers\Pemesanan_user::class, 'coba']);
+    //ROUTE DEPENDENT DROPDOWN
     
     Route::get('persetujuan/{id}', [App\Http\Controllers\Pemesanan_user::class, 'refund']);
     Route::get('cetak/{id}', [App\Http\Controllers\HomeController::class, 'download']);
