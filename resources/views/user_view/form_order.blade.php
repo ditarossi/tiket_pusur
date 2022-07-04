@@ -11,6 +11,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <title>Landing Page</title>
 
     <!-- Bootstrap core CSS -->
@@ -48,7 +50,7 @@
     </div>
     <div class="mb-3">
       <label>Fasilitas Wisata</label>
-      <select name="fasilitas" class="form-control input-lg dynamic" id="fasilitas" placeholder="Fasilitas Wisata">
+      <select name="fasilitas[]" class="form-control input-lg dynamic js-example-basic-single" id="fasilitas" multiple="multiple" placeholder="Fasilitas Wisata">
         <option value=""> -- Pilih --</option>
       </select>
     </div>
@@ -100,5 +102,14 @@
     });
   });
 </script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+        <script>
+            $(document).ready(function() {
+                $('.js-example-basic-single').select2();
+            });
+        </script>
 
 </html>
