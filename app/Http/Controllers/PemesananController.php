@@ -137,9 +137,11 @@ class PemesananController extends Controller
         $datawisata->save();
         $dw = DaftarWisata::where('nama_wisata', $datawisata->wisata_id)
             ->first();
-        // dd($dw);
         $dw->kuota -=(int)$datawisata->jumlah;
-        // dd($dw);
+        if($dw->kuota == 0)
+        {
+            $dw->keterangan = "Kuota Penuh";
+        }
         $dw->save();
 
         return redirect('tbl_pemesanan');
