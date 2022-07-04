@@ -16,7 +16,7 @@ class Pemesanan extends Migration
         Schema::create('pemesanan', function (Blueprint $table) {
             $table->id();
             $table->foreignID('users_id');
-            $table->foreignID('wisata_id');
+            $table->string('wisata_id');
             $table->string('fasilitas_id'); 
             $table->date('Tanggal_Kunjungan');         
             $table->integer('jumlah');  

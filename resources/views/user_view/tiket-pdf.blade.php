@@ -58,7 +58,7 @@
                   <tr>
                     <th>{{ $value->id }}</th>
                     <td>{{ $value->user->name }}</td>
-                    <td>{{ $value->wisata->nama_wisata }}</td>
+                    <td>{{ $value->wisata_id }}</td>
                     <td>
                     @php
                         $hasil_split = explode(',', $value->fasilitas_id);
@@ -95,7 +95,7 @@
             <tr>
               <th>{{ $value->id }}</th>
               <td>{{ $value->user->name }}</td>
-              <td>{{ $value->wisata->nama_wisata }}</td>
+              <td>{{ $value->wisata_id }}</td>
               <td>
               @php
                   $hasil_split = explode(',', $value->fasilitas_id);

@@ -5,9 +5,7 @@
 
 @section('content')
 <!-- partial -->
-@php
-$data_fas = $dfas->keyBy('id')->toArray();
-@endphp
+
 <div class="main-panel">
         <div class="content-wrapper">
           <div class="card">
@@ -23,7 +21,6 @@ $data_fas = $dfas->keyBy('id')->toArray();
                       <thead>
                         <tr>
                             <th>Nama Wisata</th>
-                            <th>Fasilitas</th>
                             <th>Deskripsi</th>
                             <th>Kuota</th>
                             <th>Harga</th>
@@ -36,14 +33,6 @@ $data_fas = $dfas->keyBy('id')->toArray();
                           @foreach($datas as $value)
                           <tr>
                               <td>{{ $value->nama_wisata }}</td>
-                              <td>
-                                @php
-                                $hasil_split = explode(',', $value->fasilitas_id);
-                                @endphp
-                                @foreach($hasil_split as $h)
-                                  <div>{{ $h }}</div>
-                                @endforeach
-                              </td>
                               <td>{{ $value->deskripsi }}</td>
                               <td>{{ $value->kuota }}</td>
                               <td>{{ $value->harga }}</td>

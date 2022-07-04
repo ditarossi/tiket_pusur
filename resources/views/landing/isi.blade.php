@@ -115,14 +115,12 @@
                   <div class="portfolio-info">
                     <h3>{{$d->nama_wisata}}</h3>
                     <ul>
-                        <li><strong>Fasilitas</strong>: {{$d->fasilitas}}</li>
                         <li><strong>Kuota</strong>: {{$d->kuota}}</li>
                         <li><strong>Harga</strong>: {{$d->harga}}</li>
                         <li><strong>Keterngan</strong>: {{$d->keterangan}}</a></li>
                     </ul>
                   </div>
                   <div class="portfolio-description">
-                    <h2>Deskripsi</h2>
                     <p>
                         {{$d->deskripsi}}
                     </p>

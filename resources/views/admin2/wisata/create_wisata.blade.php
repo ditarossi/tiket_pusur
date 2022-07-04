@@ -4,9 +4,7 @@
 @endsection
 
 @section('content')
-@php
-$data_fas = $dfas->keyBy('id')->toArray();
-@endphp
+
 <div class="main-panel">        
         <div class="content-wrapper">
           <div class="row">
@@ -19,17 +17,6 @@ $data_fas = $dfas->keyBy('id')->toArray();
                     <div class="form-group">
                       <label for="exampleInputUsername1">Nama Wisata</label>
                       <input name="nama_wisata" type="text" class="form-control" id="exampleInputUsername1" placeholder="Nama Wisata">
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputUsername1">Fasilitas</label>
-                      
-                        <div class="form-check form-check-inline">
-                          @foreach ($dfas as $f)
-                            <input name="fasilitas_id[]" class="form-check-input" type="checkbox" id="inlineCheckbox1" value="{{$f->id}}">
-                            <label class="form-check-label" for="inlineCheckbox1">{{$f->fasilitas}}</label>
-                          @endforeach
-                        </div>
-                      
                     </div>
                     <div class="form-group">
                       <label for="exampleInputUsername1">Deskripsi</label>

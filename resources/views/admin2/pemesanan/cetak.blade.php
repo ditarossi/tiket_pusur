@@ -54,14 +54,14 @@
                             <th>Status Pemesanan</th>
                             <th>Pengajuan Reschedule</th>
                             <th>Pengajuan Refund</th>
-      </tr>
-      @foreach ( $data as $value)
-      <tr>
-      <td>
+                            </tr>
+                            @foreach ( $data as $value)
+                            <tr>
+                          <td>
                               {{ $value->user->name }}
                             </td>
                             <td>
-                              {{ $value->wisata->nama_wisata }}
+                              {{ $value->wisata_id }}
                             </td>
                             <td>
                                 @php

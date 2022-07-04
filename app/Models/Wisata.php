@@ -8,11 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class wisata extends Model
 {
     use HasFactory;
-    public $table = "wisata";
+    public $table = "daftar_wisata";
     protected $primaryKey = 'id';
     protected $fillable = [
         'nama_wisata',
-        'fasilitas_id',
         'deskripsi',
         'kuota',
         'harga',

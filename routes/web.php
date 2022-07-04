@@ -10,6 +10,7 @@ use App\Http\Controllers\KontakController;
 use App\Http\Controllers\WisataController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -68,8 +69,11 @@ Route::group([
     //CRUD TIKET
     Route::resource('tbl_tiket', '\App\Http\Controllers\TiketController');
 
-    //CRUD TIKET
+    //CRUD KONTAK
     Route::resource('tbl_contact', '\App\Http\Controllers\KontakController');
+
+    //CRUD PIVOT
+    Route::resource('tbl_fasilitasWisata', '\App\Http\Controllers\FasilitasWisataController');
 
     //cetak laporan
     Route::get('laporan', [App\Http\Controllers\PemesananController::class, 'cetakLaporan'])->name('laporan');
@@ -85,7 +89,9 @@ Route::group([
     Route::get('/user_view', [App\Http\Controllers\HomeController::class, 'index'])->name('user_view');
     Route::resource('pemesanan', '\App\Http\Controllers\Pemesanan_user');
     //ROUTE DEPENDENT DROPDOWN
-    
+    Route::get('order', [App\Http\Controllers\OrderController::class, 'index']);
+    Route::post('order/fetch', [App\Http\Controllers\OrderController::class, 'fetch'])->name('order.fetch');
+
     Route::get('persetujuan/{id}', [App\Http\Controllers\Pemesanan_user::class, 'refund']);
     Route::get('cetak/{id}', [App\Http\Controllers\HomeController::class, 'download']);
     Route::get('tiket', [App\Http\Controllers\HomeController::class, 'tiket']);
@@ -103,7 +109,7 @@ Route::group([
 );
 
 //LOGOUT
-Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
 
 //ROUTE FOR MAILING
 Route::get('/email', Function()

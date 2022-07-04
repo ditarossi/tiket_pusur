@@ -21,13 +21,19 @@
           <li class="nav-item">
             <a class="nav-link" href="/tbl_fasilitas">
               <i class="#"></i>
-              <span class="menu-title">Fasilitas Wisata</span>
+              <span class="menu-title">Fasilitas</span>
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/tbl_wisata">
               <i class="#"></i>
               <span class="menu-title">Daftar Wisata</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/tbl_fasilitasWisata">
+              <i class="#"></i>
+              <span class="menu-title">Fasilitas Wisata</span>
             </a>
           </li>
           <li class="nav-item">
@@ -49,12 +55,6 @@
             </a>
           </li>
           <!-- <li class="nav-item">
-            <a class="nav-link" href="/tbl_bukti">
-              <i class="#"></i>
-              <span class="menu-title">Bukti Transaksi</span>
-            </a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link" href="/tbl_tiket">
               <i class="#"></i>
               <span class="menu-title">Data Tiket</span>

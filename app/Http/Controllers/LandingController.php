@@ -14,6 +14,7 @@ class LandingController extends Controller
     {
         $datas = Wisata::all();
         $keg = Kegiatan::all();
+        
         return view('landing.isi', compact(
             'datas','keg'
         ));

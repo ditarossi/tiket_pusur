@@ -27,7 +27,7 @@
                               {{ $value->user->name }}
                             </td>
                             <td>
-                              {{ $value->wisata->nama_wisata }}
+                              {{ $value->wisata_id }}
                             </td>
                             <td>
                                 @php

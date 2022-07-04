@@ -115,14 +115,12 @@
                   <div class="portfolio-info">
                     <h3>{{$d->nama_wisata}}</h3>
                     <ul>
-                      <li><strong>Fasilitas</strong>: {{$d->fasilitas}}</li>
                       <li><strong>Kuota</strong>: {{$d->kuota}}</li>
                       <li><strong>Harga</strong>: {{$d->harga}}</li>
                       <li><strong>Keterngan</strong>: {{$d->keterangan}}</a></li>
                     </ul>
                   </div>
                   <div class="portfolio-description">
-                    <h2>Deskripsi</h2>
                     <p>
                         {{$d->deskripsi}}
                     </p>
@@ -241,12 +239,12 @@
     <div class="row">
       <div class="col-lg-8 offset-lg-2">
         <div class="section-heading" align="center">
-          <div class="border-button">
-            <a href="#modal" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Order Now</a>
-          </div>
           <!-- <div class="border-button">
-            <a href="/order" >Order Now</a>
+            <a href="#modal" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Order Now</a>
           </div> -->
+          <div class="border-button">
+            <a href="/order" >Order Now</a>
+          </div>
         </div>
       </div>
     </div>
@@ -274,12 +272,13 @@
               </select>
             </div>
             <div class="mb-3">
-              <label>Fasilitas</label>
-              <br>
-              @foreach ($f as $d)
-                <input name="fasilitas_id[]" class="form-check-input" type="checkbox" id="inlineCheckbox1" value="{{$d->fasilitas}}">
-                <label class="form-check-label" for="inlineCheckbox1">{{$d->fasilitas}}</label>
+            <label>Nama Wisata</label>
+              <select name="wisata_id" type="text" class="form-control" id="exampleInputUsername1" placeholder="Nama Wisata">
+                <option value=""> -- Pilih --</option>
+                @foreach ($datas as $d)
+                <option value="{{$d->id}}">{{$d->nama_wisata}}</option>
                 @endforeach
+              </select>
             </div>
             <div class="mb-3">
               <label>Tanggal Kunjungan</label>

@@ -7,8 +7,10 @@ use App\Models\Pemesanan;
 use App\Models\Fasilitas;
 use App\Models\Wisata;
 use App\Models\User;
+use App\Models\DaftarWisata;
 use Illuminate\Support\Str;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\DB;
 
 class PemesananController extends Controller
 {
@@ -133,15 +135,13 @@ class PemesananController extends Controller
         $datawisata = Pemesanan::find($id);
         $datawisata->status_pemesanan = 'Berhasil Pesan';
         $datawisata->save();
-        $dw = Wisata::where('id', $datawisata->wisata_id)->first();
+        $dw = DaftarWisata::where('nama_wisata', $datawisata->wisata_id)
+            ->first();
+        // dd($dw);
         $dw->kuota -=(int)$datawisata->jumlah;
+        // dd($dw);
         $dw->save();
 
-        // if($product_attribute == 'Berhasil Pesan'){
-        //     $kuota = $model->kuota - (int) $request->jumlah;
-        //     $model->save();
-
-        // dd($datawisata);
         return redirect('tbl_pemesanan');
     }
     
@@ -150,15 +150,11 @@ class PemesananController extends Controller
         $datawisata = Pemesanan::find($id);
         $datawisata->refund = 'Pemesanan Berhasil Dibatalkan';
         $datawisata->save();
-        $dw = Wisata::where('id', $datawisata->wisata_id)->first();
+        $dw = DaftarWisata::where('nama_wisata', $datawisata->wisata_id)
+            ->first();
         $dw->kuota +=(int)$datawisata->jumlah;
         $dw->save();
 
-        // if($product_attribute == 'Berhasil Pesan'){
-        //     $kuota = $model->kuota - (int) $request->jumlah;
-        //     $model->save();
-
-        // dd($datawisata);
         return redirect('tbl_pemesanan');
     }
 
@@ -167,15 +163,11 @@ class PemesananController extends Controller
         $datawisata = Pemesanan::find($id);
         $datawisata->status_pemesanan = 'Pemesanan Selesai';
         $datawisata->save();
-        $dw = Wisata::where('id', $datawisata->wisata_id)->first();
+        $dw = Wisata::where('nama_wisata', $datawisata->wisata_id)
+            ->first();
         $dw->kuota +=(int)$datawisata->jumlah;
         $dw->save();
 
-        // if($product_attribute == 'Berhasil Pesan'){
-        //     $kuota = $model->kuota - (int) $request->jumlah;
-        //     $model->save();
-
-        // dd($datawisata);
         return redirect('tbl_pemesanan');
     }
 
@@ -212,10 +204,4 @@ class PemesananController extends Controller
         //return view('admin2.pemesanan.cetak-pertanggal', compact('data'));
     }
 
-    // public function tanggal($tanggal_awal, $tanggal_akhir)
-    // {
-    //     //dd("tanggal awal : ".$tanggal_awal, "tanggal akhir : ".$tanggal_akhir);
-    //     $cetakpertanggal = Pemesanan::wherebetween('Tanggal_Kunjungan', [$tanggal_awal, $tanggal_akhir])->latest()->get();
-    //     return view('admin2.pemesanan.cetak-pertanggal', compact('cetakpertanggal'));
-    // }
 }

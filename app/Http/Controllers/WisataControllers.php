@@ -17,9 +17,8 @@ class WisataControllers extends Controller
     public function index()
     {
         $datas = Wisata::all();
-        $dfas = Fasilitas::all();
         return view('admin2.wisata.tabel_wisata', compact(
-            'datas','dfas'
+            'datas'
         ));
     }
 
@@ -31,10 +30,8 @@ class WisataControllers extends Controller
     public function create()
     {
         $model = new Wisata;
-        $dfas = Fasilitas::all();
-        // $data_fas = $fas->keyBy('id')->toArray();
         return view('admin2.wisata.create_wisata', compact(
-            'model','dfas'
+            'model'
         ));
     }
 
@@ -47,13 +44,8 @@ class WisataControllers extends Controller
     public function store(Request $request)
     {
         $path = $request->file('foto')->move('fotowisata', $request->file('foto')->getClientOriginalName());
-        $join = join(',',$request->input('fasilitas_id'));
-        //$hasil_split = explode(',', $value->fasilitas_id);
-        // $data_fas = $fas->keyBy('id')->toArray();
-        //$a = implode(",",$request->$join);
         $model = new Wisata;
         $model->nama_wisata = $request->nama_wisata;
-        $model->fasilitas_id = $join;
         $model->deskripsi = $request->deskripsi;
         $model->kuota = $request->kuota;
         $model->harga = $request->harga;
@@ -85,9 +77,8 @@ class WisataControllers extends Controller
     {
         //dd($requst);
         $model = Wisata::find($id);
-        $fas = Fasilitas::all();
         return view('admin2.wisata.update_wisata', compact(
-            'model', 'fas'
+            'model'
         ));
     }
 
@@ -103,15 +94,11 @@ class WisataControllers extends Controller
         
         $model = Wisata::find($id);
         $data = $request->all();
-
-        $join = join(',',$request->input('fasilitas_id'));
-
         if($request->file('foto'))
         {
             $path = $request->file('foto')->move('fotowisata', $request->file('foto')->getClientOriginalName());
             $data['foto'] = $path;
         }
-        $data['fasilitas_id'] = $join;
         $model->update($data);
 
         return redirect('tbl_wisata');
