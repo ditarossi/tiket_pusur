@@ -28,9 +28,19 @@
               </div>
             </div>
             <div class="col-lg-6">
-              <div class="right-image wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
-                <img src="{{asset('layout')}}/assets/images/slider-dec.png" alt="">
-              </div>
+            <div class="portfolio-details-slider swiper">                   
+                  <div class="swiper-wrapper align-items-center">
+                    @foreach($datas as $d)
+                      <div class="swiper-slide">
+                        <img src="{{asset('layout')}}/assets/images/logo-TBG.png" alt="">
+                      </div>
+                      <div class="swiper-slide">
+                        <img src="{{asset('layout')}}/assets/images/logo-RPTA.png" alt="">
+                      </div>
+                    @endforeach
+                  </div>
+                  <!-- <div class="swiper-pagination"></div> -->
+              </div> 
             </div>
           </div>
         </div>

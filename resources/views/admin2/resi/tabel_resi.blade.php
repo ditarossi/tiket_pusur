@@ -37,7 +37,7 @@
                         <tr>
                             <td>{{ $value->id }}</td>
                             <td>{{ $value->user->name }}</td>
-                            <td>{{ $value->wisata->nama_wisata }}</td>
+                            <td>{{ $value->nama_wisata }}</td>
                             <td>
                               @php
                                 $hasil_split = explode(',', $value->fasilitas_id);

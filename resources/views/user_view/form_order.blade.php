@@ -18,6 +18,10 @@
     <!-- Bootstrap core CSS -->
     <link href="{{asset('layout')}}/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <style>
+      .container{
+        margin-top: 70px;
+      }
+      
       input[type="date"] {
         position: relative;
       }
@@ -37,8 +41,10 @@
   </head>
 
 <body>
+  <div class="container">
   <form class="forms-sample" action="{{ url('pemesanan') }}" method="post">
     @csrf
+    <h4 align="center">Form Pemesanan</h4>
     <div class="mb-3">
       <label>Nama Wisata</label>
       <select name="nama_wisata" data-dependent="fasilitas" class="form-control input-lg dynamic" id="nama_wisata" placeholder="Nama Wisata">
@@ -67,11 +73,12 @@
       <input value="" name="tagihan" type="text" class="form-control" id="tagihan"></input>
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      <a href="{{url('user_view')}}" type="button" class="btn btn-secondary">Close</a>
       <button type="submit" class="btn btn-primary">Send message</button>
     </div>
     {{ csrf_field() }}
   </form>
+  </div>
 </body>
 <script>
   $(document).ready(function() {
