@@ -50,7 +50,7 @@
       <select name="nama_wisata" data-dependent="fasilitas" class="form-control input-lg dynamic" id="nama_wisata" placeholder="Nama Wisata">
         <option value=""> -- Pilih --</option>
         @foreach ($wisata_list as $wis)
-        <option value="{{ $wis->nama_wisata }}">{{ $wis->nama_wisata }}</option>
+            <option value="{{ $wis->nama_wisata }}">{{ $wis->nama_wisata }}</option>
         @endforeach
       </select>
     </div>

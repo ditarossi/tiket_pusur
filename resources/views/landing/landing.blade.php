@@ -36,6 +36,16 @@
     <link href="{{asset('pict')}}/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
     
     <link href="{{asset('pict')}}/assets/css/style.css" rel="stylesheet">
+
+    <!--CARAOUSEL-->
+    <link rel="stylesheet" type="text/css" href="{{asset('caraousel')}}/assets/css/plugins.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('caraousel')}}/assets/css/style.css">
+    <style type="text/css">
+        #freecssfooter{display:block;width:100%;padding:120px 0 20px;overflow:hidden;background-color:transparent;z-index:5000;text-align:center;}
+        #freecssfooter div#fcssholder div{display:none;}
+        #freecssfooter div#fcssholder div:first-child{display:block;}
+        #freecssfooter div#fcssholder div:first-child a{float:none;margin:0 auto;}
+    </style>
   </head>
 
 <body>
@@ -180,5 +190,15 @@
   <script src="{{asset('pict')}}/assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="{{asset('pict')}}/assets/vendor/php-email-form/validate.js"></script>
   <script src="{{asset('pict')}}/assets/js/main.js"></script>
+
+  <!--Script caraousel-->
+    <script src="{{asset('caraousel')}}/assets/js/jquery.min.js"></script>
+    <script src="{{asset('caraousel')}}/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="{{asset('caraousel')}}/assets/js/easing.min.js"></script>
+    <script src="{{asset('caraousel')}}/assets/js/waypoints.min.js"></script>
+    <script src="{{asset('caraousel')}}/assets/js/owl.carousel.min.js"></script>
+    <script src="{{asset('caraousel')}}/assets/js/isotope.pkgd.min.js"></script>
+    <script src="{{asset('caraousel')}}/assets/js/lightbox.min.js"></script>
+    <script src="{{asset('caraousel')}}/assets/js/main.js"></script>
 </body>
 </html>

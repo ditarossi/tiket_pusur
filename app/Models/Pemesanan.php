@@ -17,7 +17,9 @@ class Pemesanan extends Model
         'Tanggal_Kunjungan',
         'jumlah',
         'tagihan',
-        'status_pembayaran',
+        'status_pemesanan',
+        'reschedule',
+        'refund'
     ];
 
     public function user()

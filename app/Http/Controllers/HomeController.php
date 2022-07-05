@@ -56,7 +56,12 @@ class HomeController extends Controller
     {
         $user = request()->user();
 
-        $tiket = Pemesanan::where('users_id', $user->id)->get();
+        $tiket = Pemesanan::select('*')
+            ->where('users_id', $user->id)
+            ->where('status_pemesanan', 'Berhasil Pesan')
+            ->orWhere('status_pemesanan', 'Menunggu Verifikasi')
+            ->get();
+        //dd($tiket);
         return view('user_view.tiket', compact(
             'tiket'
         ));
@@ -122,6 +127,20 @@ class HomeController extends Controller
 
         return redirect()->back()->with(['success' => 'Contact Form Submit Successfully']); 
 
+    }
+
+    public function riwayat()
+    {
+        $user = request()->user();
+
+        $riwayat = Pemesanan::select('*')
+            ->where('users_id', $user->id)
+            ->where('status_pemesanan', '=', 'Pemesanan Selesai')
+            ->get();
+        //dd($riwayat);
+        return view('user_view.riwayat', compact(
+            'riwayat'
+        ));
     }
 
 }

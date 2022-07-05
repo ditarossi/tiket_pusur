@@ -11,6 +11,7 @@ use App\Models\DaftarWisata;
 use Illuminate\Support\Str;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\DB;
+use PhpParser\Lexer\TokenEmulator\ReadonlyTokenEmulator;
 
 class PemesananController extends Controller
 {
@@ -155,6 +156,10 @@ class PemesananController extends Controller
         $dw = DaftarWisata::where('nama_wisata', $datawisata->wisata_id)
             ->first();
         $dw->kuota +=(int)$datawisata->jumlah;
+        if($dw->kuota > 0)
+        {
+            $dw->keterangan = "Tersedia";
+        }
         $dw->save();
 
         return redirect('tbl_pemesanan');
@@ -168,6 +173,10 @@ class PemesananController extends Controller
         $dw = Wisata::where('nama_wisata', $datawisata->wisata_id)
             ->first();
         $dw->kuota +=(int)$datawisata->jumlah;
+        if($dw->kuota > 0)
+        {
+            $dw->keterangan = "Tersedia";
+        }
         $dw->save();
 
         return redirect('tbl_pemesanan');

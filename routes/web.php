@@ -95,6 +95,8 @@ Route::group([
     Route::get('persetujuan/{id}', [App\Http\Controllers\Pemesanan_user::class, 'refund']);
     Route::get('cetak/{id}', [App\Http\Controllers\HomeController::class, 'download']);
     Route::get('tiket', [App\Http\Controllers\HomeController::class, 'tiket']);
+    Route::get('riwayat', [App\Http\Controllers\HomeController::class, 'riwayat']);
+
     Route::get('detail/{id}', [App\Http\Controllers\HomeController::class, 'detail']);
 
     Route::post('/user_view', [App\Http\Controllers\ContactController::class, 'storeContactForm'])->name('contact-form.store'); 

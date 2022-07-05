@@ -27,13 +27,10 @@
             <th scope="col">Jumlah</th>
             <th scope="col">Tagihan</th>
             <th scope="col">Status Pemesanan</th>
-            <th scope="col">Pengajuan Reschedule</th>
-            <th scope="col">Pengajuan Refund</th>
-            <th scope="col">Action</th>
           </tr>
         </thead>
         <tbody>
-        @foreach ($tiket as $value)  
+        @foreach ($riwayat as $value)  
           <tr>
             <th scope="row">{{ $value->id}}</th>
             <td>{{ $value->user->name }}</td>
@@ -50,27 +47,6 @@
             <td>{{ $value->jumlah }}</td>
             <td>{{ $value->tagihan }}</td>
             <td>{{ $value->status_pemesanan }}</td>
-            <td>{{ $value->reschedule }}</td>
-            <td>{{ $value->refund }}</td>
-            <td>
-              
-              @if($value->status_pemesanan == "Berhasil Pesan")
-                <div class="col-md-3">
-                <a class="btn btn-warning" href="{{ url('pemesanan/'.$value->id.'/edit') }}">Reschedule</a>
-                <a class="btn btn-danger" href="persetujuan/{{$value->id}}">Batalkan</a>
-                <a class="btn btn-primary" href="cetak/{{$value->id}}">Cetak</a>
-                </div>
-              @else 
-                <div class="col-md-3">
-                <a class="btn btn-primary" href="cetak/{{$value->id}}">Cetak</a>
-                </div>
-              @endif
-              <!-- <form action="{{ url('pemesanan/'.$value->id) }}" method="post">
-                  @csrf 
-                  <input type="hidden" name="_method" value="delete">
-                  <button class=" btn-danger" type="submit" onclick="return confirm('Yakin ingin membatalkan pesanan ?')">Batal</button>
-              </form> -->
-            </td>
           </tr>
           @endforeach
         </tbody>
