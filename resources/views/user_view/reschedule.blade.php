@@ -8,6 +8,22 @@
       .container{
         margin-top: 70px;
       }
+      
+      input[type="date"] {
+        position: relative;
+      }
+
+      input[type="date"]::-webkit-calendar-picker-indicator {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: auto;
+        height: auto;
+        color: transparent;
+        background: transparent;
+      }
     </style>
   </head>
   <body>
@@ -29,11 +45,6 @@
                 <div class="form-group">
                     <label for="exampleInputUsername1">ID Wisata</label>
                     <input value="{{ $model->wisata_id }}" name="wisata_id" type="text" class="form-control" id="exampleInputUsername1" placeholder="ID Wisata" readonly>
-                </div>
-                <div class="mb-3">
-                    <label>Fasilitas</label>
-                    <br>
-                    <input name="fasilitas_id[]" value="{{ $model->fasilitas_id }}" type="text" class="form-control" id="exampleInputUsername1" placeholder="ID Wisata" readonly>
                 </div>
                 <div class="mb-3">
                   <label>Tanggal Kunjungan</label>

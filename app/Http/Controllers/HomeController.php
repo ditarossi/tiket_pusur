@@ -8,6 +8,7 @@ use App\Models\Fasilitas;
 use App\Models\Pemesanan;
 use App\Models\Kegiatan;
 use App\Models\Contact;
+use App\Models\Transaksi;
 use PDF;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\welcomeMail;
@@ -45,7 +46,7 @@ class HomeController extends Controller
 
         $user = request()->user();
 
-        $datas = Pemesanan::where('id', $id)->where('users_id', $user->id)->get();
+        $datas = Transaksi::where('id', $id)->where('users_id', $user->id)->get();
         //view()->share('datas', $datas);
         $pdf = PDF::loadView('user_view.tiket-pdf',['datas'=>$datas]);
         return $pdf->download('tiket-pusur.pdf');
@@ -56,12 +57,12 @@ class HomeController extends Controller
     {
         $user = request()->user();
 
-        $tiket = Pemesanan::select('*')
+        $tiket = Transaksi::select('*')
             ->where('users_id', $user->id)
             ->where('status_pemesanan', 'Berhasil Pesan')
             ->orWhere('status_pemesanan', 'Menunggu Verifikasi')
             ->get();
-        //dd($tiket);
+        // dd($tiket);
         return view('user_view.tiket', compact(
             'tiket'
         ));
@@ -133,7 +134,8 @@ class HomeController extends Controller
     {
         $user = request()->user();
 
-        $riwayat = Pemesanan::select('*')
+        $riwayat = Transaksi::select('*')
+            
             ->where('users_id', $user->id)
             ->where('status_pemesanan', '=', 'Pemesanan Selesai')
             ->get();

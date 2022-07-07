@@ -23,13 +23,6 @@
                       <input value="{{ $model->wisata_id }}" name="wisata_id" type="text" class="form-control" id="exampleInputUsername1" placeholder="ID Wisata">
                     </div>
                     <div class="form-group">
-                      <label for="#">Fasilitas</label>
-                        @foreach ($fas as $f)
-                            <input name="fasilitas_id[]" class="form-check-input" type="checkbox" id="inlineCheckbox1" value="{{$f->fasilitas}}">
-                            <label class="form-check-label" for="inlineCheckbox1">{{$f->fasilitas}}</label>
-                        @endforeach
-                    </div>
-                    <div class="form-group">
                       <label for="exampleInputUsername1">Tanggal Kunjungan</label>
                       <input value="{{ $model->Tanggal_Kunjungan }}" name="Tanggal Kunjungan" type="date" class="form-control" id="exampleInputUsername1" placeholder="Tanggal Kunjungan">
                     </div>

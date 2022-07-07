@@ -47,16 +47,18 @@
     <h4 align="center">Form Pemesanan</h4>
     <div class="mb-3">
       <label>Nama Wisata</label>
-      <select name="nama_wisata" data-dependent="fasilitas" class="form-control input-lg dynamic" id="nama_wisata" placeholder="Nama Wisata">
+      <select name="wisata_id" data-dependent="fasilitas_id" class="form-control input-lg dynamic" id="wisata_id" placeholder="Nama Wisata">
         <option value=""> -- Pilih --</option>
-        @foreach ($wisata_list as $wis)
-            <option value="{{ $wis->nama_wisata }}">{{ $wis->nama_wisata }}</option>
-        @endforeach
+          @foreach ($wisata_list as $wis)
+            @if($wis->wisata->kuota > 0 )
+              <option value="{{ $wis->wisata_id }}">{{ $wis->wisata->nama_wisata }}</option>
+            @endif
+          @endforeach
       </select>
     </div>
     <div class="mb-3">
       <label>Fasilitas Wisata</label>
-      <select name="fasilitas[]" class="form-control input-lg dynamic js-example-basic-single" id="fasilitas" multiple="multiple" placeholder="Fasilitas Wisata">
+      <select name="fasilitas_id[]" class="form-control input-lg dynamic js-example-basic-single" id="fasilitas_id" multiple="multiple" placeholder="Fasilitas Wisata">
         <option value=""> -- Pilih --</option>
       </select>
     </div>
@@ -82,7 +84,7 @@
 </body>
 <script>
   $(document).ready(function() {
-    $('#nama_wisata').change(function() {
+    $('#wisata_id').change(function() {
       if ($(this).val() != '') {
         var select = $(this).attr("id");
         var value = $(this).val();
@@ -104,8 +106,8 @@
         })
       }
     });
-    $('#nama_wisata').change(function() {
-      $('#fasilitas').val('');
+    $('#wisata_id').change(function() {
+      $('#fasilitas_id').val('');
     });
   });
 </script>

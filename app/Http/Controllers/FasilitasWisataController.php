@@ -30,8 +30,8 @@ class FasilitasWisataController extends Controller
     public function store(Request $request)
     {
         $model = new FasilitasWisata;
-        $model->nama_wisata = $request->nama_wisata;
-        $model->fasilitas = $request->fasilitas;
+        $model->wisata_id = $request->wisata_id;
+        $model->fasilitas_id = $request->fasilitas_id;
         $model->save();
 
         return redirect('tbl_fasilitasWisata');

@@ -22,7 +22,6 @@
             <th scope="col">ID Pemesanan</th>
             <th scope="col">Nama</th>
             <th scope="col">Nama Wisata</th>
-            <th scope="col">Fasilitas</th>
             <th scope="col">Tanggal Kunjungan</th>
             <th scope="col">Jumlah</th>
             <th scope="col">Tagihan</th>
@@ -34,15 +33,7 @@
           <tr>
             <th scope="row">{{ $value->id}}</th>
             <td>{{ $value->user->name }}</td>
-            <td>{{ $value->wisata_id }}</td>
-            <td>
-                @php
-                  $hasil_split = explode(',', $value->fasilitas_id);
-                @endphp
-                @foreach($hasil_split as $h)
-                  <div>{{ $h }}</div>
-                @endforeach
-            </td>
+            <td>{{ $value->wisata->nama_wisata }}</td>
             <td>{{ $value->Tanggal_Kunjungan }}</td>
             <td>{{ $value->jumlah }}</td>
             <td>{{ $value->tagihan }}</td>

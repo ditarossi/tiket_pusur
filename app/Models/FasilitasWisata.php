@@ -12,7 +12,7 @@ class FasilitasWisata extends Model
     protected $primaryKey = 'id';
     public $fillable = [ 
 
-        'nama_wisata', 'fasilitas'
+        'wisata_id', 'fasilitas_id'
 
     ]; 
 

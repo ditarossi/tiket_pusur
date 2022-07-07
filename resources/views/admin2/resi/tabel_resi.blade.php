@@ -22,7 +22,6 @@
                             <th>ID Pemesanan</th>
                             <th>ID User</th>
                             <th>ID Wisata</th>
-                            <th>ID Fasilitas</th>
                             <th>Tanggal Kunjungan</th>
                             <th>Jumlah</th>
                             <th>Tagihan</th>
@@ -37,15 +36,15 @@
                         <tr>
                             <td>{{ $value->id }}</td>
                             <td>{{ $value->user->name }}</td>
-                            <td>{{ $value->nama_wisata }}</td>
-                            <td>
+                            <td>{{ $value->wisata->nama_wisata }}</td>
+                            <!-- <td>
                               @php
                                 $hasil_split = explode(',', $value->fasilitas_id);
                                 @endphp
                                 @foreach($hasil_split as $h)
                                   <div>{{ $h }}</div>
                               @endforeach
-                            </td>
+                            </td> -->
                             <td>{{ $value->Tanggal_Kunjungan }}</td>
                             <td>{{ $value->jumlah }}</td>
                             <td>{{ $value->tagihan }}</td>

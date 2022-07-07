@@ -142,7 +142,6 @@
         </div>               
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button href="#modal" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap" type="button" class="btn btn-primary">Order Now</button>
         </div>
       </div>
     </div>
@@ -607,7 +606,7 @@
 
                                     <div class="form-group"> 
 
-                                        <strong>Name:</strong> 
+                                   
 
                                         <input type="text" name="name" class="form-control" placeholder="Name" value="{{ old('name') }}"> 
 
@@ -620,12 +619,11 @@
                                     </div> 
 
                                 </div> 
-
                                 <div class="col-md-6"> 
 
                                     <div class="form-group"> 
 
-                                        <strong>Email:</strong> 
+                                         
 
                                         <input type="text" name="email" class="form-control" placeholder="Email" value="{{ old('email') }}"> 
 
@@ -640,14 +638,14 @@
                                 </div> 
 
                             </div> 
-
+<br>
                             <div class="row"> 
 
                                 <div class="col-md-6"> 
 
                                     <div class="form-group"> 
 
-                                        <strong>Phone:</strong> 
+                                      
 
                                         <input type="text" name="phone" class="form-control" placeholder="Phone" value="{{ old('phone') }}"> 
 
@@ -665,7 +663,6 @@
 
                                     <div class="form-group"> 
 
-                                        <strong>Subject:</strong> 
 
                                         <input type="text" name="subject" class="form-control" placeholder="Subject" value="{{ old('subject') }}"> 
 
@@ -680,14 +677,13 @@
                                 </div> 
 
                             </div> 
-
+<br>
                             <div class="row"> 
 
                                 <div class="col-md-12"> 
 
                                     <div class="form-group"> 
 
-                                        <strong>Message:</strong> 
 
                                         <textarea name="message" rows="3" class="form-control">{{ old('message') }}</textarea> 
 
@@ -704,7 +700,7 @@
                             </div> 
 
                     
-
+<br>
                             <div class="form-group text-center"> 
 
                                 <button class="btn btn-success btn-submit">Save</button> 

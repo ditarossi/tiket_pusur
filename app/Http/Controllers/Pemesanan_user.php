@@ -7,6 +7,9 @@ use Illuminate\Support\Facades\DB;
 
 use App\Models\Pemesanan;
 use App\Models\Wisata;
+use App\Models\Transaksi;
+use App\Models\TransaksiWisata;
+use App\Models\TransaksiFasilitas;
 
 use Auth;
 
@@ -49,18 +52,29 @@ class Pemesanan_user extends Controller
      */
     public function store(Request $request)
     {
-        $join = join(',',$request->input('fasilitas'));
-        $model = new Pemesanan;
+        // $join = join(',',$request->input('fasilitas'));
+        $model = new Transaksi;
         $model->users_id = Auth::user()->id;
-        $model->wisata_id = $request->nama_wisata;
-        $model->fasilitas_id = $join;
+        // $model->wisata_id = $request->nama_wisata;
+        // $model->fasilitas_id = $join;
         $model->Tanggal_Kunjungan = $request->Tanggal_Kunjungan;
         $model->jumlah = $request->jumlah;
         $model->tagihan = $request->tagihan;
+        $model->wisata_id = $request->wisata_id;
         $model->status_pemesanan = 'Menunggu Verifikasi';
         $model->reschedule = '-';
         $model->refund = '-';
         $model->save();
+
+    $size = count(collect($request)->get('fasilitas_id'));
+    for ($i = 0; $i < $size; $i++)
+    {
+        $TFasilitas = new TransaksiFasilitas;
+
+        $TFasilitas->trx_id = $model->id;
+        $TFasilitas->fasilitas_id = $request->get('fasilitas_id')[$i];
+        $TFasilitas->save();
+    }
 
         return redirect('user_view');
     }
@@ -84,7 +98,7 @@ class Pemesanan_user extends Controller
      */
     public function edit($id)
     {
-        $model = Pemesanan::find($id);
+        $model = Transaksi::find($id);
         return view('user_view.reschedule', compact(
             'model'
         ));
@@ -99,11 +113,10 @@ class Pemesanan_user extends Controller
      */
     public function update(Request $request, $id)
     {
-        $model = Pemesanan::find($id);
-        
-        $join = join(',',$request->input('fasilitas_id'));
+        $model = Transaksi::find($id);
         $model->Tanggal_Kunjungan = $request->Tanggal_Kunjungan;
         $model->reschedule = 'Berhasil Reschedule';
+        
         // $model->refund = '-';
         $model->save();
 

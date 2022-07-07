@@ -19,16 +19,16 @@
                     <table id="order-listing" class="table">
                       <thead>
                         <tr>
-                            <th>Nama Wisata</th>
-                            <th>Fasilitas</th>
+                            <th>wisata_id</th>
+                            <th>fasilitas_id</th>
                             <th>Actions</th>
                         </tr>
                       </thead>
                       <tbody>
                         @foreach($datas as $value)
                         <tr>
-                            <td>{{ $value->nama_wisata }}</td>
-                            <td>{{ $value->fasilitas }}</td>
+                            <td>{{ $value->wisata->nama_wisata }}</td>
+                            <td>{{ $value->fasilitas->fasilitas }}</td>
                             <td>
                               <form action="{{ url('tbl_fasilitasWisata/'.$value->id) }}" method="post">
                                 @csrf 

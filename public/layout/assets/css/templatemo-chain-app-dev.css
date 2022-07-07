@@ -353,6 +353,7 @@ header
   -moz-transition: all 0.3s ease 0s;
   -o-transition: all 0.3s ease 0s;
   transition: all 0.3s ease 0s;
+  
 }
 
 .header-area .main-nav .logo {
@@ -902,9 +903,9 @@ Banner Style
 .main-banner:after {
   content: '';
   background-image: url(../images/RTPA.jpeg);
-  opacity: 65%;
+  opacity: 68%;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: 100%;
   position: absolute;
   left: 0px;
   top: 0px;
@@ -914,7 +915,7 @@ Banner Style
 }
 
 .main-banner .left-content {
-  margin-right: 15px;
+  margin-right: 0px;
 }
 
 .main-banner .left-content h2 {

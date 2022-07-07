@@ -39,7 +39,7 @@
           <li class="nav-item">
             <a class="nav-link" href="/tbl_pemesanan">
               <i class="#"></i>
-              <span class="menu-title">Data Pemesanan</span>
+              <span class="menu-title">Transaksi</span>
             </a>
           </li>
           <li class="nav-item">

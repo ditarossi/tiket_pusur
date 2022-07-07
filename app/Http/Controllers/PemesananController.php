@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Pemesanan;
-use App\Models\Fasilitas;
+use App\Models\Transaksi;
+use App\Models\FasilitasWisata;
 use App\Models\Wisata;
 use App\Models\User;
 use App\Models\DaftarWisata;
@@ -22,10 +23,14 @@ class PemesananController extends Controller
      */
     public function index()
     {
-        $datas = Pemesanan::all();
+        $datas = Transaksi::all();
         return view('admin2.pemesanan.tabel_pemesanan', compact(
             'datas'
         ));
+        // $data = DB::table('transaksi')
+        //     ->join('transaksiFasilitas', 'transaksiFasilitas.id', '=', 'transaksi.id')
+        //     ->get();
+        // dd($data);
     }
 
     /**
@@ -36,7 +41,7 @@ class PemesananController extends Controller
     public function create()
     {
         $model = new Pemesanan;
-        $dfas = Fasilitas::all();
+        $dfas = Transaksi::all();
         return view('admin2.pemesanan.create_pemesanan', compact(
             'model','dfas'
         ));
@@ -50,11 +55,9 @@ class PemesananController extends Controller
      */
     public function store(Request $request)
     {
-        $join = join(',',$request->input('fasilitas_id'));
-        $model = new Pemesanan;
+        $model = new Transaksi;
         $model->users_id = $request->users_id;
         $model->wisata_id = $request->wisata_id;
-        $model->fasilitas_id = $join;
         $model->Tanggal_Kunjungan = $request->Tanggal_Kunjungan;
         $model->jumlah = $request->jumlah;
         $model->tagihan = $request->tagihan;
@@ -85,8 +88,8 @@ class PemesananController extends Controller
      */
     public function edit($id)
     {
-        $model = Pemesanan::find($id);
-        $fas = Fasilitas::all();
+        $model = Transaksi::find($id);
+        $fas = FasilitasWisata::all();
         return view('admin2.pemesanan.update_pemesanan', compact(
             'model', 'fas'
         ));
@@ -101,12 +104,10 @@ class PemesananController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $join = join(',',$request->input('fasilitas_id'));
-        $model = Pemesanan::find($id);
+        $model = Transaksi::find($id);
 
         $model->users_id = $request->users_id;
         $model->wisata_id = $request->wisata_id;
-        $model->fasilitas_id = $join;
         $model->Tanggal_Kunjungan = $request->Tanggal_Kunjungan;
         $model->jumlah = $request->jumlah;
         $model->tagihan = $request->tagihan;
@@ -126,17 +127,17 @@ class PemesananController extends Controller
      */
     public function destroy($id)
     {
-        $model = Pemesanan::find($id);
+        $model = Transaksi::find($id);
         $model->delete();
         return redirect('tbl_pemesanan');
     }
     
     public function gantistatus($id)
     {
-        $datawisata = Pemesanan::find($id);
+        $datawisata = Transaksi::find($id);
         $datawisata->status_pemesanan = 'Berhasil Pesan';
         $datawisata->save();
-        $dw = DaftarWisata::where('nama_wisata', $datawisata->wisata_id)
+        $dw = DaftarWisata::where('id', $datawisata->wisata_id)
             ->first();
         $dw->kuota -=(int)$datawisata->jumlah;
         if($dw->kuota == 0)
@@ -150,10 +151,10 @@ class PemesananController extends Controller
     
     public function gantirefund($id)
     {
-        $datawisata = Pemesanan::find($id);
+        $datawisata = Transaksi::find($id);
         $datawisata->refund = 'Pemesanan Berhasil Dibatalkan';
         $datawisata->save();
-        $dw = DaftarWisata::where('nama_wisata', $datawisata->wisata_id)
+        $dw = DaftarWisata::where('id', $datawisata->wisata_id)
             ->first();
         $dw->kuota +=(int)$datawisata->jumlah;
         if($dw->kuota > 0)
@@ -167,10 +168,10 @@ class PemesananController extends Controller
 
     public function selesai($id)
     {
-        $datawisata = Pemesanan::find($id);
+        $datawisata = Transaksi::find($id);
         $datawisata->status_pemesanan = 'Pemesanan Selesai';
         $datawisata->save();
-        $dw = Wisata::where('nama_wisata', $datawisata->wisata_id)
+        $dw = Wisata::where('id', $datawisata->wisata_id)
             ->first();
         $dw->kuota +=(int)$datawisata->jumlah;
         if($dw->kuota > 0)
@@ -194,7 +195,7 @@ class PemesananController extends Controller
         switch ($request->submit) {
             case 'table':
 
-                $data = Pemesanan::all()
+                $data = Transaksi::all()
                     ->whereBetween('Tanggal_Kunjungan', [$startDate, $endDate]);
              
                 return view('admin2.pemesanan.cetak', compact( 'data', 'startDate', 'endDate'));
@@ -206,7 +207,7 @@ class PemesananController extends Controller
     {
         $startDate = $start;
         $endDate = $end;
-        $data = Pemesanan::get()->whereBetween('Tanggal_Kunjungan', [$startDate, $endDate]);
+        $data = Transaksi::get()->whereBetween('Tanggal_Kunjungan', [$startDate, $endDate]);
         // // dd($datas);
         // // view()->share('datas', $datas);
         $pdf = PDF::loadview('admin2.pemesanan.cetak-pertanggal', ['data'=>$data]);

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Resi;
-use App\Models\Pemesanan;
+use App\Models\Transaksi;
 use App\Models\Fasilitas;
 use App\Models\Wisata;
 use App\Models\User;
@@ -18,7 +18,7 @@ class ResiPembayaran extends Controller
      */
     public function index()
     {
-        $datas = Pemesanan::all();
+        $datas = Transaksi::all();
         return view('admin2.resi.tabel_resi', compact(
             'datas'
         ));

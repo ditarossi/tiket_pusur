@@ -15,19 +15,19 @@
                       @csrf
                       <div class="mb-3">
                         <label>Nama Wisata</label>
-                        <select name="nama_wisata" type="text" class="form-control" id="exampleInputUsername1" placeholder="Nama Wisata">
+                        <select name="wisata_id" type="text" class="form-control" id="exampleInputUsername1" placeholder="Nama Wisata">
                             <option value=""> -- Pilih --</option>
                             @foreach ($wisata as $d)
-                            <option value="{{$d->nama_wisata}}">{{$d->nama_wisata}}</option>
+                            <option value="{{$d->id}}">{{$d->nama_wisata}}</option>
                             @endforeach
                         </select>
                         </div>
                         <div class="mb-3">
                         <label>Fasilitas Wisata</label>
-                            <select name="fasilitas" type="text" class="form-control" id="exampleInputUsername1" placeholder="Fasilitas WIsata">
+                            <select name="fasilitas_id" type="text" class="form-control" id="exampleInputUsername1" placeholder="Fasilitas WIsata">
                                 <option value=""> -- Pilih --</option>
                                 @foreach ($fasi as $d)
-                                <option value="{{$d->fasilitas}}">{{$d->fasilitas}}</option>
+                                <option value="{{$d->id}}">{{$d->fasilitas}}</option>
                                 @endforeach
                             </select>
                         </div>
