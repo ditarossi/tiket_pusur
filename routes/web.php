@@ -57,8 +57,11 @@ Route::group([
     //CRUD DETAIL
     Route::resource('tbl_detail', '\App\Http\Controllers\DetailController');
 
-    //CRUD PEMESANAN
+    //CRUD TRANSAKSI
     Route::resource('tbl_pemesanan', '\App\Http\Controllers\PemesananController');
+
+    //CRUD TRANSAKSI FASILITAS
+    Route::resource('tbl_transaksiFasilitas', '\App\Http\Controllers\TransaksiFasilitasController');
 
     //CRUD RESI PEMBAYARAN
     Route::resource('tbl_resi', '\App\Http\Controllers\ResiPembayaran');
@@ -96,6 +99,8 @@ Route::group([
     Route::get('cetak/{id}', [App\Http\Controllers\HomeController::class, 'download']);
     Route::get('tiket', [App\Http\Controllers\HomeController::class, 'tiket']);
     Route::get('riwayat', [App\Http\Controllers\HomeController::class, 'riwayat']);
+
+    Route::get('riwayat_pemesanan', [App\Http\Controllers\HomeController::class, 'riwayat_pemesanan']);
 
     Route::get('detail/{id}', [App\Http\Controllers\HomeController::class, 'detail']);
 

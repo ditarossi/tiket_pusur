@@ -46,7 +46,7 @@ class HomeController extends Controller
 
         $user = request()->user();
 
-        $datas = Transaksi::where('id', $id)->where('users_id', $user->id)->get();
+        $datas = Transaksi::where('id', $id)->get();
         //view()->share('datas', $datas);
         $pdf = PDF::loadView('user_view.tiket-pdf',['datas'=>$datas]);
         return $pdf->download('tiket-pusur.pdf');
@@ -142,6 +142,24 @@ class HomeController extends Controller
         //dd($riwayat);
         return view('user_view.riwayat', compact(
             'riwayat'
+        ));
+    }
+
+    public function riwayat_pemesanan()
+    {
+        $user = request()->user();
+        $tiket = Transaksi::select('*')
+            ->where('users_id', $user->id)
+            ->where('status_pemesanan', 'Berhasil Pesan')
+            ->orWhere('status_pemesanan', 'Menunggu Verifikasi')
+            ->get();
+
+        $riwayat = Transaksi::select('*')
+            ->where('users_id', $user->id)
+            ->where('status_pemesanan', '=', 'Pemesanan Selesai')
+            ->get();
+        return view('user_view.riwayat_pemesanan', compact(
+            'tiket', 'riwayat'
         ));
     }
 

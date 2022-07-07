@@ -43,6 +43,12 @@
             </a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="/tbl_transaksiFasilitas">
+              <i class="#"></i>
+              <span class="menu-title">Transaksi Fasilitas</span>
+            </a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="/tbl_resi">
               <i class="#"></i>
               <span class="menu-title">Tiket</span>

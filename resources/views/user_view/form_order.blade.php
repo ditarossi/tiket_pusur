@@ -58,7 +58,7 @@
     </div>
     <div class="mb-3">
       <label>Fasilitas Wisata</label>
-      <select name="fasilitas_id[]" class="form-control input-lg dynamic js-example-basic-single" id="fasilitas_id" multiple="multiple" placeholder="Fasilitas Wisata">
+      <select name="fasilitas_id[]" data-dependent="tagihan" class="form-control input-lg dynamic js-example-basic-single" id="fasilitas_id" multiple="multiple" placeholder="Fasilitas Wisata">
         <option value=""> -- Pilih --</option>
       </select>
     </div>
@@ -72,11 +72,11 @@
     </div>
     <div class="mb-3">
       <label>Tagihan</label>
-      <input value="" name="tagihan" type="text" class="form-control" id="tagihan"></input>
+      <input value=" " name="tagihan" type="text" class="form-control" id="tagihan"></input>
     </div>
     <div class="modal-footer">
-      <a href="{{url('user_view')}}" type="button" class="btn btn-secondary">Close</a>
-      <button type="submit" class="btn btn-primary">Send message</button>
+        <a href="{{url('user_view')}}" type="button" class="btn btn-secondary">Close</a>
+        <button type="submit" class="btn btn-primary">Send message</button>
     </div>
     {{ csrf_field() }}
   </form>
@@ -105,9 +105,6 @@
           }
         })
       }
-    });
-    $('#wisata_id').change(function() {
-      $('#fasilitas_id').val('');
     });
   });
 </script>

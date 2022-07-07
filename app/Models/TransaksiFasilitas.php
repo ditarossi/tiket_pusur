@@ -16,4 +16,10 @@ class TransaksiFasilitas extends Model
         'trx_id'
     ];
 
+    public function fas()
+    {
+        // return $this->belongsTo('Model', 'foreign_key', 'owner_key'); 
+        return $this->belongsTo('App\Models\Fasilitas','fasilitas_id','id');
+    }
+
 }

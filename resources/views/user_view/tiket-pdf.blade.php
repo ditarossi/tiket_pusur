@@ -24,43 +24,48 @@
 
 <body>
     <h1 style="font-size: 16px; text-align: center;">
-        PUSUR INSTITUTE
+        TIKET WISATA
     </h1>
     <h1 style="font-size: 16px; text-align: center;">
-        KELURAHAN JEBRES KECAMATAN JEBRES
+        DESA WISATA PUSUR, KABUPATEN KLATEN
     </h1>
-    <h1 style="font-size: 16px; text-align: center;">
-        KABUPATEN KLATEN
-    </h1>
-    <h4 style="text-align: center; font-weight: normal; margin-bottom: 0;">
-        JALAN KLATEN-JOGJA, KLATEN, Kec. KLATEN, KABUPATEN KLATEN, JAWA TENGAH
-    </h4>
-    <h4 style="text-align: center; font-weight: normal; margin: 0;">
-        Telepon: 08988777788 Surel : pusur@mail.com Kode Pos : 5612
-    </h4>
     <hr style="border: 3px solid; margin-bottom: 1px;">
     <hr style="margin-top: 0;">
 
-    <h3 style="font-size: 16px; text-align: center;">Tiket Wisata</h1>
+    <h3 style="font-size: 16px; text-align: left;">Petunjuk</h1>
+    <br>
+    <ul>
+      <p>1. Bawa / tunjukkan tiket pada saat melakukan kunjungan ke desa wisata</p>
+      <p>2. Lakukan pembayaran sesuai dengan tagihan</p>
+      <p>3. Selamat berwisata</p>
+    </ul>
     <br>
         <div class="form-group">
-            <table class="static" align="center" rules="all" border="1px" style="width: 95%;">
+            <table class="" align="center" style="width: 95%;">
                 <tr>
-                  <th scope="col">ID Pemesanan</th>
-                  <th scope="col">Nama</th>
-                  <th scope="col">Nama Wisata</th>
-                  <th scope="col">Tanggal Kunjungan</th>
-                  <th scope="col">Jumlah</th>
-                  <th scope="col">Tagihan</th>
+                  <th scope="col">Kategori</th>
+                  <th scope="col">Data</th>
                 </tr>
                 @foreach ($datas as $value)
                   <tr>
-                    <th>{{ $value->id }}</th>
-                    <td>{{ $value->user->name }}</td>
+                    <th>ID Pesanan</th>
+                    <td>{{ $value->id }}</td>
+                  </tr>
+                  <tr>
+                    <th>Nama Wisata</th>
                     <td>{{ $value->wisata->nama_wisata }}</td>
+                  </tr>
+                  <tr>
+                    <th>Tanggal Kunjungan</th>
                     <td>{{ $value->Tanggal_Kunjungan }}</td>
+                  </tr>
+                  <tr>
+                    <th>Jumlah</th>
                     <td>{{ $value->jumlah }}</td>
-                    <td>{{ $value->tagihan }}</td>
+                  </tr>
+                  <tr>
+                    <th>Tagihan</th>
+                    <td>{{ $value->tagihan }}</td> -->
                   </tr>
                 @endforeach
         </div>

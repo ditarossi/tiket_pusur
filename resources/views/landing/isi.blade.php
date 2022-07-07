@@ -26,20 +26,6 @@
               </div>
             </div>
           </div>
-          <!-- <div class="col-lg-6">
-            <div class="portfolio-details-slider swiper">                   
-                  <div class="swiper-wrapper align-items-center">
-                    @foreach($datas as $d)
-                      <div class="swiper-slide">
-                        <img src="{{asset('layout')}}/assets/images/logo-TBG.png" alt="">
-                      </div>
-                      <div class="swiper-slide">
-                        <img src="{{asset('layout')}}/assets/images/logo-RPTA.png" alt="">
-                      </div>
-                    @endforeach
-                  </div>
-              </div>  
-          </div> -->
         </div>
       </div>
     </div>
@@ -191,31 +177,17 @@
   @endforeach
 
 <!--WISATA-->
-  <div id="pricing" class="pricing-tables">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 offset-lg-2">
-          <div class="section-heading">
-            <h4>Wisata</h4>
-            <img src="{{asset('layout')}}/assets/images/heading-line-dec.png" alt="">
-            <p>
-              wisata adalah bepergian secara bersama-sama dengan tujuan untuk bersenang-senang, menambah pengetahuan, dan lain-lain. Selain itu juga dapat diartikan sebagai bertamasya atau piknik.
-            </p>
-          </div>
-        </div>
-      </div>
       <!-- ======= About Section ======= -->
+      <div id="pricing" class="pricing-tables">
         <section class="about" data-aos="fade-up">
           <div class="container">
             <div class="row">
               <div class="col-lg-6">           
                 <div class="portfolio-details-slider swiper">                   
                   <div class="swiper-wrapper align-items-center">
-                    @foreach($datas as $d)
-                      <div class="swiper-slide">
-                        <img src="{{ asset($d->foto) }}" alt="">
-                      </div>
-                    @endforeach
+                    <div class="swiper-slide">
+                      <img src="{{asset('layout')}}/assets/images/slider-dec.png" alt="">
+                    </div>
                   </div>
                   <div class="swiper-pagination"></div>                     
                 </div>           
@@ -224,16 +196,17 @@
                 <h3>Bagaimana cara melakukan pemesanan wisata ?</h3>
                 <ul>
                   <li><i class="bi bi-check2-circle"></i> Melakukan registrasi sebagai user</li>
-                  <li><i class="bi bi-check2-circle"></i> Login ke sistem, dengan menggunakan email dan password yang sama ketika user melakukan registrasi</li>
-                  <li><i class="bi bi-check2-circle"></i> Memilih menu pemesanan, kemudian mengisikan form sesuai dengan kebutuhan</li>
-                  <li><i class="bi bi-check2-circle"></i> Memilih menu user, kemudian memilih lihat tiket, untuk mendapatkan informasi pemesanan</li>
+                  <li><i class="bi bi-check2-circle"></i> Login ke sistem</li>
+                  <li><i class="bi bi-check2-circle"></i> Memilih menu pemesanan, kemudian mengisi form pemesanan</li>
+                  <li><i class="bi bi-check2-circle"></i> Memilih menu user, kemudian memilih menu pemesanan</li>
                   <li><i class="bi bi-check2-circle"></i> Menunggu hingga status pemesanan berubah menjadi berhasil pesan</li>
-                  <li><i class="bi bi-check2-circle"></i> Datang ke tempat wisata, kemudian tunjukkan e-tiket yang sudah didapatkan bisa melalui sistem/file .pdf</li>
+                  <li><i class="bi bi-check2-circle"></i> Datang ke tempat wisata, kemudian tunjukkan e-tiket</li>
                 </ul>
               </div>
             </div>
           </div>
         </section>
+      </div>
       <!-- End About Section -->
     </div>
   </div>
@@ -244,7 +217,7 @@
       <div class="row">
         <div class="col-lg-8 offset-lg-2">
           <div class="section-heading  wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.5s">
-            <h4>Visi</h4>
+            <h4>Komunitas Pengelola</h4>
             <img src="{{asset('layout')}}/assets/images/heading-line-dec.png" alt="">
             <p>Harmonisasi Berbagai Kepentingan Terhadap Pelestarian Sub-das Pusur</p>
           </div>

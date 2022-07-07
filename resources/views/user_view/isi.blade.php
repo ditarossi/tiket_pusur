@@ -193,21 +193,8 @@
 @endforeach
 
 <!--WISATA-->
-<div id="pricing" class="pricing-tables">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 offset-lg-2">
-        <div class="section-heading">
-          <h4>Wisata</h4>
-          <img src="{{asset('layout')}}/assets/images/heading-line-dec.png" alt="">
-          <p>
-            wisata adalah bepergian secara bersama-sama dengan tujuan untuk bersenang-senang, menambah pengetahuan, dan lain-lain. Selain itu juga dapat diartikan sebagai bertamasya atau piknik.
-          </p>
-        </div>
-      </div>
-    </div>
-
     <!-- ======= About Section ======= -->
+    <div id="pricing" class="pricing-tables">
       <section class="about" data-aos="fade-up">
         <div class="container">
           <div class="row">
@@ -215,11 +202,9 @@
               <div class="portfolio-details-slider swiper">                   
                 <div class="swiper-wrapper align-items-center">
                   <!--PERULANGAN SLIDER-->
-                  @foreach($datas as $d)
                     <div class="swiper-slide">
-                      <img src="{{ asset($d->foto) }}" alt="">
+                      <img src="{{asset('layout')}}/assets/images/slider-dec.png" alt="" width="250px">
                     </div>
-                  @endforeach
                 </div>
                 <div class="swiper-pagination"></div>                     
               </div>           
@@ -228,37 +213,24 @@
               <h3>Bagaimana cara melakukan pemesanan wisata ?</h3>
                 <ul>
                   <li><i class="bi bi-check2-circle"></i> Melakukan registrasi sebagai user</li>
-                  <li><i class="bi bi-check2-circle"></i> Login ke sistem, dengan menggunakan email dan password yang sama ketika user melakukan registrasi</li>
-                  <li><i class="bi bi-check2-circle"></i> Memilih menu pemesanan, kemudian mengisikan form sesuai dengan kebutuhan</li>
-                  <li><i class="bi bi-check2-circle"></i> Memilih menu user, kemudian memilih lihat tiket, untuk mendapatkan informasi pemesanan</li>
+                  <li><i class="bi bi-check2-circle"></i> Login ke sistem</li>
+                  <li><i class="bi bi-check2-circle"></i> Memilih menu pemesanan, kemudian mengisi form pemesanan</li>
+                  <li><i class="bi bi-check2-circle"></i> Memilih menu user, kemudian memilih menu pemesanan</li>
                   <li><i class="bi bi-check2-circle"></i> Menunggu hingga status pemesanan berubah menjadi berhasil pesan</li>
-                  <li><i class="bi bi-check2-circle"></i> Datang ke tempat wisata, kemudian tunjukkan e-tiket yang sudah didapatkan bisa melalui sistem/file .pdf</li>
+                  <li><i class="bi bi-check2-circle"></i> Datang ke tempat wisata, kemudian tunjukkan e-tiket</li>
                 </ul>
+                <br>
+                <div class="border-button">
+                  <a href="/order" >Order Now</a>
+                </div>
               </div>
             </div>
           </div>
       </section>
+    </div>
     <!-- End About Section -->
   </div>
 </div> 
-
-<!--PEMESANAN-->
-<div id="order" class="order-form">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 offset-lg-2">
-        <div class="section-heading" align="center">
-          <!-- <div class="border-button">
-            <a href="#modal" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Order Now</a>
-          </div> -->
-          <div class="border-button">
-            <a href="/order" >Order Now</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 
 <!-- MODAL PEMESANAN-->
   <div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -348,7 +320,7 @@
       <div class="row">
         <div class="col-lg-8 offset-lg-2">
           <div class="section-heading  wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.5s">
-            <h4>Visi</h4>
+            <h4>Komunitas Pengelola</h4>
             <img src="{{asset('layout')}}/assets/images/heading-line-dec.png" alt="">
             <p>Harmonisasi Berbagai Kepentingan Terhadap Pelestarian Sub-das Pusur</p>
           </div>

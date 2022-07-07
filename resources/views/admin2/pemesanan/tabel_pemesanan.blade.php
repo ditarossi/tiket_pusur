@@ -20,6 +20,7 @@
                     <table id="order-listing" class="table">
                       <thead>
                         <tr>
+                            <th>ID Transaksi</th>
                             <th>ID User</th>
                             <th>ID Wisata</th>
                             <th>Tanggal Kunjungan</th>
@@ -34,6 +35,9 @@
                       <tbody>
                         @foreach($datas as $value)
                         <tr>
+                            <td>
+                              {{ $value->id }}
+                            </td>
                             <td>
                               {{ $value->user->name }}
                             </td>

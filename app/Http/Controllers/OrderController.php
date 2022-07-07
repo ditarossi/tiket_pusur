@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\FasilitasWisata;
+use App\Models\DaftarWisata;
 
 class OrderController extends Controller
 {
@@ -13,8 +14,9 @@ class OrderController extends Controller
         $wisata_list = FasilitasWisata::
         groupBy('wisata_id')
         ->get();
+        $datas = DaftarWisata::all();
         return view('user_view.form_order', compact(
-            'wisata_list'
+            'wisata_list', 'datas'
         ));
     }
 

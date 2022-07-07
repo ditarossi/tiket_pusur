@@ -120,7 +120,7 @@ class Pemesanan_user extends Controller
         // $model->refund = '-';
         $model->save();
 
-        return redirect('tiket');
+        return redirect('riwayat_pemesanan');
     }
 
     public function refund($id)
@@ -129,7 +129,7 @@ class Pemesanan_user extends Controller
         $datawisata->refund = 'Menunggu Persetujuan';
         $datawisata->save();
 
-        return redirect('tiket');
+        return redirect('riwayat_pemesanan');
     }
 
     /**

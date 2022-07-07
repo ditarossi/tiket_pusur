@@ -13,7 +13,7 @@
             <ul class="nav">
               <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
               <!--<li class="scroll-to-section"><a href="#services">History</a></li>-->
-              <li class="scroll-to-section"><a href="#pricing">Wisata</a></li>
+              <li class="scroll-to-section"><a href="#pricing">Pemesanan Wisata</a></li>
               <li class="scroll-to-section"><a href="#services">Pusur Institute</a></li>
               <li class="scroll-to-section"><a href="#contact">Contact Us</a></li>
               <!-- <li class="scroll-to-section"><a href="/contact-forms">Contact Us</a></li> -->
