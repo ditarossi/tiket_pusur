@@ -71,6 +71,7 @@ class Pemesanan_user extends Controller
         $model->status_pemesanan = 'Menunggu Verifikasi';
         $model->reschedule = '-';
         $model->refund = '-';
+        $model->bukti_transaksi = "Belum Melakukan Transaksi";
         $model->save();
 
         $size = count(collect($request)->get('fasilitas_id'));

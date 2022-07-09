@@ -27,7 +27,7 @@
     </style>
   </head>
   <body>
-  <div class="container" width="75%">
+  {{-- <div class="container" width="75%">
     <div class="col-xl-12 ui-sortable">
     <a type="button" href="{{url('riwayat_pemesanan')}}" class="btn btn-success">Back</a>
         <br>
@@ -63,6 +63,47 @@
                   <button type="submit" class="btn btn-primary">Send message</button>
                 </div>
             </form>
+    </div> --}}
+
+<div class="container">
+    <div class="card mb-3" style="max-width: 1300px;">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img src="{{asset('layout')}}/assets/images/pemesanan.png" class="img-fluid rounded-start" alt="..." width="750px">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title" align="center">Form Pemesanan</h5>
+              <form class="forms-sample" action="{{ url('pemesanan/'.$model->id) }}" method="post" enctype="multipart/form-data">
+                  @csrf
+                  <input type="hidden" name="_method" value="PATCH">
+                  <div class="mb-3">
+                    <label>Nama Wisata</label>
+                    <input name="wisata_id" value="{{$model->wisata->nama_wisata}}" class="form-control" id="wisata_id" readonly></input>
+                  </div>
+                  <div class="mb-3">
+                    <label>Tanggal Kunjungan</label>
+                    <input name="Tanggal_Kunjungan" value="{{$model->Tanggal_Kunjungan}}" type="date" class="form-control" id="Tanggal_Kunjungan"></input>
+                  </div>
+                  <div class="mb-3">
+                    <label>Jumlah</label>
+                    <input name="jumlah" value="{{$model->jumlah}}" type="text" class="form-control" id="jumlah" oninput="myFunction()" readonly></input>
+                  </div>
+                  <div class="mb-3">
+                    <label>Tagihan</label>
+                    <input value="{{$model->tagihan}}" name="tagihan" type="text" class="form-control" id="tagihan" readonly></input>
+                  </div>
+                        <a href="{{url('riwayat_pemesanan')}}" type="button" class="btn btn-secondary">Close</a>
+                        <button type="submit" name="submit" class="btn btn-primary">Send message</button>
+                  {{ csrf_field() }}
+                </form>
+          </div>
+        </div>
+      </div>
     </div>
+</div>
+
+
+
     </body>
 </html>
