@@ -40,4 +40,9 @@ class wisata extends Model
         return $this->belongsTo('App\Models\Fasilitas','fasilitas_id','id');
     }
 
+    public function trans()
+    {
+        return $this->hasMany('App\Models\Transaksi');
+    }
+
 }

@@ -29,7 +29,7 @@
   <body>
   <div class="container" width="75%">
     <div class="col-xl-12 ui-sortable">
-    <a type="button" href="{{url('tiket')}}" class="btn btn-success">Back</a>
+    <a type="button" href="{{url('riwayat_pemesanan')}}" class="btn btn-success">Back</a>
         <br>
         <form class="forms-sample" action="{{ url('pemesanan/'.$model->id) }}" method="post">
               @csrf

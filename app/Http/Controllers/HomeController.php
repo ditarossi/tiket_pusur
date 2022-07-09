@@ -13,6 +13,7 @@ use PDF;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\welcomeMail;
 use Illuminate\Support\Facades\DB;
+use App\Models\TransaksiFasilitas;
 
 class HomeController extends Controller
 {
@@ -148,6 +149,9 @@ class HomeController extends Controller
     public function riwayat_pemesanan()
     {
         $user = request()->user();
+        $total = Transaksi::select('*')->join('transaksifasilitas', 'transaksi.id', '=', 'transaksifasilitas.trx_id')
+            ->get();
+        
         $tiket = Transaksi::select('*')
             ->where('users_id', $user->id)
             ->where('status_pemesanan', 'Berhasil Pesan')
@@ -159,7 +163,7 @@ class HomeController extends Controller
             ->where('status_pemesanan', '=', 'Pemesanan Selesai')
             ->get();
         return view('user_view.riwayat_pemesanan', compact(
-            'tiket', 'riwayat'
+            'tiket', 'riwayat', 'total'
         ));
     }
 

@@ -10,8 +10,10 @@ use App\Models\Wisata;
 use App\Models\Transaksi;
 use App\Models\TransaksiWisata;
 use App\Models\TransaksiFasilitas;
+use App\Models\FasilitasWisata;
 
 use Auth;
+use App\Models\DaftarWisata;
 
 class Pemesanan_user extends Controller
 {
@@ -29,6 +31,14 @@ class Pemesanan_user extends Controller
     public function index()
     {
         return view('/user_view.isi');
+    }
+
+    public function checkout()
+    {
+        $transaksi = TransaksiFasilitas::all();
+        return view('user_view.checkout', compact(
+            'transaksi'
+        ));
     }
 
     /**
@@ -50,13 +60,10 @@ class Pemesanan_user extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, DaftarWisata $daftarWisata)
     {
-        // $join = join(',',$request->input('fasilitas'));
         $model = new Transaksi;
         $model->users_id = Auth::user()->id;
-        // $model->wisata_id = $request->nama_wisata;
-        // $model->fasilitas_id = $join;
         $model->Tanggal_Kunjungan = $request->Tanggal_Kunjungan;
         $model->jumlah = $request->jumlah;
         $model->tagihan = $request->tagihan;
@@ -66,17 +73,16 @@ class Pemesanan_user extends Controller
         $model->refund = '-';
         $model->save();
 
-    $size = count(collect($request)->get('fasilitas_id'));
-    for ($i = 0; $i < $size; $i++)
-    {
-        $TFasilitas = new TransaksiFasilitas;
+        $size = count(collect($request)->get('fasilitas_id'));
+        for ($i = 0; $i < $size; $i++)
+        {
+            $TFasilitas = new TransaksiFasilitas;
 
-        $TFasilitas->trx_id = $model->id;
-        $TFasilitas->fasilitas_id = $request->get('fasilitas_id')[$i];
-        $TFasilitas->save();
-    }
-
-        return redirect('user_view');
+            $TFasilitas->trx_id = $model->id;
+            $TFasilitas->fasilitas_id = $request->get('fasilitas_id')[$i];
+            $TFasilitas->save();
+        } 
+        return redirect('/user_view');
     }
 
     /**
@@ -159,4 +165,5 @@ class Pemesanan_user extends Controller
             'datas', 'value'
         ));
     }
+
 }

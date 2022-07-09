@@ -42,47 +42,101 @@
 
 <body>
   <div class="container">
-  <form class="forms-sample" action="{{ url('pemesanan') }}" method="post">
-    @csrf
-    <h4 align="center">Form Pemesanan</h4>
-    <div class="mb-3">
-      <label>Nama Wisata</label>
-      <select name="wisata_id" data-dependent="fasilitas_id" class="form-control input-lg dynamic" id="wisata_id" placeholder="Nama Wisata">
-        <option value=""> -- Pilih --</option>
-          @foreach ($wisata_list as $wis)
-            @if($wis->wisata->kuota > 0 )
-              <option value="{{ $wis->wisata_id }}">{{ $wis->wisata->nama_wisata }}</option>
-            @endif
-          @endforeach
-      </select>
+
+
+    <div class="card mb-3" style="max-width: 1300px;">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img src="{{asset('layout')}}/assets/images/pemesanan.png" class="img-fluid rounded-start" alt="..." width="750px">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title" align="center">Form Pemesanan</h5>
+              <form class="forms-sample" action="{{ url('pemesanan') }}" method="post">
+                  @csrf
+                  <div class="mb-3">
+                    <label>Nama Wisata</label>
+                    <select name="wisata_id" data-dependent="fasilitas_id" class="form-control input-lg dynamic" id="wisata_id" placeholder="Nama Wisata">
+                      <option value=""> -- Pilih --</option>
+                        @foreach ($wisata_list as $wis)
+                          @if($wis->wisata->kuota > 0 )
+                            <option value="{{ $wis->wisata_id }}" data-harga="{{ $wis->wisata->harga }}">{{ $wis->wisata->nama_wisata }}</option>
+                          @endif
+                        @endforeach
+                    </select>
+                  </div>
+                  <div class="mb-3">
+                    <label>Fasilitas Wisata</label>
+                    <select name="fasilitas_id[]" data-dependent="tagihan" class="form-control input-lg dynamic js-example-basic-single" id="fasilitas_id" multiple="multiple" placeholder="Fasilitas Wisata">
+                      <option value=""> -- Pilih --</option>
+                    </select>
+                  </div>
+                  <div class="mb-3">
+                    <label>Tanggal Kunjungan</label>
+                    <input name="Tanggal_Kunjungan" type="date" class="form-control" id="Tanggal_Kunjungan"></input>
+                  </div>
+                  @if(session()->has('Success'))
+                  <div class="alert alert-success" role="alert">
+                    {{session('Success')}}
+                  </div>
+                  @endif
+                  <div class="mb-3">
+                    <label>Jumlah</label>
+                    <input name="jumlah" type="text" class="form-control" id="jumlah" oninput="myFunction()"></input>
+                  </div>
+                  <div class="mb-3">
+                    <label>Tagihan</label>
+                    <input value=" " name="tagihan" type="text" class="form-control" id="tagihan" readonly></input>
+                  </div>
+
+                        <a href="{{url('user_view')}}" type="button" class="btn btn-secondary">Close</a>
+                        <button type="submit" name="submit" class="btn btn-primary">Send message</button>
+
+              {{-- @foreach ($wisata_list as $wis)
+                          @if($wis->wisata->kuota == 0 )
+                            <div class="alert alert-danger" role="alert">
+                      A simple danger alert—check it out!
+                      <div class="modal-footer">
+                      <a href="{{url('user_view')}}" type="button" class="btn btn-secondary">Close</a>
+                    </div>
+                    </div>
+                    @endif
+                    @endforeach --}}
+                    {{-- <div class="modal-footer">
+                      <a href="{{url('user_view')}}" type="button" class="btn btn-secondary">Close</a>
+                    </div> --}}
+                    
+                    {{-- @if($wisata_list->count())
+                      @if($wis->wisata->kuota < 0 ) --}}
+                      {{-- <div class="modal-footer">
+                        <a href="{{url('user_view')}}" type="button" class="btn btn-secondary">Close</a>
+                        <button type="submit" class="btn btn-primary">Send message</button>
+                      </div> --}}
+                      {{-- @elseif($wis->wisata->kuota > 0 )
+                      <div class="modal-footer">
+                        <a href="{{url('user_view')}}" type="button" class="btn btn-secondary">Close</a>
+                        <button type="submit" class="btn btn-primary">Send message</button>
+                      </div>
+                      @else
+                      kosong
+                      @endif --}}
+                        {{-- <div class="modal-footer">
+                        <a href="{{url('user_view')}}" type="button" class="btn btn-secondary">Close</a>
+                        <button type="submit" class="btn btn-primary">Send message</button>
+                      </div> --}}
+                    {{-- @endif --}}
+                  {{ csrf_field() }}
+                </form>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="mb-3">
-      <label>Fasilitas Wisata</label>
-      <select name="fasilitas_id[]" data-dependent="tagihan" class="form-control input-lg dynamic js-example-basic-single" id="fasilitas_id" multiple="multiple" placeholder="Fasilitas Wisata">
-        <option value=""> -- Pilih --</option>
-      </select>
-    </div>
-    <div class="mb-3">
-      <label>Tanggal Kunjungan</label>
-      <input name="Tanggal_Kunjungan" type="date" class="form-control" id="Tanggal_Kunjungan"></input>
-    </div>
-    <div class="mb-3">
-      <label>Jumlah</label>
-      <input name="jumlah" type="text" class="form-control" id="jumlah"></input>
-    </div>
-    <div class="mb-3">
-      <label>Tagihan</label>
-      <input value=" " name="tagihan" type="text" class="form-control" id="tagihan"></input>
-    </div>
-    <div class="modal-footer">
-        <a href="{{url('user_view')}}" type="button" class="btn btn-secondary">Close</a>
-        <button type="submit" class="btn btn-primary">Send message</button>
-    </div>
-    {{ csrf_field() }}
-  </form>
-  </div>
+
+
 </body>
+
 <script>
+  let harga_wisata, total_sementara;
   $(document).ready(function() {
     $('#wisata_id').change(function() {
       if ($(this).val() != '') {
@@ -90,6 +144,8 @@
         var value = $(this).val();
         var dependent = $(this).data('dependent');
         var _token = $('input[name="_token"]').val();
+
+        console.log(select, value);
 
         $.ajax({
           url: "{{ route('order.fetch') }}",
@@ -104,18 +160,84 @@
             $('#' + dependent).html(result);
           }
         })
+        $.ajax({
+          url:"{{route('order.detail')}}",
+          method: "post", 
+          data: {
+            value: value,
+            _token: _token,
+          },
+          success: function(result) {
+            // $('#' + dependent).html(result);
+            console.log(result);
+            document.getElementById("tagihan").value = result;
+            harga_wisata = result;
+          }
+        })
       }
     });
   });
+
+
+  $(document).ready(function() {
+    $('#fasilitas_id').change(function() {
+      if ($(this).val() != '') {
+        var select = $(this).attr("id");
+        var value = $(this).val();
+        var dependent = $(this).data('dependent');
+        var _token = $('input[name="_token"]').val();
+
+        console.log(select, value);
+
+        $.ajax({
+          url:"{{route('order.fasilitas')}}",
+          method: "post", 
+          data: {
+            value: value,
+            _token: _token,
+          },
+          success: function(result) {
+            // $('#' + dependent).html(result);
+            // console.log(result);
+            // document.getElementById("tagihan").value = result;
+            let sum = result.reduce(function (previousValue, currentValue) {
+                return previousValue + parseInt(currentValue.harga)
+            }, 0)
+            //console.log(sum);
+            // let totalawal = document.getElementById("tagihan").value;
+            let totalakhir = sum+parseInt(harga_wisata);
+            document.getElementById("tagihan").value = totalakhir;
+            total_sementara = totalakhir;
+          }
+        })
+      }
+    });
+  });
+
+  function myFunction() {
+  var x = document.getElementById("jumlah").value;
+  //document.getElementById("demo").innerHTML = "You wrote: " + x;
+  console.log(x);
+  let total_final = parseInt(total_sementara) * parseInt(x);
+  document.getElementById("tagihan").value = total_final;
+}
 </script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
-        <script>
-            $(document).ready(function() {
-                $('.js-example-basic-single').select2();
-            });
-        </script>
+<script>
+    $(document).ready(function() {
+      $('.js-example-basic-single').select2();
+    });
+</script>
+
+<script>
+  var hargaWisata = document.getElementById('wisata_id').data-harga;
+  var result = hargaWisata;
+  if (!isNaN(result)){
+            document.getElementById('tagihan').value=result;
+        }
+</script>
 
 </html>

@@ -48,6 +48,10 @@
                 </tr>
                 @foreach ($datas as $value)
                   <tr>
+                    <th>Nama User</th>
+                    <td>{{ $value->user->name}}</td>
+                  </tr>
+                  <tr>
                     <th>ID Pesanan</th>
                     <td>{{ $value->id }}</td>
                   </tr>

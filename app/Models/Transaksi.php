@@ -31,4 +31,14 @@ class Transaksi extends Model
         // return $this->belongsTo('Model', 'foreign_key', 'owner_key'); 
         return $this->belongsTo('App\Models\DaftarWisata','wisata_id','id');
     }
+    public function transfas()
+    {
+        // return $this->belongsTo('Model', 'foreign_key', 'owner_key'); 
+        return $this->hasMany('App\Models\TransaksiFasilitas');
+    }
+
+    public function fasi()
+    {
+        return $this->hasMany('App\Models\Fasilitas');
+    }
 }

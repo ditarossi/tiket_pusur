@@ -223,6 +223,9 @@
                 <div class="border-button">
                   <a href="/order" >Order Now</a>
                 </div>
+                {{-- <div class="border-button">
+                  <a href="/tagihan" >Order Now</a>
+                </div> --}}
               </div>
             </div>
           </div>
@@ -271,7 +274,7 @@
             </div>
             <div class="mb-3">
               <label>Tagihan</label>
-              <input value="{{$d->harga}}" name="tagihan" type="text" class="form-control" id="tagihan"></input>
+              <input value="" name="tagihan" type="text" class="form-control" id="tagihan"></input>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

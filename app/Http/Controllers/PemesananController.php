@@ -27,10 +27,6 @@ class PemesananController extends Controller
         return view('admin2.pemesanan.tabel_pemesanan', compact(
             'datas'
         ));
-        // $data = DB::table('transaksi')
-        //     ->join('transaksiFasilitas', 'transaksiFasilitas.id', '=', 'transaksi.id')
-        //     ->get();
-        // dd($data);
     }
 
     /**
@@ -146,7 +142,7 @@ class PemesananController extends Controller
         }
         $dw->save();
 
-        return redirect('tbl_pemesanan');
+        return redirect('/reschedule');
     }
     
     public function gantirefund($id)
@@ -180,7 +176,7 @@ class PemesananController extends Controller
         }
         $dw->save();
 
-        return redirect('tbl_pemesanan');
+        return redirect('/pemesananselesai');
     }
 
     public function cetakLaporan()
@@ -215,5 +211,26 @@ class PemesananController extends Controller
 
         //return view('admin2.pemesanan.cetak-pertanggal', compact('data'));
     }
+
+    public function verifikasi(){
+        $datas = Transaksi::where('status_pemesanan', 'Menunggu Verifikasi')->get();
+        return view('admin2.pemesanan.verifikasi', compact(
+            'datas'
+        ));
+    }
+    public function reschedule(){
+        $datas = Transaksi::where('status_pemesanan', 'Berhasil Pesan')
+        ->get();
+        return view('admin2.pemesanan.reschedule', compact(
+            'datas'
+        ));
+    }
+    public function pemesananselesai(){
+        $datas = Transaksi::where('status_pemesanan', 'Pemesanan Selesai')->get();
+        return view('admin2.pemesanan.selesai', compact(
+            'datas'
+        ));
+    }
+
 
 }

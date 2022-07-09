@@ -18,4 +18,15 @@ class DaftarWisata extends Model
         'keterangan',
         'foto',
     ];
+
+    public function fwisata()
+    {
+        // return $this->belongsTo('Model', 'foreign_key', 'owner_key'); 
+        return $this->HasMany('App\Models\FasilitasWisata','fasilitas_id','id');
+    }
+    public function transaksi()
+    {
+        // return $this->belongsTo('Model', 'foreign_key', 'owner_key'); 
+        return $this->HasMany('App\Models\Transaksi');
+    }
 }

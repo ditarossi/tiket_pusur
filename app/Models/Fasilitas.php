@@ -34,4 +34,12 @@ class Fasilitas extends Model
     {
         return $this->hasMany('App\Models\Wisata');
     }
+    public function trans()
+    {
+        return $this->hasMany('App\Models\TransaksiFasilitas');
+    }
+    public function transutama()
+    {
+        return $this->belongsTo('App\Models\Transaksi');
+    }
 }

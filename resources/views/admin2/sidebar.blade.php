@@ -37,17 +37,31 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/tbl_pemesanan">
-              <i class="#"></i>
-              <span class="menu-title">Transaksi</span>
+            <a class="nav-link" data-bs-toggle="collapse" href="#icons" aria-expanded="false" aria-controls="icons">
+              <span class="menu-title">Transaksi Wisata</span>
+              <i class="menu-arrow"></i>
             </a>
+            <div class="collapse" id="icons">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="tbl_transaksiFasilitas">Transaksi Fasilitas</a></li>
+                <li class="nav-item"> <a class="nav-link" href="/verifikasi">Verifikasi</a></li>
+                <li class="nav-item"> <a class="nav-link" href="/reschedule">Reschedule</a></li>
+                <li class="nav-item"> <a class="nav-link" href="/pemesananselesai">Selesai</a></li>
+              </ul>
+            </div>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="/tbl_pemesanan">
+              <i class="#"></i>
+              <span class="menu-title">Laporan Transaksi</span>
+            </a>
+          </li>
+          {{-- <li class="nav-item">
             <a class="nav-link" href="/tbl_transaksiFasilitas">
               <i class="#"></i>
               <span class="menu-title">Transaksi Fasilitas</span>
             </a>
-          </li>
+          </li> --}}
           <li class="nav-item">
             <a class="nav-link" href="/tbl_resi">
               <i class="#"></i>

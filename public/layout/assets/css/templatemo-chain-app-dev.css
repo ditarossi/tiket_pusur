@@ -902,8 +902,8 @@ Banner Style
 
 .main-banner:after {
   content: '';
-  background-image: url(../images/RTPA.jpeg);
-  opacity: 68%;
+  background-image: url(../images/home.jpg);
+  opacity: 75%;
   background-repeat: no-repeat;
   background-size: 100%;
   position: absolute;

@@ -60,6 +60,10 @@ Route::group([
     //CRUD TRANSAKSI
     Route::resource('tbl_pemesanan', '\App\Http\Controllers\PemesananController');
 
+    Route::get('verifikasi', '\App\Http\Controllers\PemesananController@verifikasi');
+    Route::get('reschedule', '\App\Http\Controllers\PemesananController@reschedule');
+    Route::get('pemesananselesai', '\App\Http\Controllers\PemesananController@pemesananselesai');
+
     //CRUD TRANSAKSI FASILITAS
     Route::resource('tbl_transaksiFasilitas', '\App\Http\Controllers\TransaksiFasilitasController');
 
@@ -91,9 +95,13 @@ Route::group([
 ], function() {
     Route::get('/user_view', [App\Http\Controllers\HomeController::class, 'index'])->name('user_view');
     Route::resource('pemesanan', '\App\Http\Controllers\Pemesanan_user');
+    Route::get('checkout', [App\Http\Controllers\Pemesanan_user::class, 'checkout']);
+
     //ROUTE DEPENDENT DROPDOWN
     Route::get('order', [App\Http\Controllers\OrderController::class, 'index']);
     Route::post('order/fetch', [App\Http\Controllers\OrderController::class, 'fetch'])->name('order.fetch');
+    Route::post('order/detail', [App\Http\Controllers\OrderController::class, 'detail'])->name('order.detail');
+    Route::post('order/fasilitas', [App\Http\Controllers\OrderController::class, 'fasilitas'])->name('order.fasilitas');
 
     Route::get('persetujuan/{id}', [App\Http\Controllers\Pemesanan_user::class, 'refund']);
     Route::get('cetak/{id}', [App\Http\Controllers\HomeController::class, 'download']);

@@ -6,18 +6,16 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\FasilitasWisata;
 use App\Models\DaftarWisata;
+use Fasilitas;
 
 class OrderController extends Controller
 {
-    public function index()
+    public function index(DaftarWisata $daftarWisata)
     {
-        $wisata_list = FasilitasWisata::
-        groupBy('wisata_id')
-        ->get();
-        $datas = DaftarWisata::all();
-        return view('user_view.form_order', compact(
-            'wisata_list', 'datas'
-        ));
+         return view ('user_view.form_order',[
+                'wisata_list' => FasilitasWisata::groupBy('wisata_id')->get(),
+                'datas' => DaftarWisata::all()
+                ]);
     }
 
     public function fetch(Request $request)
@@ -34,5 +32,31 @@ class OrderController extends Controller
             $output = $output.'<option value = "'.$row->$dependent.'">'.$row->fasilitas->fasilitas.'</option>';
         }
         echo($output);
+    }
+
+    public function detail(Request $request)
+    {
+        $value = $request->get('value');
+
+        $data = DaftarWisata::where('id', $value)->first();
+        echo($data->harga);
+        //dd($data);
+    }
+
+    public function fasilitas(Request $request)
+    {
+        $value = $request->get('value');
+
+        $size = count($value);
+        $total = 0;
+        // for($i=0; $i<$size; $i++){
+        //     $data = DB::table('fasilitas')->where('id', $value)->first();
+        //     // echo($data->harga);
+        //     $total += $data->harga;
+        // }
+        $users = DB::table('fasilitas')
+                    ->whereIn('id', $value)
+                    ->get();
+        return($users);
     }
 }

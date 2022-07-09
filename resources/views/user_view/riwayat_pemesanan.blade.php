@@ -22,7 +22,10 @@
       .container{
         margin-top: 70px;
       }
-      .row{
+      .row .col-sm-6{
+        padding: 10px;
+      }
+      .row .col-sm-12{
         padding: 10px;
       }
     </style>
@@ -43,9 +46,9 @@
         <!--PERULANGAN SEDANG PROSES-->  
 
             <div class="portfolio-wrap filter-app" >
-                <div class="row">
-                    @foreach($tiket as $value)
-                    <div class="col-sm-6">
+                @foreach($tiket as $value)
+                {{-- <div class="row">
+                    <div class="col-sm-12">
                         <div class="card text-dark bg-light">
                         <div class="card-body">
                             <h5 class="card-title">{{$value->user->name}}</h5>
@@ -60,25 +63,82 @@
                                 <br>
                                 Status     : {{$value->status_pemesanan}}
                             </p>
-                            @if($value->status_pemesanan == "Berhasil Pesan" && date('Y-m-d') < $value->Tanggal_Kunjungan)
+                            @if($value->status_pemesanan == "Berhasil Pesan" && date('Y-m-d') < $value->Tanggal_Kunjungan && $value->reschedule != "Berhasil Reschedule")
                                 <a class="btn btn-warning" href="{{ url('pemesanan/'.$value->id.'/edit') }}">Reschedule</i></a>
                                 <a class="btn btn-danger" href="persetujuan/{{$value->id}}">Batalkan</a>
                                 <a class="btn btn-primary" href="cetak/{{$value->id}}">Cetak</a>
                             @endif
+            
                         </div>
                         </div>
                     </div>
+                </div> --}}
+
+
+                <div class="card mb-3" style="max-width: 1300px;">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <div class="card-body">
+                      <h5 class="card-title">{{$value->user->name}}</h5>
+                            <p class="card-text">
+                                Wisata     : {{$value->wisata->nama_wisata}}
+                                <br>
+                                Tanggal    : {{$value->Tanggal_Kunjungan}}
+                                <br>
+                                Jumlah     : {{$value->jumlah}}
+                                <br>
+                                Tagihan    : {{$value->tagihan}}
+                                <br>
+                                Status     : {{$value->status_pemesanan}}
+                            </p>
+                            @if($value->status_pemesanan == "Berhasil Pesan" && date('Y-m-d') < $value->Tanggal_Kunjungan && $value->reschedule != "Berhasil Reschedule")
+                                <a class="btn btn-warning" href="{{ url('pemesanan/'.$value->id.'/edit') }}">Reschedule</i></a>
+                                <a class="btn btn-danger" href="persetujuan/{{$value->id}}">Batalkan</a>
+                                <a class="btn btn-primary" href="cetak/{{$value->id}}">Cetak</a>
+                            @elseif($value->status_pemesanan =="Menunggu Verifikasi")
+                              <a class="btn btn-primary" href="#">Upload Bukti Bayar</a>
+                            @endif
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title" align="center">Rincian Pembayaran</h5>
+             <table class="table">
+                <thead>
+                    <tr>
+                    <th scope="col">Harga Wisata</th>
+                    <th scope="col">Harga Fasilitas</th>
+                    <th scope="col">Jumlah</th>
+                    <th scope="col">Tagihan</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($total as $h)
+                    <tr>
+                    <td>{{$h->wisata->harga}}</td>
+                    <td>{{$h->fasilitas_id}}</td>
+                    <td>{{$h->jumlah}}</td>
+                    <td>{{$h->wisata->harga * $h->jumlah}}</td>
+                    </tr>
                     @endforeach
-                </div>
+                </tbody>
+                </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+                @endforeach
             </div>
 
 
             <!--PERULANGAN RIWAYAT-->
 
             <div class="portfolio-wrap filter-card" >
+                @foreach($riwayat as $value)
                 <div class="row">
-                    @foreach($riwayat as $value)
-                    <div class="col-sm-6">
+                    <div class="col-sm-12">
                         <div class="card text-white bg-dark">
                         <div class="card-body">
                             <h5 class="card-title">{{$value->user->name}}</h5>
@@ -101,8 +161,8 @@
                         </div>
                         </div>
                     </div>
-                    @endforeach
                 </div>
+                @endforeach
             </div>
         </div>
     </div>
