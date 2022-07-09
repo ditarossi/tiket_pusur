@@ -23,6 +23,7 @@ class Transaksi extends Migration
             $table->string('status_pemesanan'); 
             $table->string('reschedule'); 
             $table->string('refund'); 
+            $table->string('bukti_transaksi'); 
             $table->timestamps();
         });
     }

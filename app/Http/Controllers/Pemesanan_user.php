@@ -110,6 +110,13 @@ class Pemesanan_user extends Controller
         ));
     }
 
+    public function foto ($id)
+    {
+        $model = Transaksi::find($id);
+        return view('user_view.foto', compact(
+            'model'
+        ));
+    }
     /**
      * Update the specified resource in storage.
      *
@@ -120,10 +127,16 @@ class Pemesanan_user extends Controller
     public function update(Request $request, $id)
     {
         $model = Transaksi::find($id);
-        $model->Tanggal_Kunjungan = $request->Tanggal_Kunjungan;
-        $model->reschedule = 'Berhasil Reschedule';
         
-        // $model->refund = '-';
+        if($request->file('bukti_transaksi'))
+        {
+            $path = $request->file('bukti_transaksi')->move('fotowisata', $request->file('bukti_transaksi')->getClientOriginalName());
+            $model['bukti_transaksi'] = $path;
+        } else {
+            $model->Tanggal_Kunjungan = $request->Tanggal_Kunjungan;
+            $model->reschedule = 'Berhasil Reschedule';
+        }
+        // $model->update($data);
         $model->save();
 
         return redirect('riwayat_pemesanan');

@@ -104,6 +104,7 @@ Route::group([
     Route::post('order/fasilitas', [App\Http\Controllers\OrderController::class, 'fasilitas'])->name('order.fasilitas');
 
     Route::get('persetujuan/{id}', [App\Http\Controllers\Pemesanan_user::class, 'refund']);
+    Route::get('foto/{id}', [App\Http\Controllers\Pemesanan_user::class, 'foto']);
     Route::get('cetak/{id}', [App\Http\Controllers\HomeController::class, 'download']);
     Route::get('tiket', [App\Http\Controllers\HomeController::class, 'tiket']);
     Route::get('riwayat', [App\Http\Controllers\HomeController::class, 'riwayat']);

@@ -28,6 +28,7 @@
                             <th>Status Pemesanan</th>
                             <th>Pengajuan Reschedule</th>
                             <th>Pengajuan Refund</th>
+                            <th>Bukti Transaksi</th>
                             <th>Actions</th>
                         </tr>
                       </thead>
@@ -49,6 +50,7 @@
                             <td>{{ $value->status_pemesanan }}</td>
                             <td>{{ $value->reschedule }}</td>
                             <td>{{ $value->refund }}</td>
+                            <td>{{ $value->bukti_transaksi }}</td>
                             <td>
                               <a class="btn btn-outline-warning" href="{{ url('tbl_pemesanan/'.$value->id.'/edit') }}">Update</a>
                               <form action="{{ url('tbl_pemesanan/'.$value->id) }}" method="post">

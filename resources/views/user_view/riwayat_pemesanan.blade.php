@@ -76,7 +76,7 @@
 
 
                 <div class="card mb-3" style="max-width: 1300px;">
-      <div class="row g-0">
+          <div class="row g-0">
         <div class="col-md-4">
           <div class="card-body">
                       <h5 class="card-title">{{$value->user->name}}</h5>
@@ -93,10 +93,10 @@
                             </p>
                             @if($value->status_pemesanan == "Berhasil Pesan" && date('Y-m-d') < $value->Tanggal_Kunjungan && $value->reschedule != "Berhasil Reschedule")
                                 <a class="btn btn-warning" href="{{ url('pemesanan/'.$value->id.'/edit') }}">Reschedule</i></a>
-                                <a class="btn btn-danger" href="persetujuan/{{$value->id}}">Batalkan</a>
+                                {{-- <a class="btn btn-danger" href="persetujuan/{{$value->id}}">Batalkan</a> --}}
                                 <a class="btn btn-primary" href="cetak/{{$value->id}}">Cetak</a>
                             @elseif($value->status_pemesanan =="Menunggu Verifikasi")
-                              <a class="btn btn-primary" href="#">Upload Bukti Bayar</a>
+                              <a class="btn btn-primary" href="foto/{{$value->id}}">Upload Bukti Transaksi</a>
                             @endif
           </div>
         </div>

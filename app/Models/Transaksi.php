@@ -18,7 +18,8 @@ class Transaksi extends Model
         'tagihan',
         'status_pemesanan',
         'reschedule',
-        'refund'
+        'refund', 
+        'bukti_transaksi'
     ];
 
     public function user()
