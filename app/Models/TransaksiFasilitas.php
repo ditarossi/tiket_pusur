@@ -19,7 +19,7 @@ class TransaksiFasilitas extends Model
     public function fas()
     {
         // return $this->belongsTo('Model', 'foreign_key', 'owner_key'); 
-        return $this->hasMany('App\Models\Fasilitas','fasilitas_id','id');
+        return $this->belongsTo('App\Models\Fasilitas','fasilitas_id','id');
     }
 
     public function trans()

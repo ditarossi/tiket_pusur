@@ -59,6 +59,7 @@ class HomeController extends Controller
         $user = request()->user();
 
         $tiket = Transaksi::select('*')
+            // ->join('transaksifasilitas', 'transaksi.id', '=', 'transaksifasilitas.trx_id')
             ->where('users_id', $user->id)
             ->where('status_pemesanan', 'Berhasil Pesan')
             ->orWhere('status_pemesanan', 'Menunggu Verifikasi')

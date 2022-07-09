@@ -113,14 +113,12 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($total as $h)
                     <tr>
-                    <td>{{$h->wisata->harga}}</td>
-                    <td>{{$h->fasilitas_id}}</td>
-                    <td>{{$h->jumlah}}</td>
-                    <td>{{$h->wisata->harga * $h->jumlah}}</td>
+                    <td>{{$value->wisata->harga}}</td>
+                    <td>{{$value->fasilitas_id}}</td>
+                    <td>{{$value->jumlah}}</td>
+                    <td>{{$value->tagihan}}</td>
                     </tr>
-                    @endforeach
                 </tbody>
                 </table>
           </div>

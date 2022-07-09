@@ -86,7 +86,7 @@
                   </div>
                   <div class="mb-3">
                     <label>Tagihan</label>
-                    <input value=" " name="tagihan" type="text" class="form-control" id="tagihan" readonly></input>
+                    <input value="tagihan" name="tagihan" type="text" class="form-control" id="tagihan" readonly></input>
                   </div>
 
                         <a href="{{url('user_view')}}" type="button" class="btn btn-secondary">Close</a>
@@ -230,14 +230,6 @@
     $(document).ready(function() {
       $('.js-example-basic-single').select2();
     });
-</script>
-
-<script>
-  var hargaWisata = document.getElementById('wisata_id').data-harga;
-  var result = hargaWisata;
-  if (!isNaN(result)){
-            document.getElementById('tagihan').value=result;
-        }
 </script>
 
 </html>
