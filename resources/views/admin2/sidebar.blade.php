@@ -62,12 +62,12 @@
               <span class="menu-title">Transaksi Fasilitas</span>
             </a>
           </li> --}}
-          <li class="nav-item">
+          {{-- <li class="nav-item">
             <a class="nav-link" href="/tbl_resi">
               <i class="#"></i>
               <span class="menu-title">Tiket</span>
             </a>
-          </li>
+          </li> --}}
           <li class="nav-item">
             <a class="nav-link" href="/tbl_contact">
               <i class="#"></i>

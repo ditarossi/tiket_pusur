@@ -51,7 +51,7 @@
                             <td>{{ $value->reschedule }}</td>
                             <td>{{ $value->refund }}</td>
                             <td>
-                              <a class="btn btn-outline-warning" href="gantistatus/{{$value->id}}" onclick="return confirm('Yakin mengubah status pemesanan ?')">Ganti Status</a>
+                              {{-- <a class="btn btn-outline-warning" href="gantistatus/{{$value->id}}" onclick="return confirm('Yakin mengubah status pemesanan ?')">Ganti Status</a>
                               <a class="btn btn-outline-warning" href="gantirefund/{{$value->id}}" onclick="return confirm('Yakin mengubah status pemesanan ?')">Setuju Refund</a>
                               <a class="btn btn-outline-warning" href="selesai/{{$value->id}}" onclick="return confirm('Yakin mengubah status pemesanan ?')">Selesai</a>
                               <a class="btn btn-outline-warning" href="{{ url('tbl_pemesanan/'.$value->id.'/edit') }}">Update</a>
@@ -59,7 +59,19 @@
                                 @csrf 
                                 <input type="hidden" name="_method" value="delete">
                                 <button class="btn btn-outline-danger" type="submit" onclick="return confirm('Yakin ingin menghapus data ?')">Delete</button>
-                              </form>
+                              </form> --}}
+                              <div class="row">
+                                  <div class="col-sm-5">
+                                    <a class="btn btn-light" href="{{ url('tbl_pemesanan/'.$value->id.'/edit') }}"><i class="ti-pencil text-primary"></i></a>
+                                  </div>
+                                  <div class="col-sm-5">
+                                    <form action="{{ url('tbl_pemesanan/'.$value->id) }}" method="post">
+                                      @csrf 
+                                      <input type="hidden" name="_method" value="delete">
+                                      <button class="btn btn-light delete" onclick="return confirm('Yakin ingin menghapus data ?')"><i class="ti-close text-danger"></i></button>
+                                    </form> 
+                                  </div>
+                                </div>
                             </td>
                         </tr>
                         @endforeach

@@ -14,12 +14,14 @@
     
     <link href="{{asset('pict')}}/assets/css/style.css" rel="stylesheet">
 
+    <link rel="stylesheet" href="{{asset('dashboard2')}}/vendors/ti-icons/css/themify-icons.css">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
     <style>
-      .btn-success{
+      .btn-light{
         margin-top: 70px;
         margin-left: 120px;
       }
@@ -39,7 +41,7 @@
   </head>
   <body>
     <div class="portfolio">
-        <a type="button" href="{{url('user_view')}}" class="btn btn-success">Back</a>
+        <a type="button" href="{{url('user_view')}}" class="btn btn-light"><i class="ti ti-arrow-left"></i> Back</a>
         <div class="container" align="center" width="95%">
         <div class="row">
             <div class="col-lg-12">
@@ -80,8 +82,8 @@
                                         && $value->bukti_transaksi == "Belum Melakukan Transaksi" 
                                         && $value->jumlah < $dd->kuota)
                                           <a class="btn btn-primary" href="informasi_pembayaran/{{$value->id}}">Informasi Pembayaran</a>
-                                          <br>                      
-                                        @endif
+                                          <br> 
+                                          @endif
                                         @endforeach
                       </div>
                     </div>
@@ -107,12 +109,16 @@
                             </tbody>
                             </table>
                       </div>
-                      <p>Informasi Wisata</p>
-                      @foreach(App\Models\DaftarWisata::where('id', $value->wisata_id)->get() as $aa)
-                      <span>Sisa Kuota : {{$aa->kuota}}</span>
-                      <br>
-                      <span>Keterangan : {{$aa->keterangan}}</span>
-                      @endforeach
+                      <div class="row">
+                        @foreach(App\Models\DaftarWisata::where('id', $value->wisata_id)->get() as $aa)
+                        <div class="col-sm-5">
+                          <span>Sisa Kuota : {{$aa->kuota}}</span>
+                        </div>
+                        <div class="col-md-5">
+                          <span>Keterangan : {{$aa->keterangan}}</span>
+                        </div>
+                        @endforeach
+                      </div>
                       <p>
                     </div>
                   </div>
@@ -141,8 +147,16 @@
                                         @if($value->status_pemesanan == "Berhasil Pesan" 
                                         && date('Y-m-d') < $value->Tanggal_Kunjungan 
                                         && $value->reschedule != "Berhasil Reschedule")
-                                            <a class="btn btn-warning" href="{{ url('pemesanan/'.$value->id.'/edit') }}">Reschedule</i></a>
-                                            <a class="btn btn-primary" href="cetak/{{$value->id}}">Cetak</a>
+                                            <a class="btn btn-white" href="{{ url('pemesanan/'.$value->id.'/edit') }}"><i class="ti-pencil text-primary"></i> Reschedule</i></a>
+                                            <a class="btn btn-white" href="cetak/{{$value->id}}"><i class="ti-download text-primary"></i> Cetak</a>
+                                            {{-- <div class="row">
+                                              <div class="col-sm-5">
+                                                <a class="btn btn-light" href="{{ url('pemesanan/'.$value->id.'/edit') }}"><i class="ti-pencil text-primary"></i> Reschedule</a>
+                                              </div>
+                                              <div class="col-sm-5">
+                                                <a class="btn btn-light" href="cetak/{{$value->id}}"><i class="ti-download text-primary"></i> Cetak</a>
+                                              </div>
+                                            </div> --}}
                                         @elseif($value->reschedule =="Berhasil Reschedule")
                                             <a class="btn btn-primary" href="cetak/{{$value->id}}">Cetak</a>
                                         @endif
@@ -171,12 +185,16 @@
                             </tbody>
                             </table>
                       </div>
-                      <p>Informasi Wisata</p>
-                      @foreach(App\Models\DaftarWisata::where('id', $value->wisata_id)->get() as $aa)
-                      <span>Sisa Kuota : {{$aa->kuota}}</span>
-                      <br>
-                      <span>Keterangan : {{$aa->keterangan}}</span>
-                      @endforeach
+                      <div class="row">
+                        @foreach(App\Models\DaftarWisata::where('id', $value->wisata_id)->get() as $aa)
+                          <div class="col-sm-5">
+                            <span>Sisa Kuota : {{$aa->kuota}}</span>
+                          </div>
+                          <div class="col-md-5">
+                            <span>Keterangan : {{$aa->keterangan}}</span>
+                          </div>
+                        @endforeach
+                      </div>
                     </div>
                   </div>
                 </div>

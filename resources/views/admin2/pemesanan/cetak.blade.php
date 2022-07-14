@@ -36,7 +36,7 @@
     <br>
 
     <div class="panel-body">
-      <center><h4> Laporan KMS Lansia</h4></center>
+      <center><h4> Laporan Transaksi</h4></center>
       <a href="cetaklaporan/{{ $startDate }}/{{ $endDate }}" class="btn btn-secondary btn-sm float-right mr-4"><i class="fa fa-print fa-fw"></i> Cetak Laporan </a>
       <br>
       

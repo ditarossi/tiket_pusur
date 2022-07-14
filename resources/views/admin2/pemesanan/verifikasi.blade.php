@@ -56,14 +56,14 @@
                             </td>
                             @endif
                             <td>
-                              <a class="btn btn-outline-warning" href="gantistatus/{{$value->id}}" onclick="return confirm('Yakin mengubah status pemesanan ?')">Ganti Status</a>
-                              <a class="btn btn-outline-warning" href="{{ url('tbl_pemesanan/'.$value->id.'/edit') }}">Update</a>
+                              <a class="btn btn-light" href="gantistatus/{{$value->id}}" onclick="return confirm('Yakin mengubah status pemesanan ?')"><i class="ti-pencil text-primary"></i>Ganti Status</a>
+                              {{-- <a class="btn btn-outline-warning" href="{{ url('tbl_pemesanan/'.$value->id.'/edit') }}">Update</a>
                               <form action="{{ url('tbl_pemesanan/'.$value->id) }}" method="post">
                                 @csrf 
                                 <input type="hidden" name="_method" value="delete">
                                 <button class="btn btn-outline-danger" type="submit" onclick="return confirm('Yakin ingin menghapus data ?')">Delete</button>
-                              </form>
-                              <a class="btn btn-outline-warning" href="detail_transaksi/{{$value->id}}">Detail</a>
+                              </form> --}}
+                              <a class="btn btn-light" href="detail_transaksi/{{$value->id}}"><i class="ti-eye text-info"></i>Detail</a>
                             </td>
                         </tr>
                         @endforeach

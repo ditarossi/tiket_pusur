@@ -30,11 +30,20 @@
                             <td>{{ $value->wisata->nama_wisata }}</td>
                             <td>{{ $value->fasilitas->fasilitas }}</td>
                             <td>
-                              <form action="{{ url('tbl_fasilitasWisata/'.$value->id) }}" method="post">
+                              {{-- <form action="{{ url('tbl_fasilitasWisata/'.$value->id) }}" method="post">
                                 @csrf 
                                 <input type="hidden" name="_method" value="delete">
                                 <button class="btn btn-outline-danger" type="submit" onclick="return confirm('Yakin ingin menghapus data ?')">Delete</button>
-                              </form>
+                              </form> --}}
+                              <div class="row">
+                                  <div class="col-sm-5">
+                                    <form action="{{ url('tbl_fasilitasWisata/'.$value->id) }}" method="post">
+                                      @csrf 
+                                      <input type="hidden" name="_method" value="delete">
+                                      <button class="btn btn-light delete" onclick="return confirm('Yakin ingin menghapus data ?')"><i class="ti-close text-danger"></i>Hapus</button>
+                                    </form> 
+                                  </div>
+                                </div>
                             </td>
                         </tr>
                         @endforeach

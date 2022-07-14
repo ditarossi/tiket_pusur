@@ -9,8 +9,8 @@
                     <table class="static" align="center" rules="all" border="1px" style="width: 95%;">
                       <thead>
                         <tr>
-                            <th>ID User</th>
-                            <th>ID Wisata</th>
+                            <th>User</th>
+                            <th>Wisata</th>
                             <th>Tanggal Kunjungan</th>
                             <th>Jumlah</th>
                             <th>Tagihan</th>

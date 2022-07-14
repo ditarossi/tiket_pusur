@@ -34,12 +34,25 @@
                             <!-- <td>{{ $value->password }}</td> -->
                             <td>{{ $value->is_admin }}</td>
                             <td>
-                              <a class="btn btn-outline-warning" href="{{ url('tbl_user/'.$value->id.'/edit') }}">Update</a>
+                              {{-- <a class="btn btn-outline-warning" href="{{ url('tbl_user/'.$value->id.'/edit') }}">Update</a>
                               <form action="{{ url('tbl_user/'.$value->id) }}" method="post">
                                 @csrf 
                                 <input type="hidden" name="_method" value="delete">
                                 <button class="btn btn-outline-danger" type="submit" onclick="return confirm('Yakin ingin menghapus data ?')">Delete</button>
-                              </form>
+                              </form> 
+                              <a class="btn btn-light"><i class="ti-eye text-info"></i>Detail</a> --}}
+                              <div class="row">
+                                <div class="col-sm-3">
+                                  <a class="btn btn-light" href="{{ url('tbl_user/'.$value->id.'/edit') }}"><i class="ti-pencil text-primary"></i>Edit</a>
+                                </div>
+                                <div class="col-sm-3">
+                                  <form action="{{ url('tbl_user/'.$value->id) }}" method="post">
+                                    @csrf 
+                                    <input type="hidden" name="_method" value="delete">
+                                    <button class="btn btn-light delete" onclick="return confirm('Yakin ingin menghapus data ?')"><i class="ti-close text-danger"></i>Hapus</button>
+                                  </form> 
+                                </div>
+                              </div>
                             </td>
                         </tr>
                         @endforeach
