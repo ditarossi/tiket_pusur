@@ -40,6 +40,9 @@
       .img{
         margin-top: 50px;
       }
+      .col-md-4{
+        margin-top: 48px;
+      }
     </style>
   </head>
 
@@ -50,11 +53,18 @@
     <div class="card mb-3" style="max-width: 1300px;">
       <div class="row g-0">
         <div class="col-md-4">
-          <img src="{{asset('pict')}}/assets/img/features-3.svg" class="img-fluid rounded-start" alt="..." width="750px">
+          <div class="mb-3">
+                    <label>Nama Penerima</label>
+                    <input name="" value="Muslim Afandi" class="form-control" readonly></input>
+                  </div>
+                  <div class="mb-3">
+                    <label>Nomor Rekening</label>
+                    <input name="" value="980987868575 (Mandiri)" class="form-control" readonly></input>
+                  </div>
         </div>
         <div class="col-md-8">
           <div class="card-body">
-            <h5 class="card-title" align="center">Form Pemesanan</h5>
+            <h5 class="card-title" align="center">Upload Bukti Transaksi</h5>
               <form class="forms-sample" action="{{ url('pemesanan/'.$model->id) }}" method="post" enctype="multipart/form-data">
                   @csrf
                   <input type="hidden" name="_method" value="PATCH">

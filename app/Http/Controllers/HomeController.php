@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\welcomeMail;
 use Illuminate\Support\Facades\DB;
 use App\Models\TransaksiFasilitas;
+use App\Models\DaftarWisata;
 
 class HomeController extends Controller
 {
@@ -59,7 +60,7 @@ class HomeController extends Controller
         $user = request()->user();
 
         $tiket = Transaksi::select('*')
-            // ->join('transaksifasilitas', 'transaksi.id', '=', 'transaksifasilitas.trx_id')
+            ->join('transaksifasilitas', 'transaksi.id', '=', 'transaksifasilitas.trx_id')
             ->where('users_id', $user->id)
             ->where('status_pemesanan', 'Berhasil Pesan')
             ->orWhere('status_pemesanan', 'Menunggu Verifikasi')
@@ -149,23 +150,34 @@ class HomeController extends Controller
 
     public function riwayat_pemesanan()
     {
+        // dd($id);
         $user = request()->user();
-        $total = Transaksi::select('*')->join('transaksifasilitas', 'transaksi.id', '=', 'transaksifasilitas.trx_id')
+        $user_login = Transaksi::where('users_id', $user->id);
+
+        $daf_wisata = DaftarWisata::first();
+
+        $verif = Transaksi::select('*')
+            ->where('users_id', $user->id)
+            ->Where('status_pemesanan', 'Menunggu Verifikasi')
+            // ->orWhere('status_pemesanan', 'Berhasil Pesan')
             ->get();
         
-        $tiket = Transaksi::select('*')
+        //$cek_kuota = Transaksi::all();
+        //$daf_wisata = DaftarWisata::where('kuota', $cek_kuota->wisata_id);
+
+        $proses = Transaksi::select('*')
             ->where('users_id', $user->id)
-            ->where('status_pemesanan', 'Berhasil Pesan')
-            ->orWhere('status_pemesanan', 'Menunggu Verifikasi')
+            ->Where('status_pemesanan', 'Berhasil Pesan')
+            // ->orWhere('status_pemesanan', 'Berhasil Pesan')
             ->get();
 
         $riwayat = Transaksi::select('*')
             ->where('users_id', $user->id)
             ->where('status_pemesanan', '=', 'Pemesanan Selesai')
             ->get();
+        
         return view('user_view.riwayat_pemesanan', compact(
-            'tiket', 'riwayat', 'total'
+            'verif', 'proses', 'riwayat', 'daf_wisata'
         ));
     }
-
 }

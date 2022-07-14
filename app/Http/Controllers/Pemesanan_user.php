@@ -60,30 +60,35 @@ class Pemesanan_user extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, DaftarWisata $daftarWisata)
+    public function store(Request $request)
     {
         $model = new Transaksi;
-        $model->users_id = Auth::user()->id;
-        $model->Tanggal_Kunjungan = $request->Tanggal_Kunjungan;
-        $model->jumlah = $request->jumlah;
-        $model->tagihan = $request->tagihan;
-        $model->wisata_id = $request->wisata_id;
-        $model->status_pemesanan = 'Menunggu Verifikasi';
-        $model->reschedule = '-';
-        $model->refund = '-';
-        $model->bukti_transaksi = "Belum Melakukan Transaksi";
-        $model->save();
+        $data = DaftarWisata::all()->first();
+        if($request->jumlah > $data->kuota){
+            return redirect('order');
+        } else {
+            $model->users_id = Auth::user()->id;
+            $model->Tanggal_Kunjungan = $request->Tanggal_Kunjungan;
+            $model->tagihan = $request->tagihan;
+            $model->jumlah = $request->jumlah;
+            $model->wisata_id = $request->wisata_id;
+            $model->status_pemesanan = 'Menunggu Verifikasi';
+            $model->reschedule = '-';
+            $model->refund = '-';
+            $model->bukti_transaksi = "Belum Melakukan Transaksi";
+            $model->save();
 
-        $size = count(collect($request)->get('fasilitas_id'));
-        for ($i = 0; $i < $size; $i++)
-        {
-            $TFasilitas = new TransaksiFasilitas;
+            $size = count(collect($request)->get('fasilitas_id'));
+            for ($i = 0; $i < $size; $i++)
+            {
+                $TFasilitas = new TransaksiFasilitas;
 
-            $TFasilitas->trx_id = $model->id;
-            $TFasilitas->fasilitas_id = $request->get('fasilitas_id')[$i];
-            $TFasilitas->save();
-        } 
-        return redirect('/user_view');
+                $TFasilitas->trx_id = $model->id;
+                $TFasilitas->fasilitas_id = $request->get('fasilitas_id')[$i];
+                $TFasilitas->save();
+            } 
+            return redirect('/user_view');
+        }
     }
 
     /**
@@ -118,6 +123,15 @@ class Pemesanan_user extends Controller
             'model'
         ));
     }
+
+    public function informasi_pembayaran ($id)
+    {
+        $model = Transaksi::find($id);
+        return view('user_view.informasi_pembayaran', compact(
+            'model'
+        ));
+    }
+
     /**
      * Update the specified resource in storage.
      *

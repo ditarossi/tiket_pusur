@@ -70,5 +70,6 @@ class RegisterController extends Controller
             'is_admin' => '0',
             'password' => Hash::make($data['password']),
         ]);
+       return redirect()->route('/form-login');
     }
 }

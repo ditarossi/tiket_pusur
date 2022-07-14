@@ -30,15 +30,9 @@
           <div class="card-body">
                       <h3 class="card-title" align="center">Tiket Wisata</h3>
                             <p class="card-text">
+                                ID Pemesanan : {{$value->id}}
+                                <br>
                                 Nama     : {{$value->user->name}}
-                                <br>
-                                Wisata     : {{$value->wisata->nama_wisata}}
-                                <br>
-                                Tanggal    : {{$value->Tanggal_Kunjungan}}
-                                <br>
-                                Jumlah     : {{$value->jumlah}}
-                                <br>
-                                Tagihan    : {{$value->tagihan}}
                                 <br>
                                 Status     : {{$value->status_pemesanan}}
                             </p>
@@ -46,20 +40,20 @@
         </div>
         <div class="col-md-12">
           <div class="card-body">
-            <h5 class="card-title" align="center">Rincian Pembayaran</h5>
+            <h5 class="card-title" align="center">Rincian Pemesanan</h5>
              <table class="table" width="100%">
                 <thead>
                     <tr>
-                    <th scope="col">Harga Wisata</th>
-                    <th scope="col">Harga Fasilitas</th>
+                    <th scope="col">Nama Wisata</th>
+                    <th scope="col">Tanggal Kunjungan</th>
                     <th scope="col">Jumlah</th>
                     <th scope="col">Tagihan</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                    <td>{{$value->wisata->harga}}</td>
-                    <td>{{$value->fasilitas_id}}</td>
+                    <td>{{$value->wisata->nama_wisata}}</td>
+                    <td>{{$value->Tanggal_Kunjungan}}</td>
                     <td>{{$value->jumlah}}</td>
                     <td>{{$value->tagihan}}</td>
                     </tr>

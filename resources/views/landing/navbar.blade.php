@@ -5,9 +5,9 @@
         
           <nav class="main-nav">
             <!-- ***** Logo Start ***** -->
-            <a href="index.html" class="logo">
+            {{-- <a href="index.html" class="logo">
               <img src="{{asset('layout')}}/assets/images/logo.png" alt="Chain App Dev">
-            </a>
+            </a> --}}
             <!-- ***** Logo End ***** -->
             <!-- ***** Menu Start ***** -->
             <ul class="nav">
@@ -18,7 +18,8 @@
               <li class="scroll-to-section"><a href="#contact">Contact Us</a></li>
               <!-- <li class="scroll-to-section"><a href="/contact-forms">Contact Us</a></li> -->
               <!--<li class="scroll-to-section"><a href="#pricing">Struktur Organisasi</a></li>-->
-              <li><div class="gradient-button"><a id="modal_trigger" href="#modal"><i class="fa fa-sign-in-alt"></i> Sign In Now</a></div></li> 
+              {{-- <li><div class="gradient-button"><a id="modal_trigger" href="#modal"><i class="fa fa-sign-in-alt"></i> Sign In Now</a></div></li>  --}}
+              <li><div class="gradient-button"><a id="modal_trigger" href="/form-login"><i class="fa fa-sign-in-alt"></i> Sign In</a></div></li>
             </ul>       
             <a class='menu-trigger'>
                 <span>Menu</span>

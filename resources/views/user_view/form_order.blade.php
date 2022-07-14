@@ -47,7 +47,7 @@
     <div class="card mb-3" style="max-width: 1300px;">
       <div class="row g-0">
         <div class="col-md-4">
-          <img src="{{asset('layout')}}/assets/images/pemesanan.png" class="img-fluid rounded-start" alt="..." width="750px">
+          <img src="{{asset('pict')}}/assets/img/features-3.svg" class="img-fluid rounded-start" alt="..." width="750px">
         </div>
         <div class="col-md-8">
           <div class="card-body">
@@ -56,7 +56,7 @@
                   @csrf
                   <div class="mb-3">
                     <label>Nama Wisata</label>
-                    <select name="wisata_id" data-dependent="fasilitas_id" class="form-control input-lg dynamic" id="wisata_id" placeholder="Nama Wisata">
+                    <select name="wisata_id" data-dependent="fasilitas_id" class="form-control input-lg dynamic" id="wisata_id" placeholder="Nama Wisata" required>
                       <option value=""> -- Pilih --</option>
                         @foreach ($wisata_list as $wis)
                           @if($wis->wisata->kuota > 0 )
@@ -67,13 +67,13 @@
                   </div>
                   <div class="mb-3">
                     <label>Fasilitas Wisata</label>
-                    <select name="fasilitas_id[]" data-dependent="tagihan" class="form-control input-lg dynamic js-example-basic-single" id="fasilitas_id" multiple="multiple" placeholder="Fasilitas Wisata">
+                    <select name="fasilitas_id[]" data-dependent="tagihan" class="form-control input-lg dynamic js-example-basic-single" id="fasilitas_id" multiple="multiple" placeholder="Fasilitas Wisata" required>
                       <option value=""> -- Pilih --</option>
                     </select>
                   </div>
                   <div class="mb-3">
                     <label>Tanggal Kunjungan</label>
-                    <input name="Tanggal_Kunjungan" type="date" class="form-control" id="Tanggal_Kunjungan"></input>
+                    <input name="Tanggal_Kunjungan" type="date" class="form-control" id="Tanggal_Kunjungan" required></input>
                   </div>
                   @if(session()->has('Success'))
                   <div class="alert alert-success" role="alert">
@@ -82,7 +82,7 @@
                   @endif
                   <div class="mb-3">
                     <label>Jumlah</label>
-                    <input name="jumlah" type="text" class="form-control" id="jumlah" oninput="myFunction()"></input>
+                    <input name="jumlah" type="text" class="form-control" id="jumlah" oninput="myFunction()" required></input>
                   </div>
                   <div class="mb-3">
                     <label>Tagihan</label>
@@ -90,7 +90,7 @@
                   </div>
 
                         <a href="{{url('user_view')}}" type="button" class="btn btn-secondary">Close</a>
-                        <button type="submit" name="submit" class="btn btn-primary">Send message</button>
+                        <button type="submit" name="submit" class="btn btn-primary">Order Now</button>
 
               {{-- @foreach ($wisata_list as $wis)
                           @if($wis->wisata->kuota == 0 )

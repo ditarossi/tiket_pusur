@@ -5,9 +5,9 @@
         
           <nav class="main-nav">
             <!-- ***** Logo Start ***** -->
-            <a href="index.html" class="logo">
+            {{-- <a href="index.html" class="logo">
               <img src="{{asset('layout')}}/assets/images/logo.png" alt="Chain App Dev">
-            </a>
+            </a> --}}
             <!-- ***** Logo End ***** -->
             <!-- ***** Menu Start ***** -->
             

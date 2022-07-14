@@ -925,12 +925,11 @@ Banner Style
   line-height: 70px;
   font-size: 50px;
   margin-bottom: 20px;
-  color: #ffff;
 }
 
 .main-banner .left-content p {
   margin-bottom: 45px;
-  color: #ffff;
+  color: #2a2a2a;
   font-weight: 400;
 }
 

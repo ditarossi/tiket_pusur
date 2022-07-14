@@ -127,6 +127,15 @@ class PemesananController extends Controller
         $model->delete();
         return redirect('tbl_pemesanan');
     }
+
+    public function detail($id)
+    {
+        $datas = Transaksi::where('id',$id)->get();
+        // dd($datas);
+        return view('admin2.pemesanan.detail', compact(
+            'datas'
+        ));
+    }
     
     public function gantistatus($id)
     {

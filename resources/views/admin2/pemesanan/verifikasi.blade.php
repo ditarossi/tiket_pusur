@@ -46,9 +46,15 @@
                             <td>{{ $value->jumlah }}</td>
                             <td>{{ $value->tagihan }}</td>
                             <td>{{ $value->status_pemesanan }}</td>
+                            @if($value->bukti_transaksi == "Belum Melakukan Transaksi")
+                            {
+                              <td>{{ $value->bukti_transaksi }}</td>
+                            }
+                            @else
                             <td>
                                 <img src="{{ asset($value->bukti_transaksi) }}" alt="" width="40 px">
-                              </td>
+                            </td>
+                            @endif
                             <td>
                               <a class="btn btn-outline-warning" href="gantistatus/{{$value->id}}" onclick="return confirm('Yakin mengubah status pemesanan ?')">Ganti Status</a>
                               <a class="btn btn-outline-warning" href="{{ url('tbl_pemesanan/'.$value->id.'/edit') }}">Update</a>
@@ -57,6 +63,7 @@
                                 <input type="hidden" name="_method" value="delete">
                                 <button class="btn btn-outline-danger" type="submit" onclick="return confirm('Yakin ingin menghapus data ?')">Delete</button>
                               </form>
+                              <a class="btn btn-outline-warning" href="detail_transaksi/{{$value->id}}">Detail</a>
                             </td>
                         </tr>
                         @endforeach

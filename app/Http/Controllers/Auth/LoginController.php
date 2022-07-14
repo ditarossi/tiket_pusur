@@ -35,6 +35,11 @@ class LoginController extends Controller
      *
      * @return void
      */
+    public function index()
+    {
+        return view('user_view.login');
+    }
+
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
@@ -56,10 +61,10 @@ class LoginController extends Controller
             {
                 return redirect()->route('user_view');
             } else {
-                return redirect('logout');
+                return redirect('form-login');
             }
         } else {
-            return redirect('logout')->with('error','email dan password salah');
+            return redirect('form-login')->with('error','email dan password salah');
         }
     }
 

@@ -30,7 +30,7 @@
                 <button class="btn btn-success" type="submit" name="submit" value="table">Search</button>
                 </form>
               </div>
-            </div>
+            
             @isset($data)
   <div class="panel panel-inverse">
     <br>
@@ -88,6 +88,7 @@
 
           </div>
           
+        </div>
         </div>
 
 

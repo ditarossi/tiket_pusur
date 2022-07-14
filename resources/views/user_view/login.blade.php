@@ -1,19 +1,14 @@
-
 <!DOCTYPE html>
 <html lang="en">
-
-  <head>
-
+<head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
 
-    <title>Landing Page</title>
-
+    <title>Document</title>
     <!-- Bootstrap core CSS -->
     <link href="{{asset('layout')}}/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -22,57 +17,20 @@
     <link rel="stylesheet" href="{{asset('layout')}}/assets/css/templatemo-chain-app-dev.css">
     <link rel="stylesheet" href="{{asset('layout')}}/assets/css/animated.css">
     <link rel="stylesheet" href="{{asset('layout')}}/assets/css/owl.css">
-
-    <!-- CSS TEMPLATE GAMBAR -->
-    <!-- Favicons -->
-    <link href="{{asset('pict')}}/assets/img/favicon.png" rel="icon">
-    <link href="{{asset('pict')}}/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-    <link href="{{asset('pict')}}/assets/vendor/animate.css/animate.min.css" rel="stylesheet">
-    <!-- <link href="{{asset('pict')}}/assets/vendor/aos/aos.css" rel="stylesheet"> -->
-    <!-- <link href="{{asset('pict')}}/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
-    <link href="{{asset('pict')}}/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="{{asset('pict')}}/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-    <link href="{{asset('pict')}}/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-    <link href="{{asset('pict')}}/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-    
-    <link href="{{asset('pict')}}/assets/css/style.css" rel="stylesheet">
-
-    <!--CARAOUSEL-->
-    <link rel="stylesheet" type="text/css" href="{{asset('caraousel')}}/assets/css/plugins.css">
-    <link rel="stylesheet" type="text/css" href="{{asset('caraousel')}}/assets/css/style.css">
-    <style type="text/css">
-        #freecssfooter{display:block;width:100%;padding:120px 0 20px;overflow:hidden;background-color:transparent;z-index:5000;text-align:center;}
-        #freecssfooter div#fcssholder div{display:none;}
-        #freecssfooter div#fcssholder div:first-child{display:block;}
-        #freecssfooter div#fcssholder div:first-child a{float:none;margin:0 auto;}
+    <style>
+        .container{
+            padding: 70px;
+        }
     </style>
-  </head>
-
+</head>
 <body>
-
-  <!-- ***** Preloader Start ***** -->
-  <div id="js-preloader" class="js-preloader">
-    <div class="preloader-inner">
-      <span class="dot"></span>
-      <div class="dots">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-    </div>
-  </div>
-  <!-- ***** Preloader End ***** -->
-
-  <!-- ***** Header Area Start ***** -->
-  @include('landing.navbar')
-  <!-- ***** Header Area End ***** -->
-  <div id="modal" class="popupContainer" style="display:none;">
+    <div class="container">
+    <div id="modal" tyle="display:none;" width="350px">
     <div class="popupHeader">
         <span class="header_title">Login</span>
-        <span class="modal_close"><i class="fa fa-times"></i></span>
     </div>
 
-    <section class="popupBody">
+    <section>
         <!-- Social Login -->
         <div class="social_login">
             <div class="">
@@ -100,7 +58,7 @@
 
         <!-- Username & Password Login form -->
         <div class="user_login">
-            <form method="POST" action="/login" enctype="multipart/form-data">
+            <form method="POST" action="{{url('/login')}}" enctype="multipart/form-data">
             @csrf
                 <label>Email / Username</label>
                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus/>
@@ -118,7 +76,7 @@
                 <div class="action_btns">
                     <div class="one_half"><a href="#" class="btn back_btn"><i class="fa fa-angle-double-left"></i> Back</a></div>
                     <div class="one_half">
-                            <input class="btn btn_red" type="submit" name="login" value="Sumbit">
+                            <input class="btn btn_red one_half last" type="submit" name="login" value="Sumbit">
                     </div>
                 </div>
             </form>
@@ -153,23 +111,16 @@
 
                 <div class="action_btns">
                     <div class="one_half"><a href="#" class="btn back_btn"><i class="fa fa-angle-double-left"></i> Back</a></div>
-                    <button type="submit" class="btn btn-primary">Register</button>
+                    <button type="submit" class="btn btn-primary one_half last">Register</button>
                 </div>
             </form>
         </div>
     </section>
 </div>
+</div>
 
 
-<!--content-->
-
-@yield('content')
-
-<!--content-->
-
-
-@include('landing.footer')
-  <!-- Scripts -->
+<!-- Scripts -->
   <script src="{{asset('layout')}}/vendor/jquery/jquery.min.js"></script>
   <script src="{{asset('layout')}}/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="{{asset('layout')}}/assets/js/owl-carousel.js"></script>
@@ -177,27 +128,5 @@
   <script src="{{asset('layout')}}/assets/js/imagesloaded.js"></script>
   <script src="{{asset('layout')}}/assets/js/popup.js"></script>
   <script src="{{asset('layout')}}/assets/js/custom.js"></script>
-
-  <!-- SCRIPT TEMPLATE GAMBAR -->
-  <!-- Vendor JS Files -->
-  <script src="{{asset('pict')}}/assets/vendor/purecounter/purecounter.js"></script>
-  <script src="{{asset('pict')}}/assets/vendor/aos/aos.js"></script>
-  <script src="{{asset('pict')}}/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="{{asset('pict')}}/assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="{{asset('pict')}}/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="{{asset('pict')}}/assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="{{asset('pict')}}/assets/vendor/waypoints/noframework.waypoints.js"></script>
-  <script src="{{asset('pict')}}/assets/vendor/php-email-form/validate.js"></script>
-  <script src="{{asset('pict')}}/assets/js/main.js"></script>
-
-  <!--Script caraousel-->
-    <script src="{{asset('caraousel')}}/assets/js/jquery.min.js"></script>
-    <script src="{{asset('caraousel')}}/assets/js/bootstrap.bundle.min.js"></script>
-    <script src="{{asset('caraousel')}}/assets/js/easing.min.js"></script>
-    <script src="{{asset('caraousel')}}/assets/js/waypoints.min.js"></script>
-    <script src="{{asset('caraousel')}}/assets/js/owl.carousel.min.js"></script>
-    <script src="{{asset('caraousel')}}/assets/js/isotope.pkgd.min.js"></script>
-    <script src="{{asset('caraousel')}}/assets/js/lightbox.min.js"></script>
-    <script src="{{asset('caraousel')}}/assets/js/main.js"></script>
 </body>
 </html>

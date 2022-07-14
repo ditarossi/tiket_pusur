@@ -19,8 +19,8 @@
                     <table id="order-listing" class="table">
                       <thead>
                         <tr>
-                            <th>wisata_id</th>
-                            <th>fasilitas_id</th>
+                            <th>Wisata</th>
+                            <th>Fasilitas</th>
                             <th>Actions</th>
                         </tr>
                       </thead>

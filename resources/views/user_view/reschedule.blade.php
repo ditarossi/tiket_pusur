@@ -69,11 +69,11 @@
     <div class="card mb-3" style="max-width: 1300px;">
       <div class="row g-0">
         <div class="col-md-4">
-          <img src="{{asset('layout')}}/assets/images/pemesanan.png" class="img-fluid rounded-start" alt="..." width="750px">
+          <img src="{{asset('pict')}}/assets/img/features-3.svg" class="img-fluid rounded-start" alt="..." width="750px">
         </div>
         <div class="col-md-8">
           <div class="card-body">
-            <h5 class="card-title" align="center">Form Pemesanan</h5>
+            <h5 class="card-title" align="center">Reschedule Pemesanan</h5>
               <form class="forms-sample" action="{{ url('pemesanan/'.$model->id) }}" method="post" enctype="multipart/form-data">
                   @csrf
                   <input type="hidden" name="_method" value="PATCH">
@@ -82,7 +82,7 @@
                     <input name="wisata_id" value="{{$model->wisata->nama_wisata}}" class="form-control" id="wisata_id" readonly></input>
                   </div>
                   <div class="mb-3">
-                    <label>Tanggal Kunjungan</label>
+                    <label>Reschedule Tanggal Kunjungan</label>
                     <input name="Tanggal_Kunjungan" value="{{$model->Tanggal_Kunjungan}}" type="date" class="form-control" id="Tanggal_Kunjungan"></input>
                   </div>
                   <div class="mb-3">
@@ -94,7 +94,7 @@
                     <input value="{{$model->tagihan}}" name="tagihan" type="text" class="form-control" id="tagihan" readonly></input>
                   </div>
                         <a href="{{url('riwayat_pemesanan')}}" type="button" class="btn btn-secondary">Close</a>
-                        <button type="submit" name="submit" class="btn btn-primary">Send message</button>
+                        <button type="submit" name="submit" class="btn btn-primary">Reschedule</button>
                   {{ csrf_field() }}
                 </form>
           </div>

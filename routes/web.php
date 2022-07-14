@@ -33,6 +33,7 @@ Route::match(['get', 'post'], 'contact', [App\Http\Controllers\LandingController
 Auth::routes();
 Route::get('/register', [App\Http\Controllers\Auth\RegisterController::class, 'create']);
 Route::get('/login', [App\Http\Controllers\Auth\LoginController::class, 'login']);
+Route::get('/form-login', [App\Http\Controllers\Auth\LoginController::class, 'index']);
 
 Route::group([
     'middleware' => ['auth', 'is_admin'],
@@ -63,6 +64,7 @@ Route::group([
     Route::get('verifikasi', '\App\Http\Controllers\PemesananController@verifikasi');
     Route::get('reschedule', '\App\Http\Controllers\PemesananController@reschedule');
     Route::get('pemesananselesai', '\App\Http\Controllers\PemesananController@pemesananselesai');
+    Route::get('detail_transaksi/{id}', '\App\Http\Controllers\PemesananController@detail');
 
     //CRUD TRANSAKSI FASILITAS
     Route::resource('tbl_transaksiFasilitas', '\App\Http\Controllers\TransaksiFasilitasController');
@@ -105,6 +107,7 @@ Route::group([
 
     Route::get('persetujuan/{id}', [App\Http\Controllers\Pemesanan_user::class, 'refund']);
     Route::get('foto/{id}', [App\Http\Controllers\Pemesanan_user::class, 'foto']);
+    Route::get('informasi_pembayaran/{id}', [App\Http\Controllers\Pemesanan_user::class, 'informasi_pembayaran']);
     Route::get('cetak/{id}', [App\Http\Controllers\HomeController::class, 'download']);
     Route::get('tiket', [App\Http\Controllers\HomeController::class, 'tiket']);
     Route::get('riwayat', [App\Http\Controllers\HomeController::class, 'riwayat']);
