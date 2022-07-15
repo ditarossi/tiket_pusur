@@ -22,13 +22,6 @@
                       <input name="wisata_id" type="text" class="form-control" id="exampleInputUsername1" placeholder="ID Wisata">
                     </div>
                     <div class="form-group">
-                      <label for="#">Fasilitas</label>
-                      @foreach ($dfas as $f)
-                      <input name="fasilitas_id[]" type="checkbox" class="form-check-inputl" id="#" placeholder="Fasilitas" value="{{$f->fasilitas}}">
-                      <label class="form-check-label" for="inlineCheckbox1">{{$f->fasilitas}}</label>
-                      @endforeach
-                    </div>
-                    <div class="form-group">
                       <label for="exampleInputUsername1">Tanggal Kunjungan</label>
                       <input name="Tanggal_Kunjungan" type="date" class="form-control" id="exampleInputUsername1" placeholder="Tanggal Kunjungan">
                     </div>
@@ -51,6 +44,10 @@
                     <div class="form-group">
                       <label for="exampleInputPassword1">Pengajuan Refund</label>
                       <input name="refund" type="text" class="form-control" id="exampleInputPassword1" placeholder="Kuota">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Bukti Transaksi</label>
+                      <input name="bukti_transaksi" type="text" class="form-control" id="exampleInputPassword1" placeholder="Bukti Transaksi">
                     </div>
                     <div class="form-check">
                       <label class="form-check-label text-muted">

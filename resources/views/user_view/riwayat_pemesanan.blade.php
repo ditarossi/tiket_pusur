@@ -72,13 +72,7 @@
                                             Status     : {{$value->status_pemesanan}}
                                         </p>
                                         @foreach(App\Models\DaftarWisata::where('id', $value->wisata_id)->get() as $dd)
-                                        @if($value->status_pemesanan == "Berhasil Pesan" 
-                                        && date('Y-m-d') < $value->Tanggal_Kunjungan 
-                                        && $value->reschedule != "Berhasil Reschedule"
-                                        && $value->jumlah < $dd->kuota)
-                                            <a class="btn btn-warning" href="{{ url('pemesanan/'.$value->id.'/edit') }}">Reschedule</i></a>
-                                            <a class="btn btn-primary" href="cetak/{{$value->id}}">Cetak</a>
-                                        @elseif($value->status_pemesanan =="Menunggu Verifikasi"  
+                                        @if($value->status_pemesanan =="Menunggu Verifikasi"  
                                         && $value->bukti_transaksi == "Belum Melakukan Transaksi" 
                                         && $value->jumlah < $dd->kuota)
                                           <a class="btn btn-primary" href="informasi_pembayaran/{{$value->id}}">Informasi Pembayaran</a>
@@ -146,19 +140,12 @@
                                         @foreach(App\Models\DaftarWisata::where('id', $value->wisata_id)->get() as $kk)
                                         @if($value->status_pemesanan == "Berhasil Pesan" 
                                         && date('Y-m-d') < $value->Tanggal_Kunjungan 
-                                        && $value->reschedule != "Berhasil Reschedule")
+                                        && $value->reschedule != "Berhasil Reschedule"
+                                        && $value->jumlah < $kk->kuota)
                                             <a class="btn btn-white" href="{{ url('pemesanan/'.$value->id.'/edit') }}"><i class="ti-pencil text-primary"></i> Reschedule</i></a>
                                             <a class="btn btn-white" href="cetak/{{$value->id}}"><i class="ti-download text-primary"></i> Cetak</a>
-                                            {{-- <div class="row">
-                                              <div class="col-sm-5">
-                                                <a class="btn btn-light" href="{{ url('pemesanan/'.$value->id.'/edit') }}"><i class="ti-pencil text-primary"></i> Reschedule</a>
-                                              </div>
-                                              <div class="col-sm-5">
-                                                <a class="btn btn-light" href="cetak/{{$value->id}}"><i class="ti-download text-primary"></i> Cetak</a>
-                                              </div>
-                                            </div> --}}
-                                        @elseif($value->reschedule =="Berhasil Reschedule")
-                                            <a class="btn btn-primary" href="cetak/{{$value->id}}">Cetak</a>
+                                        @else
+                                          <a class="btn btn-white" href="cetak/{{$value->id}}"><i class="ti-download text-primary"></i> Cetak</a>
                                         @endif
                                         @endforeach
                       </div>
@@ -217,13 +204,6 @@
                                 <br>
                                 Status     : {{$value->status_pemesanan}}
                             </p>
-                            @if($value->status_pemesanan == "Berhasil Pesan" && date('Y-m-d') < $value->Tanggal_Kunjungan && $value->reschedule != "Berhasil Reschedule")
-                                <a class="btn btn-warning" href="{{ url('pemesanan/'.$value->id.'/edit') }}">Reschedule</i></a>
-                                {{-- <a class="btn btn-danger" href="persetujuan/{{$value->id}}">Batalkan</a> --}}
-                                <a class="btn btn-primary" href="cetak/{{$value->id}}">Cetak</a>
-                            @elseif($value->status_pemesanan =="Menunggu Verifikasi")
-                              <a class="btn btn-primary" href="foto/{{$value->id}}">Upload Bukti Transaksi</a>
-                            @endif
           </div>
         </div>
         <div class="col-md-8">
@@ -269,41 +249,6 @@
   <script src="{{asset('pict')}}/assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="{{asset('pict')}}/assets/vendor/php-email-form/validate.js"></script>
   <script src="{{asset('pict')}}/assets/js/main.js"></script>
-
-
-
-  <script>
-    var endDate = new Date('2022-07-15 20:00');
-
-    var x = setInterval(function() {
-
-    var now =  new Date().getTime();
-
-    var timeRemaining = endDate - now;
-
-    var daysRemaining = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
-    var hoursRemaining = Math.floor((timeRemaining % (1000 * 60 * 60 * 24))/(1000 * 60 * 60));
-    var minutesRemaining = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
-    var secondsRemaining = Math.floor((timeRemaining % (1000 * 60)) / (1000));
-
-    document.getElementById("days").innerHTML = daysRemaining;
-    document.getElementById("hours").innerHTML = hoursRemaining;
-    document.getElementById("minutes").innerHTML = minutesRemaining;
-    document.getElementById("seconds").innerHTML = secondsRemaining; 
-
-    if (timeRemaining < 0) { 
-    clearInterval(x);
-      document.getElementById("days").innerHTML ='0'; 
-      document.getElementById("hours").innerHTML ='0'; 
-      document.getElementById("minutes").innerHTML ='0' ; 
-      document.getElementById("seconds").innerHTML = '0';
-      alert("Thank you for your patience");
-    }
-
-    },1000);
-    </script>
-
-
   </body>
 </html>
     

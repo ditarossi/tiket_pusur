@@ -13,7 +13,7 @@
               <div class="row">
                 <div class="col-12"></div>
                   <div class="table-responsive">
-                  <a class="btn btn-outline-success" href="{{ url('tbl_pemesanan/create') }}">Tambah Data</a>
+                  {{-- <a class="btn btn-outline-success" href="{{ url('tbl_pemesanan/create') }}">Tambah Data</a> --}}
                     <br>
                     <br>
                     <table id="order-listing" class="table">

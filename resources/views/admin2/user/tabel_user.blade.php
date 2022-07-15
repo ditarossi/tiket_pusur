@@ -13,7 +13,7 @@
               <div class="row">
                 <div class="col-12"></div>
                   <div class="table-responsive">
-                  <a class="btn btn-outline-success" href="{{ url('tbl_user/create') }}">Tambah Data</a>
+                  {{-- <a class="btn btn-outline-success" href="{{ url('tbl_user/create') }}">Tambah Data</a> --}}
                     <br>
                     <br>
                     <table id="order-listing" class="table">
@@ -23,7 +23,7 @@
                             <th>E-Mail</th>
                             <!-- <th>Password</th> -->
                             <th>Role</th>
-                            <th>Actions</th>
+                            {{-- <th>Actions</th> --}}
                         </tr>
                       </thead>
                       <tbody>
@@ -33,14 +33,7 @@
                             <td>{{ $value->email }}</td>
                             <!-- <td>{{ $value->password }}</td> -->
                             <td>{{ $value->is_admin }}</td>
-                            <td>
-                              {{-- <a class="btn btn-outline-warning" href="{{ url('tbl_user/'.$value->id.'/edit') }}">Update</a>
-                              <form action="{{ url('tbl_user/'.$value->id) }}" method="post">
-                                @csrf 
-                                <input type="hidden" name="_method" value="delete">
-                                <button class="btn btn-outline-danger" type="submit" onclick="return confirm('Yakin ingin menghapus data ?')">Delete</button>
-                              </form> 
-                              <a class="btn btn-light"><i class="ti-eye text-info"></i>Detail</a> --}}
+                            {{-- <td>
                               <div class="row">
                                 <div class="col-sm-3">
                                   <a class="btn btn-light" href="{{ url('tbl_user/'.$value->id.'/edit') }}"><i class="ti-pencil text-primary"></i>Edit</a>
@@ -53,7 +46,7 @@
                                   </form> 
                                 </div>
                               </div>
-                            </td>
+                            </td> --}}
                         </tr>
                         @endforeach
                       </tbody>

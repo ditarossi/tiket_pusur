@@ -46,7 +46,7 @@ Route::group([
     //CRUD USER
     Route::resource('tbl_user', '\App\Http\Controllers\UserController');
 
-    //CRUD KEGIATAB
+    //CRUD KEGIATAN
     Route::resource('tbl_kegiatan', '\App\Http\Controllers\KegiatanController');
 
     //CRUD FASILITAS
