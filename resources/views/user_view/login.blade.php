@@ -24,6 +24,7 @@
     </style>
 </head>
 <body>
+     @include('sweetalert::alert')
     <div class="container">
     <div id="modal" tyle="display:none;" width="350px">
     <div class="popupHeader">
@@ -118,8 +119,6 @@
     </section>
 </div>
 </div>
-
-
 <!-- Scripts -->
   <script src="{{asset('layout')}}/vendor/jquery/jquery.min.js"></script>
   <script src="{{asset('layout')}}/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

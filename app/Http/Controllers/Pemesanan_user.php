@@ -87,7 +87,7 @@ class Pemesanan_user extends Controller
                 $TFasilitas->fasilitas_id = $request->get('fasilitas_id')[$i];
                 $TFasilitas->save();
             } 
-            return redirect('/user_view');
+            return redirect('/user_view')->with('success', 'Berhasil Pesan!');
         }
     }
 

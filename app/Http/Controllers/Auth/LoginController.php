@@ -61,10 +61,10 @@ class LoginController extends Controller
             {
                 return redirect()->route('user_view');
             } else {
-                return redirect('form-login');
+                return redirect('form-login')->with('warning', 'Username dan Password Tidak Sesuai!');
             }
         } else {
-            return redirect('form-login')->with('error','email dan password salah');
+            return redirect('form-login')->with('warning', 'Username dan Password Tidak Sesuai!');
         }
     }
 

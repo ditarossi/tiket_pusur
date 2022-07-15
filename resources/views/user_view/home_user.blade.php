@@ -158,7 +158,7 @@ https://templatemo.com/tm-570-chain-app-dev
   <!--footer-->
 
   @include('user_view.footer')
-
+    @include('sweetalert::alert')
 
   <!--footer-->
   <!-- Scripts -->
