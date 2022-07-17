@@ -74,7 +74,7 @@
                                         @foreach(App\Models\DaftarWisata::where('id', $value->wisata_id)->get() as $dd)
                                         @if($value->status_pemesanan =="Menunggu Verifikasi"  
                                         && $value->bukti_transaksi == "Belum Melakukan Transaksi" 
-                                        && $value->jumlah < $dd->kuota)
+                                        && $value->jumlah <= $dd->kuota)
                                           <a class="btn btn-primary" href="informasi_pembayaran/{{$value->id}}">Informasi Pembayaran</a>
                                           <br> 
                                           @endif
@@ -141,7 +141,7 @@
                                         @if($value->status_pemesanan == "Berhasil Pesan" 
                                         && date('Y-m-d') < $value->Tanggal_Kunjungan 
                                         && $value->reschedule != "Berhasil Reschedule"
-                                        && $value->jumlah < $kk->kuota)
+                                        && $value->jumlah <= $kk->kuota)
                                             <a class="btn btn-white" href="{{ url('pemesanan/'.$value->id.'/edit') }}"><i class="ti-pencil text-primary"></i> Reschedule</i></a>
                                             <a class="btn btn-white" href="cetak/{{$value->id}}"><i class="ti-download text-primary"></i> Cetak</a>
                                         @else

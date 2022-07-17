@@ -38,7 +38,8 @@ Route::get('/form-login', [App\Http\Controllers\Auth\LoginController::class, 'in
 Route::group([
     'middleware' => ['auth', 'is_admin'],
 ], function() {
-    Route::get('/admin', [App\Http\Controllers\AdminControllers::class, 'index'])->name('admin');
+    // Route::get('/admin', [App\Http\Controllers\AdminControllers::class, 'index'])->name('admin');
+    Route::get('/admin', [App\Http\Controllers\AdminControllers::class, 'DashboardAdminController'])->name('admin');
     Route::get('gantistatus/{id}', [App\Http\Controllers\PemesananController::class, 'gantistatus']);
     Route::get('gantirefund/{id}', [App\Http\Controllers\PemesananController::class, 'gantirefund']);
     Route::get('selesai/{id}', [App\Http\Controllers\PemesananController::class, 'selesai']);

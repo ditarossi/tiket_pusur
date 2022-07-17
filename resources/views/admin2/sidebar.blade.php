@@ -8,36 +8,37 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/tbl_user">
-              <i class="icon-user"></i>
+              <i class="icon-head menu-icon"></i>
               <span class="menu-title">Tabel User</span>
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/tbl_kegiatan">
-              <i class="#"></i>
+              <i class="icon-paper menu-icon"></i>
               <span class="menu-title">Daftar Kegiatan</span>
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/tbl_fasilitas">
-              <i class="#"></i>
+              <i class="icon-align-right menu-icon"></i>
               <span class="menu-title">Fasilitas</span>
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/tbl_wisata">
-              <i class="#"></i>
+              <i class="icon-file menu-icon"></i>
               <span class="menu-title">Daftar Wisata</span>
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/tbl_fasilitasWisata">
-              <i class="#"></i>
+              <i class="icon-contract menu-icon"></i>
               <span class="menu-title">Fasilitas Wisata</span>
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#icons" aria-expanded="false" aria-controls="icons">
+               <i class="icon-tag menu-icon"></i>
               <span class="menu-title">Transaksi Wisata</span>
               <i class="menu-arrow"></i>
             </a>
@@ -52,7 +53,7 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/tbl_pemesanan">
-              <i class="#"></i>
+              <i class="icon-book menu-icon"></i>
               <span class="menu-title">Laporan Transaksi</span>
             </a>
           </li>
@@ -70,7 +71,7 @@
           </li> --}}
           <li class="nav-item">
             <a class="nav-link" href="/tbl_contact">
-              <i class="#"></i>
+              <i class="icon-bell menu-icon"></i>
               <span class="menu-title">User Feedback</span>
             </a>
           </li>

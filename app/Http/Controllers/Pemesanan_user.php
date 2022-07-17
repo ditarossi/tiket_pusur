@@ -63,9 +63,10 @@ class Pemesanan_user extends Controller
     public function store(Request $request)
     {
         $model = new Transaksi;
-        $data = DaftarWisata::all()->first();
+        $data = DB::table('daftar_wisata')->where('id', $request->wisata_id)->first();
+
         if($request->jumlah > $data->kuota){
-            return redirect('order');
+            return redirect('order')->with('warning', 'Melebihi Kuota!');
         } else {
             $model->users_id = Auth::user()->id;
             $model->Tanggal_Kunjungan = $request->Tanggal_Kunjungan;
