@@ -195,12 +195,14 @@ class PemesananController extends Controller
 
     public function sortir(Request $request)
     {
+        $request->status_pemesanan;
         $startDate = Str::before($request->tanggal_awal, ' -');
         $endDate = Str::after($request->tanggal_akhir, '- ');
         switch ($request->submit) {
             case 'table':
 
                 $data = Transaksi::all()
+                    ->where('status_pemesanan', $request->status_pemesanan)
                     ->whereBetween('Tanggal_Kunjungan', [$startDate, $endDate]);
              
                 return view('admin2.pemesanan.cetak', compact( 'data', 'startDate', 'endDate'));
@@ -212,7 +214,8 @@ class PemesananController extends Controller
     {
         $startDate = $start;
         $endDate = $end;
-        $data = Transaksi::get()->whereBetween('Tanggal_Kunjungan', [$startDate, $endDate]);
+        $data = Transaksi::get()
+        ->whereBetween('Tanggal_Kunjungan', [$startDate, $endDate]);
         // // dd($datas);
         // // view()->share('datas', $datas);
         $pdf = PDF::loadview('admin2.pemesanan.cetak-pertanggal', ['data'=>$data]);
