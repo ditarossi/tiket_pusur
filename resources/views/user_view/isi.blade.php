@@ -18,10 +18,10 @@
                   </div>
                   <div class="col-lg-12">
                     <div class="white-button first-button scroll-to-section">
-                      <a href="#contact">Instagram<i class="fab fa-apple"></i></a>
+                      <a href="https://www.instagram.com/pusur_institute/">Instagram<i class="fab fa-apple"></i></a>
                     </div>
                     <div class="white-button scroll-to-section">
-                      <a href="#contact">WhatsApp<i class="fab fa-google-play"></i></a>
+                      <a href="https://api.whatsapp.com/send/?phone=%2B6285856816566&text&type=phone_number&app_absent=0">WhatsApp<i class="fab fa-google-play"></i></a>
                     </div>
                   </div>
                 </div>
@@ -103,10 +103,10 @@
   <div class="modal fade bd-example-modal-lg" id="showdetail{{$d->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
       <div class="modal-content">
-        <div class="modal-header">
+        {{-- <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">{{$d->nama_wisata}}</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
+        </div> --}}
         <div class="modal-body">  
           <section id="portfolio-details" class="portfolio-details">
             <div class="container">
@@ -130,7 +130,7 @@
                       <li><strong>Keterngan</strong>: {{$d->keterangan}}</a></li>
                     </ul>
                   </div>
-                  <div class="portfolio-description">
+                  <div class="portfolio-info">
                     <p>
                         {{$d->deskripsi}}
                     </p>
@@ -141,7 +141,7 @@
           </section>
         </div>               
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn-secondary" data-bs-dismiss="modal">Close</button>
         </div>
       </div>
     </div>
@@ -153,10 +153,10 @@
   <div class="modal fade bd-example-modal-lg" id="showdetail2{{$k->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
       <div class="modal-content">
-        <div class="modal-header">
+        {{-- <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">{{$k->nama_wisata}}</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
+        </div> --}}
         <div class="modal-body">
           <section id="portfolio-details" class="portfolio-details">
             <div class="container">
@@ -184,8 +184,8 @@
           </section>
         </div>               
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button href="#modal" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap" type="button" class="btn btn-primary">Order Now</button>
+          <button type="button" class="btn-secondary" data-bs-dismiss="modal">Close</button>
+          {{-- <button href="#modal" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap" type="button" class="btn btn-primary">Order Now</button> --}}
         </div>
       </div>
     </div>
@@ -214,7 +214,7 @@
                 <ul>
                   <li><i class="bi bi-check2-circle"></i> Melakukan registrasi sebagai user</li>
                   <li><i class="bi bi-check2-circle"></i> Login ke sistem</li>
-                  <li><i class="bi bi-check2-circle"></i> Memilih menu pemesanan, kemudian mengisi form pemesanan</li>
+                  <li><i class="bi bi-check2-circle"></i> Klik button order kemudian mengisikan form</li>
                   <li><i class="bi bi-check2-circle"></i> Memilih menu user, kemudian memilih menu pemesanan</li>
                   <li><i class="bi bi-check2-circle"></i> Menunggu hingga status pemesanan berubah menjadi berhasil pesan</li>
                   <li><i class="bi bi-check2-circle"></i> Datang ke tempat wisata, kemudian tunjukkan e-tiket</li>
@@ -372,8 +372,8 @@
                 </p>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                {{-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> --}}
+                {{-- <button type="button" class="btn btn-primary">Save changes</button> --}}
               </div>
             </div>
           </div>
@@ -402,8 +402,8 @@
                 <img src="{{asset('layout')}}/assets/images/Picture1.png" alt="">
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                {{-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> --}}
+                {{-- <button type="button" class="btn btn-primary">Save changes</button> --}}
               </div>
             </div>
           </div>
@@ -465,8 +465,8 @@
                 </p>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                {{-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> --}}
+                {{-- <button type="button" class="btn btn-primary">Save changes</button> --}}
               </div>
             </div>
           </div>
@@ -503,8 +503,8 @@
                 </ul>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                {{-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> --}}
+                {{-- <button type="button" class="btn btn-primary">Save changes</button> --}}
               </div>
             </div>
           </div>

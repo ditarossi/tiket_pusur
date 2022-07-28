@@ -45,6 +45,10 @@
         #freecssfooter div#fcssholder div{display:none;}
         #freecssfooter div#fcssholder div:first-child{display:block;}
         #freecssfooter div#fcssholder div:first-child a{float:none;margin:0 auto;}
+
+        .btn-secondary{
+            border-radius: 30%;
+        }
     </style>
   </head>
 

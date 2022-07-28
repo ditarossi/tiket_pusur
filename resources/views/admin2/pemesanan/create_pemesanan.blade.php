@@ -49,14 +49,14 @@
                       <label for="exampleInputPassword1">Bukti Transaksi</label>
                       <input name="bukti_transaksi" type="text" class="form-control" id="exampleInputPassword1" placeholder="Bukti Transaksi">
                     </div>
-                    <div class="form-check">
+                    {{-- <div class="form-check">
                       <label class="form-check-label text-muted">
                       <input type="checkbox" class="form-check-input" required>
                       <a href="#">Remember me</a>
                       <i class="input-helper"></i></label>
-                    </div>
+                    </div> --}}
                     <button type="submit" class="btn btn-primary me-2">Submit</button>
-                    <button class="btn btn-light">Cancel</button>
+                    {{-- <button class="btn btn-light">Cancel</button> --}}
                   </form>
                 </div>
               </div>

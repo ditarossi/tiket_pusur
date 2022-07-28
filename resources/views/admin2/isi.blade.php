@@ -286,7 +286,7 @@
             datasets: [{
                 label: 'Jumlah Pemesanan',
                 data: [{!! json_encode($total_jan) !!}, {!! json_encode($total_feb) !!}, {!! json_encode($total_mar) !!}, {!! json_encode($total_apr) !!}, {!! json_encode($total_mei) !!}, {!! json_encode($total_jun) !!},{!! json_encode($total_juli) !!}, {!! json_encode($total_agus) !!}, {!! json_encode($total_sept) !!}, {!! json_encode($total_okto) !!}, {!! json_encode($total_nove) !!}, {!! json_encode($total_dese) !!}],
-                backgroundColor: '#4C792D'
+                backgroundColor: '#686868'
               },
               // {
               //   label: 'Online Sales',

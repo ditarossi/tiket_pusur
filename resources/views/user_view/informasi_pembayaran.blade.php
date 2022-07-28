@@ -50,7 +50,7 @@
   <div class="container">
 
 
-    <div class="card mb-3" style="max-width: 1300px;">
+    <div class="card mb-3" style="max-width: 1300px; border: 0px;">
       <div class="row g-0">
         <div class="col-md-4">
           <div class="mb-3">
@@ -60,6 +60,14 @@
                   <div class="mb-3">
                     <label>Nomor Rekening</label>
                     <input name="" value="980987868575 (Mandiri)" class="form-control" readonly></input>
+                  </div>
+                  <div class="mb-3">
+                    <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-offset="0" class="scrollspy-example" tabindex="0">
+                    <h4 id="scrollspyHeading1">First heading</h4>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis expedita sed eum. Magni architecto minus est possimus at consequatur nostrum, suscipit assumenda maxime explicabo temporibus expedita! Voluptatum est nisi odio.</p>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis expedita sed eum. Magni architecto minus est possimus at consequatur nostrum, suscipit assumenda maxime explicabo temporibus expedita! Voluptatum est nisi odio.</p>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis expedita sed eum. Magni architecto minus est possimus at consequatur nostrum, suscipit assumenda maxime explicabo temporibus expedita! Voluptatum est nisi odio.</p>
+                  </div>
                   </div>
         </div>
         <div class="col-md-8">

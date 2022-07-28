@@ -56,7 +56,7 @@
                             </td>
                             @endif
                             <td>
-                              <a class="btn btn-light" href="gantistatus/{{$value->id}}" onclick="return confirm('Yakin mengubah status pemesanan ?')"><i class="ti-pencil text-primary"></i>Ganti Status</a>
+                              <a class="btn btn-light" href="gantistatus/{{$value->id}}" onclick="return confirm('Yakin mengubah status pemesanan ?')"><i class="ti-pencil text-primary"></i>Verifikasi</a>
                               {{-- <a class="btn btn-outline-warning" href="{{ url('tbl_pemesanan/'.$value->id.'/edit') }}">Update</a>
                               <form action="{{ url('tbl_pemesanan/'.$value->id) }}" method="post">
                                 @csrf 

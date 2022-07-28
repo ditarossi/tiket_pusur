@@ -202,7 +202,6 @@ class PemesananController extends Controller
             case 'table':
 
                 $data = Transaksi::all()
-                    ->where('status_pemesanan', $request->status_pemesanan)
                     ->whereBetween('Tanggal_Kunjungan', [$startDate, $endDate]);
              
                 return view('admin2.pemesanan.cetak', compact( 'data', 'startDate', 'endDate'));

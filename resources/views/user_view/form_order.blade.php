@@ -21,6 +21,10 @@
       .container{
         margin-top: 70px;
       }
+      .container .card-body h5{
+        font-weight: 700;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      }
       
       input[type="date"] {
         position: relative;
@@ -45,7 +49,7 @@
   <div class="container">
 
 
-    <div class="card mb-3" style="max-width: 1300px;">
+    <div class="card mb-3" style="max-width: 1300px; border: 0px;">
       <div class="row g-0">
         <div class="col-md-4">
           <img src="{{asset('pict')}}/assets/img/features-3.svg" class="img-fluid rounded-start" alt="..." width="750px">

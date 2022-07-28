@@ -30,6 +30,11 @@
     <link href="{{asset('pict')}}/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
     
     <link href="{{asset('pict')}}/assets/css/style.css" rel="stylesheet">
+    <style>
+        .btn-secondary{
+            border-radius: 30%;
+        }
+    </style>
 
 <!--
 

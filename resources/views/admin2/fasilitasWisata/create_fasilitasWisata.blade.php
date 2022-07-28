@@ -31,14 +31,14 @@
                                 @endforeach
                             </select>
                         </div>
-                    <div class="form-check">
+                    {{-- <div class="form-check">
                       <label class="form-check-label text-muted">
                       <input type="checkbox" class="form-check-input" required>
                       <a href="#">Remember me</a>
                       <i class="input-helper"></i></label>
-                    </div>
+                    </div> --}}
                     <button type="submit" class="btn btn-primary me-2">Submit</button>
-                    <button class="btn btn-light">Cancel</button>
+                    {{-- <button class="btn btn-light">Cancel</button> --}}
                   </form>
                 </div>
               </div>

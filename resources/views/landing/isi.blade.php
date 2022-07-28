@@ -17,10 +17,10 @@
                 </div>
                 <div class="col-lg-12">
                   <div class="white-button first-button scroll-to-section">
-                    <a href="#contact">Instagram <i class="fab fa-instagram"></i></a>
+                    <a href="https://www.instagram.com/pusur_institute/">Instagram <i class="fab fa-instagram"></i></a>
                   </div>
                   <div class="white-button scroll-to-section">
-                    <a href="#contact">WhatsApp <i class="fab fa-whatsapp"></i></a>
+                    <a href="https://api.whatsapp.com/send/?phone=%2B6285856816566&text&type=phone_number&app_absent=0">WhatsApp <i class="fab fa-whatsapp"></i></a>
                   </div>
                 </div>
               </div>
@@ -84,14 +84,14 @@
 
 <!--MODAL SHOW DETAIL WISATA-->
 @foreach($datas as $d)
-  <div class="modal fade bd-example-modal-lg" id="showdetail{{$d->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade bd-example-modal-lg" id="showdetail{{$d->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
       <div class="modal-content">
-        <div class="modal-header">
+        {{-- <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">{{$d->nama_wisata}}</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
+        </div> --}}
+        <div class="modal-body">  
           <section id="portfolio-details" class="portfolio-details">
             <div class="container">
               <div class="row gy-4">
@@ -99,23 +99,22 @@
                   <div class="portfolio-details-slider swiper">
                     <div class="swiper-wrapper align-items-center">
                       <div class="swiper-slide">
-                        <!-- PERULANGAN GAMBAR-->
                         <img src="{{ asset($d->foto) }}" alt="">
                       </div>
                     </div>
                     <div class="swiper-pagination"></div>
-                    </div>
                   </div>
+                </div>
                 <div class="col-lg-4">
                   <div class="portfolio-info">
                     <h3>{{$d->nama_wisata}}</h3>
                     <ul>
-                        <li><strong>Kuota</strong>: {{$d->kuota}}</li>
-                        <li><strong>Harga</strong>: {{$d->harga}}</li>
-                        <li><strong>Keterngan</strong>: {{$d->keterangan}}</a></li>
+                      <li><strong>Kuota</strong>: {{$d->kuota}}</li>
+                      <li><strong>Harga</strong>: {{$d->harga}}</li>
+                      <li><strong>Keterngan</strong>: {{$d->keterangan}}</a></li>
                     </ul>
                   </div>
-                  <div class="portfolio-description">
+                  <div class="portfolio-info">
                     <p>
                         {{$d->deskripsi}}
                     </p>
@@ -124,24 +123,24 @@
               </div>
             </div>
           </section>
-          </div>               
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>                 
-            </div>
+        </div>               
+        <div class="modal-footer">
+          <button type="button" class="btn-secondary" data-bs-dismiss="modal">Close</button>
         </div>
       </div>
     </div>
-  @endforeach
+  </div>
+@endforeach
 
 <!--SHOW DETAIL KEGIATAN-->
   @foreach($keg as $k)
     <div class="modal fade bd-example-modal-lg" id="showdetail2{{$k->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
         <div class="modal-content">
-          <div class="modal-header">
+          {{-- <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">{{$k->nama_kegiatan}}</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
+          </div> --}}
         <div class="modal-body">                 
           <section id="portfolio-details" class="portfolio-details">
             <div class="container">
@@ -169,12 +168,16 @@
           </section>
           </div>               
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>                 
+              <button type="button" class="btn-secondary" data-bs-dismiss="modal">Close</button>                 
             </div>
         </div>
       </div>
     </div>
   @endforeach
+
+  {{-- <div align="center" id="panel-9-11-0-0" class="so-panel widget widget_sow-editor panel-first-child" data-index="27" >              
+    <iframe width="600" height="520" src="https://www.youtube.com/embed/Du9w3jS4PiM" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+  </div> --}}
 
 <!--WISATA-->
       <!-- ======= About Section ======= -->
@@ -195,12 +198,12 @@
               <div class="col-lg-6 pt-4 pt-lg-0">
                 <h3>Bagaimana cara melakukan pemesanan wisata ?</h3>
                 <ul>
-                  <li><i class="bi bi-check2-circle"></i> Melakukan registrasi sebagai user</li>
-                  <li><i class="bi bi-check2-circle"></i> Login ke sistem</li>
-                  <li><i class="bi bi-check2-circle"></i> Memilih menu pemesanan, kemudian mengisi form pemesanan</li>
-                  <li><i class="bi bi-check2-circle"></i> Memilih menu user, kemudian memilih menu pemesanan</li>
-                  <li><i class="bi bi-check2-circle"></i> Menunggu hingga status pemesanan berubah menjadi berhasil pesan</li>
-                  <li><i class="bi bi-check2-circle"></i> Datang ke tempat wisata, kemudian tunjukkan e-tiket</li>
+                  <li><i class="bi bi-check2-circle cara-order"></i> Melakukan registrasi sebagai user</li>
+                  <li><i class="bi bi-check2-circle cara-order"></i> Login ke sistem</li>
+                  <li><i class="bi bi-check2-circle cara-order"></i> Klik button order kemudian mengisikan form</li>
+                  <li><i class="bi bi-check2-circle cara-order"></i> Memilih menu user, kemudian memilih menu pemesanan</li>
+                  <li><i class="bi bi-check2-circle cara-order"></i> Menunggu hingga status pemesanan berubah menjadi berhasil pesan</li>
+                  <li><i class="bi bi-check2-circle cara-order"></i> Datang ke tempat wisata, kemudian tunjukkan e-tiket</li>
                 </ul>
               </div>
             </div>
@@ -241,7 +244,7 @@
           <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Sejarah</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
@@ -266,8 +269,8 @@
                 </p>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                {{-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> --}}
+                {{-- <button type="button" class="btn btn-primary">Save changes</button> --}}
               </div>
             </div>
           </div>
@@ -289,15 +292,15 @@
           <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Stuktur Informasi</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
                 <img src="{{asset('layout')}}/assets/images/Picture1.png" alt="">
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                {{-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> --}}
+                {{-- <button type="button" class="btn btn-primary">Save changes</button> --}}
               </div>
             </div>
           </div>
@@ -319,7 +322,7 @@
           <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Kegiatan</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
@@ -359,8 +362,8 @@
                 </p>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                {{-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> --}}
+                {{-- <button type="button" class="btn btn-primary">Save changes</button> --}}
               </div>
             </div>
           </div>
@@ -384,7 +387,7 @@
           <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Sumber Daya</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
@@ -397,8 +400,8 @@
                 </ul>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                {{-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> --}}
+                {{-- <button type="button" class="btn btn-primary">Save changes</button> --}}
               </div>
             </div>
           </div>

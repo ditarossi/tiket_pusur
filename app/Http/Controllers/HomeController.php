@@ -9,7 +9,7 @@ use App\Models\Pemesanan;
 use App\Models\Kegiatan;
 use App\Models\Contact;
 use App\Models\Transaksi;
-use PDF;
+use Barryvdh\DomPDF\Facade\PDF;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\welcomeMail;
 use Illuminate\Support\Facades\DB;

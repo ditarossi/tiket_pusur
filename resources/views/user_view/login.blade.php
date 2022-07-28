@@ -35,7 +35,7 @@
         <!-- Social Login -->
         <div class="social_login">
             <div class="">
-                <a href="#" class="social_box fb">
+                {{-- <a href="#" class="social_box fb">
                     <span class="icon"><i class="fab fa-facebook"></i></span>
                     <span class="icon_title">Connect with Facebook</span>
 
@@ -44,11 +44,11 @@
                 <a href="#" class="social_box google">
                     <span class="icon"><i class="fab fa-google-plus"></i></span>
                     <span class="icon_title">Connect with Google</span>
-                </a>
+                </a> --}}
             </div>
 
             <div class="centeredText">
-                <span>Or use your Email address</span>
+                {{-- <span>Or use your Email address</span> --}}
             </div>
 
             <div class="action_btns">
@@ -61,7 +61,7 @@
         <div class="user_login">
             <form method="POST" action="{{url('/login')}}" enctype="multipart/form-data">
             @csrf
-                <label>Email / Username</label>
+                <label>Email</label>
                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus/>
                 <br />
 
@@ -76,13 +76,11 @@
 
                 <div class="action_btns">
                     <div class="one_half"><a href="#" class="btn back_btn"><i class="fa fa-angle-double-left"></i> Back</a></div>
-                    <div class="one_half">
-                            <input class="btn btn_red one_half last" type="submit" name="login" value="Sumbit">
-                    </div>
+                    <button type="submit" class="btn btn-primary one_half last">Login</button>
                 </div>
             </form>
 
-            <a href="#" class="forgot_password">Forgot password?</a>
+            {{-- <a href="#" class="forgot_password">Forgot password?</a> --}}
         </div>
 
         <!-- Register Form -->

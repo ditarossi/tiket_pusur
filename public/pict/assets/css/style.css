@@ -8,6 +8,15 @@
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
+.portfolio-item{
+  box-shadow: 10px 10px 3px #aaaaaa;
+}
+.portfolio-description{
+  color: rgb(160, 160, 160);
+}
+.portfolio-info{
+  color: rgb(160, 160, 160);
+}
 body {
   font-family: "Open Sans", sans-serif;
   color: #444;

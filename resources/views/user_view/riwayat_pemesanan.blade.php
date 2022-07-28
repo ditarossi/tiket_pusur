@@ -98,7 +98,7 @@
                                 <td>{{$value->wisata->nama_wisata}}</td>
                                 <td>{{$value->Tanggal_Kunjungan}}</td>
                                 <td>{{$value->jumlah}}</td>
-                                <td>{{$value->tagihan}}</td>
+                                <td>Rp {{$value->tagihan}}</td>
                                 </tr>
                             </tbody>
                             </table>
@@ -167,7 +167,7 @@
                                 <td>{{$value->wisata->nama_wisata}}</td>
                                 <td>{{$value->Tanggal_Kunjungan}}</td>
                                 <td>{{$value->jumlah}}</td>
-                                <td>{{$value->tagihan}}</td>
+                                <td>Rp {{$value->tagihan}}</td>
                                 </tr>
                             </tbody>
                             </table>
@@ -223,7 +223,7 @@
                     <td>{{$value->wisata->nama_wisata}}</td>
                     <td>{{$value->Tanggal_Kunjungan}}</td>
                     <td>{{$value->jumlah}}</td>
-                    <td>{{$value->tagihan}}</td>
+                    <td>Rp {{$value->tagihan}}</td>
                     </tr>
                 </tbody>
                 </table>

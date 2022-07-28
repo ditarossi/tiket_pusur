@@ -27,7 +27,7 @@
                         <!-- <input name="tanggal_akhir" id="tanggal_akhir" type="date" class="form-control" id="exampleInputUsername1" placeholder="Tanggal Akhir"> -->
                     </div>
                 </div>
-                <div class="col-6"></div>
+                {{-- <div class="col-6"></div>
                     <div class="form-group">
                         <label for="label">Status Pemesanan</label>
                         <select name="status_pemesanan" class="form-select" aria-label="Default select example">
@@ -37,7 +37,7 @@
                           <option value="Pemesanan Selesai">Pemesanan Selesai</option>
                         </select>
                     </div>
-                </div>
+                </div> --}}
                 <button class="btn btn-success" type="submit" name="submit" value="table">Search</button>
                 </form>
               </div>

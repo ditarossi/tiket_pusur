@@ -22,14 +22,8 @@
                       <label for="exampleInputUsername1">Harga</label>
                       <input value="{{ $model->harga }}" name="harga" type="text" class="form-control" id="exampleInputUsername1" placeholder="Harga">
                     </div>
-                    <div class="form-check">
-                      <label class="form-check-label text-muted">
-                      <input type="checkbox" class="form-check-input" required>
-                      <a href="#">Remember me</a>
-                      <i class="input-helper"></i></label>
-                    </div>
                     <button type="submit" class="btn btn-primary me-2">Submit</button>
-                    <button class="btn btn-light">Cancel</button>
+                    {{-- <button class="btn btn-light">Cancel</button> --}}
                   </form>
                 </div>
               </div>

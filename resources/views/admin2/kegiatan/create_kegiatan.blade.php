@@ -25,14 +25,8 @@
                       <label for="exampleInputConfirmPassword1">Foto</label>
                       <input name="foto" type="file" class="form-control" id="exampleInputConfirmPassword1" placeholder="foto">
                     </div>
-                    <div class="form-check">
-                      <label class="form-check-label text-muted">
-                      <input type="checkbox" class="form-check-input" required>
-                      <a href="#">Remember me</a>
-                      <i class="input-helper"></i></label>
-                    </div>
                     <button type="submit" class="btn btn-primary me-2">Submit</button>
-                    <button class="btn btn-light">Cancel</button>
+                    {{-- <button class="btn btn-light" href="{{url('/tbl_kegiatan')}}">Cancel</button> --}}
                   </form>
                 </div>
               </div>

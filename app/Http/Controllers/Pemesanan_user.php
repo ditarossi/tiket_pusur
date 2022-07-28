@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Auth;
 use App\Models\Pemesanan;
 use App\Models\Wisata;
 use App\Models\Transaksi;
@@ -12,7 +12,7 @@ use App\Models\TransaksiWisata;
 use App\Models\TransaksiFasilitas;
 use App\Models\FasilitasWisata;
 
-use Auth;
+// use Auth;
 use App\Models\DaftarWisata;
 
 class Pemesanan_user extends Controller
