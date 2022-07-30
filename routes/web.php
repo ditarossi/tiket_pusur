@@ -106,6 +106,9 @@ Route::group([
     Route::post('order/fetch', [App\Http\Controllers\OrderController::class, 'fetch'])->name('order.fetch');
     Route::post('order/detail', [App\Http\Controllers\OrderController::class, 'detail'])->name('order.detail');
     Route::post('order/fasilitas', [App\Http\Controllers\OrderController::class, 'fasilitas'])->name('order.fasilitas');
+    
+    Route::post('check', [App\Http\Controllers\OrderController::class, 'check']);
+    Route::post('check-reschedule/{id}', [App\Http\Controllers\OrderController::class, 'checkreschedule']);
 
     Route::get('persetujuan/{id}', [App\Http\Controllers\Pemesanan_user::class, 'refund']);
     Route::get('foto/{id}', [App\Http\Controllers\Pemesanan_user::class, 'foto']);

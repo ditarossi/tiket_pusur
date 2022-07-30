@@ -51,8 +51,29 @@
 
     <div class="card mb-3" style="max-width: 1300px; border: 0px;">
       <div class="row g-0">
+        <a type="button" href="{{url('user_view')}}" class="btn btn-light"><i class="ti ti-arrow-left"></i> Back</a>
         <div class="col-md-4">
           <img src="{{asset('pict')}}/assets/img/features-3.svg" class="img-fluid rounded-start" alt="..." width="750px">
+          <div class="mb-3">
+            <form action="check" method="post">
+              @csrf
+              <div class="mb-3">
+                  <label>Nama Wisata</label>
+                    <select name="wisata_id" class="form-control input-lg dynamic" >
+                      <option value=""> -- Pilih --</option>
+                        @foreach ($wisata_list as $wis)
+                          @if($wis->wisata->kuota > 0 )
+                            <option value="{{ $wis->wisata_id }}" >{{ $wis->wisata->nama_wisata }}</option>
+                          @endif
+                        @endforeach
+                    </select>
+                  </div>
+              <label>Cek Ketersediaan</label>
+              <input name="cek" type="date" class="form-control" id="cek"></input>
+              <br>
+              <button type="submit" name="submit" class="btn btn-primary">Check</button>
+            </form>
+          </div>
         </div>
         <div class="col-md-8">
           <div class="card-body">

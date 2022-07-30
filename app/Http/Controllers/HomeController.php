@@ -159,11 +159,15 @@ class HomeController extends Controller
         $verif = Transaksi::select('*')
             ->where('users_id', $user->id)
             ->Where('status_pemesanan', 'Menunggu Verifikasi')
-            // ->orWhere('status_pemesanan', 'Berhasil Pesan')
             ->get();
         
-        //$cek_kuota = Transaksi::all();
-        //$daf_wisata = DaftarWisata::where('kuota', $cek_kuota->wisata_id);
+        // $terpesan = Transaksi::where('Tanggal_Kunjungan', $user->id)
+        //     ->where('status_pemesanan', 'Berhasil Pesan')
+        //     ->where('wisata_id', $user->id)
+        //     ->sum('jumlah');
+
+        // $kuota_awal = DB::table('daftar_wisata')->where('kuota', $user->wisata_id)->first();
+        // $sisa = $kuota_awal - $terpesan;
 
         $proses = Transaksi::select('*')
             ->where('users_id', $user->id)

@@ -63,9 +63,16 @@ class Pemesanan_user extends Controller
     public function store(Request $request)
     {
         $model = new Transaksi;
-        $data = DB::table('daftar_wisata')->where('id', $request->wisata_id)->first();
+        // $data = DB::table('daftar_wisata')->where('id', $request->wisata_id)->first();
 
-        if($request->jumlah > $data->kuota){
+        $terpesan = Transaksi::where('Tanggal_Kunjungan', $request->Tanggal_Kunjungan)
+            ->where('status_pemesanan', 'Berhasil Pesan')
+            ->where('wisata_id', $request->wisata_id)
+            ->sum('jumlah');
+
+        $sisa = 50 - $terpesan;
+
+        if($request->jumlah > $sisa){
             return redirect('order')->with('warning', 'Melebihi Kuota!');
         } else {
             $model->users_id = Auth::user()->id;
@@ -143,19 +150,27 @@ class Pemesanan_user extends Controller
     public function update(Request $request, $id)
     {
         $model = Transaksi::find($id);
+
+        $terpesan = Transaksi::where('Tanggal_Kunjungan', $request->cek)
+            ->where('status_pemesanan', 'Berhasil Pesan')
+            ->where('wisata_id', $model->wisata->id)
+            ->sum('jumlah');
+
+        $sisa = 50 - $terpesan;
         
         if($request->file('bukti_transaksi'))
         {
             $path = $request->file('bukti_transaksi')->move('fotowisata', $request->file('bukti_transaksi')->getClientOriginalName());
             $model['bukti_transaksi'] = $path;
-        } else {
+        } else if($model->jumlah < $sisa) {
             $model->Tanggal_Kunjungan = $request->Tanggal_Kunjungan;
             $model->reschedule = 'Berhasil Reschedule';
+        } else{
+            return redirect('riwayat_pemesanan')->with('warning', 'Melebihi Kuota!');
         }
         // $model->update($data);
         $model->save();
-
-        return redirect('riwayat_pemesanan');
+        return redirect('riwayat_pemesanan')->with('success', 'Berhasl Reschedule');
     }
 
     public function refund($id)

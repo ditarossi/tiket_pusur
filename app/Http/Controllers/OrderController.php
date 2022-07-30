@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\FasilitasWisata;
 use App\Models\DaftarWisata;
+use App\Models\Transaksi;
 use Fasilitas;
 
 class OrderController extends Controller
@@ -58,5 +59,47 @@ class OrderController extends Controller
                     ->whereIn('id', $value)
                     ->get();
         return($users);
+    }
+
+    public function check(Request $request)
+    {
+        // $request->cek;
+        $data_tr = Transaksi::where('Tanggal_Kunjungan', $request->cek)
+            ->where('status_pemesanan', 'Berhasil Pesan')
+            ->where('wisata_id', $request->wisata_id)
+            ->get();
+
+        $terpesan = Transaksi::where('Tanggal_Kunjungan', $request->cek)
+            ->where('status_pemesanan', 'Berhasil Pesan')
+            ->where('wisata_id', $request->wisata_id)
+            ->sum('jumlah');
+
+        // $kuota_awal = DB::table('daftar_wisata')->select('*')->where('id', $request->wisata_id)->first();
+        $sisa = 100 - $terpesan;
+
+        return view('user_view.ketersediaan', compact(
+            'data_tr', 'terpesan', 'sisa'
+        ));
+    }
+
+    public function checkreschedule(Request $request, $id)
+    {
+        $model = Transaksi::find($id);
+        $data_tr = Transaksi::where('Tanggal_Kunjungan', $request->cek)
+            ->where('status_pemesanan', 'Berhasil Pesan')
+            ->where('wisata_id', $model->wisata->id)
+            ->get();
+        
+        $terpesan = Transaksi::where('Tanggal_Kunjungan', $request->cek)
+            ->where('status_pemesanan', 'Berhasil Pesan')
+            ->where('wisata_id', $model->wisata->id)
+            ->sum('jumlah');
+
+        // $kuota_awal = DB::table('daftar_wisata')->select('*')->where('id', $request->wisata_id)->first();
+        $sisa = 100 - $terpesan;
+
+        return view('user_view.ketersediaan-reschedule', compact(
+            'data_tr', 'terpesan', 'sisa'
+        ));
     }
 }

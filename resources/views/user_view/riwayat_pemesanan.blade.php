@@ -106,10 +106,10 @@
                       <div class="row">
                         @foreach(App\Models\DaftarWisata::where('id', $value->wisata_id)->get() as $aa)
                         <div class="col-sm-5">
-                          <span>Sisa Kuota : {{$aa->kuota}}</span>
+                          {{-- <span>Sisa Kuota : {{$aa->kuota}}</span> --}}
                         </div>
                         <div class="col-md-5">
-                          <span>Keterangan : {{$aa->keterangan}}</span>
+                          {{-- <span>Keterangan : {{$aa->keterangan}}</span> --}}
                         </div>
                         @endforeach
                       </div>
@@ -175,10 +175,10 @@
                       <div class="row">
                         @foreach(App\Models\DaftarWisata::where('id', $value->wisata_id)->get() as $aa)
                           <div class="col-sm-5">
-                            <span>Sisa Kuota : {{$aa->kuota}}</span>
+                            {{-- <span>Sisa Kuota : {{$aa->kuota}}</span> --}}
                           </div>
                           <div class="col-md-5">
-                            <span>Keterangan : {{$aa->keterangan}}</span>
+                            {{-- <span>Keterangan : {{$aa->keterangan}}</span> --}}
                           </div>
                         @endforeach
                       </div>

@@ -66,11 +66,21 @@
     </div> --}}
 
 <div class="container">
-    <div class="card mb-3" style="max-width: 1300px;">
+    <div class="card mb-3" style="max-width: 1300px; border: 0px;">
       <div class="row g-0">
         <div class="col-md-4">
           <img src="{{asset('pict')}}/assets/img/features-3.svg" class="img-fluid rounded-start" alt="..." width="750px">
+                  <div class="mb-3">
+            <form action="{{url('check-reschedule/'.$model->id)}}" method="post">
+              @csrf
+              <label>Cek Ketersediaan</label>
+              <input name="cek" type="date" class="form-control" id="cek"></input>
+              <br>
+              <button type="submit" name="submit" class="btn btn-primary">Check</button>
+            </form>
+          </div>
         </div>
+
         <div class="col-md-8">
           <div class="card-body">
             <h5 class="card-title" align="center">Reschedule Pemesanan</h5>
