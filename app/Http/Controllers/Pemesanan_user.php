@@ -167,7 +167,7 @@ class Pemesanan_user extends Controller
     {
         $model = Transaksi::find($id);
 
-        $terpesan = Transaksi::where('Tanggal_Kunjungan', $request->cek)
+        $terpesan = Transaksi::where('Tanggal_Kunjungan', $request->Tanggal_Kunjungan)
             ->where('status_pemesanan', 'Berhasil Pesan')
             ->where('wisata_id', $model->wisata->id)
             ->sum('jumlah');
@@ -200,6 +200,7 @@ class Pemesanan_user extends Controller
                 $model->Tanggal_Kunjungan = $request->Tanggal_Kunjungan;
                 $model->reschedule = 'Berhasil Reschedule';
                 $model->save();
+                return redirect('riwayat_pemesanan')->with('success', 'Berhasil Reschedule');
             } else 
             {
                 return redirect('riwayat_pemesanan')->with('warning', 'Melebihi Kuota!');
