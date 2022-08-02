@@ -15,7 +15,6 @@ class DaftarWisata extends Model
         'deskripsi',
         'kuota',
         'harga',
-        'keterangan',
         'foto',
     ];
 

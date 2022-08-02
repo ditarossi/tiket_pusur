@@ -49,7 +49,7 @@ class WisataControllers extends Controller
         $model->deskripsi = $request->deskripsi;
         $model->kuota = $request->kuota;
         $model->harga = $request->harga;
-        $model->keterangan = $request->keterangan;
+        // $model->keterangan = $request->keterangan;
         $model->foto = $path;
         $model->save();
         

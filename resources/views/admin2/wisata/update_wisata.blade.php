@@ -30,10 +30,10 @@
                       <label for="exampleInputPassword1">Harga</label>
                       <input value="{{ $model->harga }}" name="harga" type="text" class="form-control" id="exampleInputPassword1" placeholder="Harga">
                     </div>
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                       <label for="exampleInputConfirmPassword1">Keterangan</label>
                       <input value="{{ $model->keterangan }}" name="keterangan" type="text" class="form-control" id="exampleInputConfirmPassword1" placeholder="Keterangan">
-                    </div>
+                    </div> --}}
                     <div class="form-group">
                       <label for="exampleInputConfirmPassword1">Foto</label>
                       <input value="{{ asset($model->foto) }}" name="foto" type="file" class="form-control" id="exampleInputConfirmPassword1" placeholder="Foto">

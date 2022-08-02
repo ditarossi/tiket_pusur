@@ -19,7 +19,6 @@ class DaftarWisata extends Migration
             $table->text('deskripsi'); 
             $table->integer('kuota');  
             $table->char('harga', 15);  
-            $table->text('keterangan'); 
             $table->string('foto');      
             $table->timestamps();
         });

@@ -74,11 +74,11 @@ class OrderController extends Controller
             ->where('wisata_id', $request->wisata_id)
             ->sum('jumlah');
 
-        // $kuota_awal = DB::table('daftar_wisata')->select('*')->where('id', $request->wisata_id)->first();
-        $sisa = 100 - $terpesan;
+        $kuota_awal = DB::table('daftar_wisata')->select('*')->where('id', $request->wisata_id)->first();
+        $sisa = $kuota_awal->kuota - $terpesan;
 
         return view('user_view.ketersediaan', compact(
-            'data_tr', 'terpesan', 'sisa'
+            'data_tr', 'terpesan', 'sisa', 'kuota_awal'
         ));
     }
 
@@ -95,11 +95,13 @@ class OrderController extends Controller
             ->where('wisata_id', $model->wisata->id)
             ->sum('jumlah');
 
-        // $kuota_awal = DB::table('daftar_wisata')->select('*')->where('id', $request->wisata_id)->first();
-        $sisa = 100 - $terpesan;
+        $kuota_awal = DB::table('daftar_wisata')->select('*')->where('id', $model->wisata_id)->first();
+        $sisa = $kuota_awal->kuota - $terpesan;
+
+        // dd($sisa);
 
         return view('user_view.ketersediaan-reschedule', compact(
-            'data_tr', 'terpesan', 'sisa'
+            'data_tr', 'terpesan', 'sisa', 'kuota_awal'
         ));
     }
 }

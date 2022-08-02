@@ -69,8 +69,10 @@ class Pemesanan_user extends Controller
             ->where('status_pemesanan', 'Berhasil Pesan')
             ->where('wisata_id', $request->wisata_id)
             ->sum('jumlah');
+        
+        $kuota_awal = DB::table('daftar_wisata')->select('*')->where('id', $request->wisata_id)->first();
 
-        $sisa = 50 - $terpesan;
+        $sisa = $kuota_awal->kuota - $terpesan;
 
         if($request->jumlah > $sisa){
             return redirect('order')->with('warning', 'Melebihi Kuota!');
@@ -135,9 +137,23 @@ class Pemesanan_user extends Controller
     public function informasi_pembayaran ($id)
     {
         $model = Transaksi::find($id);
-        return view('user_view.informasi_pembayaran', compact(
-            'model'
-        ));
+
+        $terpesan = Transaksi::where('Tanggal_Kunjungan', $model->Tanggal_Kunjungan)
+            ->where('status_pemesanan', 'Berhasil Pesan')
+            ->where('wisata_id', $model->wisata->id)
+            ->sum('jumlah');
+        
+        $kuota_awal = DB::table('daftar_wisata')->select('*')->where('id', $model->wisata_id)->first();
+
+        $sisa = $kuota_awal->kuota - $terpesan;
+
+        if($model->jumlah <= $sisa){
+            return view('user_view.informasi_pembayaran', compact(
+                'model'
+            ));
+        } else {
+            return redirect('riwayat_pemesanan')->with('warning', 'kuota sudah penuh!');
+        }
     }
 
     /**
@@ -155,22 +171,53 @@ class Pemesanan_user extends Controller
             ->where('status_pemesanan', 'Berhasil Pesan')
             ->where('wisata_id', $model->wisata->id)
             ->sum('jumlah');
-
-        $sisa = 50 - $terpesan;
         
-        if($request->file('bukti_transaksi'))
-        {
-            $path = $request->file('bukti_transaksi')->move('fotowisata', $request->file('bukti_transaksi')->getClientOriginalName());
-            $model['bukti_transaksi'] = $path;
-        } else if($model->jumlah < $sisa) {
-            $model->Tanggal_Kunjungan = $request->Tanggal_Kunjungan;
-            $model->reschedule = 'Berhasil Reschedule';
-        } else{
-            return redirect('riwayat_pemesanan')->with('warning', 'Melebihi Kuota!');
-        }
+        $kuota_awal = DB::table('daftar_wisata')->select('*')->where('id', $model->wisata_id)->first();
+
+        $sisa = $kuota_awal->kuota - $terpesan;
+        
+        // if($request->file('bukti_transaksi'))
+        // {
+        //     $path = $request->file('bukti_transaksi')->move('fotowisata', $request->file('bukti_transaksi')->getClientOriginalName());
+        //     $model['bukti_transaksi'] = $path;
+        // } else if($model->jumlah < $sisa) {
+        //     $model->Tanggal_Kunjungan = $request->Tanggal_Kunjungan;
+        //     $model->reschedule = 'Berhasil Reschedule';
+        // } else{
+        //     return redirect('riwayat_pemesanan')->with('warning', 'Melebihi Kuota!');
+        // }
+
+            if($request->file('bukti_transaksi'))
+            {
+                $path = $request->file('bukti_transaksi')->move('fotowisata', $request->file('bukti_transaksi')->getClientOriginalName());
+                $model['bukti_transaksi'] = $path;
+                $model->save();
+                return redirect('riwayat_pemesanan');
+            } 
+            
+            if($model->jumlah < $sisa)
+            {
+                $model->Tanggal_Kunjungan = $request->Tanggal_Kunjungan;
+                $model->reschedule = 'Berhasil Reschedule';
+                $model->save();
+            } else 
+            {
+                return redirect('riwayat_pemesanan')->with('warning', 'Melebihi Kuota!');
+            }
+            
+            // return redirect('riwayat_pemesanan')->with('success', 'Berhasil Update Data');
+
+        // for($i=0; $i<$sisa; $i++){
+        //     $model->Tanggal_Kunjungan = $request->Tanggal_Kunjungan;
+        //     $model->reschedule = 'Berhasil Reschedule';
+        //     $model->save();
+        //     return redirect('riwayat_pemesanan')->with('success', 'Berhasil Reschedule');
+        // }
+        // return redirect('riwayat_pemesanan')->with('warning', 'Melebihi Kuota!');
+        
         // $model->update($data);
-        $model->save();
-        return redirect('riwayat_pemesanan')->with('success', 'Berhasl Reschedule');
+        // $model->save();
+        // return redirect('riwayat_pemesanan')->with('success', 'Berhasil Reschedule');
     }
 
     public function refund($id)

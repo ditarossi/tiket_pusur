@@ -24,7 +24,6 @@
                             <th>Deskripsi</th>
                             <th>Kuota</th>
                             <th>Harga</th>
-                            <th>Keterangan</th>
                             <th>Foto</th>
                             <th>Actions</th>
                         </tr>
@@ -36,7 +35,6 @@
                               <td>{{ $value->deskripsi }}</td>
                               <td>{{ $value->kuota }}</td>
                               <td>{{ $value->harga }}</td>
-                              <td>{{ $value->keterangan }}</td>
                               <td>
                                 <img src="{{ asset($value->foto) }}" alt="" width="40 px">
                               </td>

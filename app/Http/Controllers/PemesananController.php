@@ -142,14 +142,14 @@ class PemesananController extends Controller
         $datawisata = Transaksi::find($id);
         $datawisata->status_pemesanan = 'Berhasil Pesan';
         $datawisata->save();
-        $dw = DaftarWisata::where('id', $datawisata->wisata_id)
-            ->first();
-        $dw->kuota -=(int)$datawisata->jumlah;
-        if($dw->kuota == 0)
-        {
-            $dw->keterangan = "Kuota Penuh";
-        }
-        $dw->save();
+        // $dw = DaftarWisata::where('id', $datawisata->wisata_id)
+        //     ->first();
+        // $dw->kuota -=(int)$datawisata->jumlah;
+        // if($dw->kuota == 0)
+        // {
+        //     $dw->keterangan = "Kuota Penuh";
+        // }
+        // $dw->save();
 
         return redirect('/reschedule');
     }
@@ -159,14 +159,14 @@ class PemesananController extends Controller
         $datawisata = Transaksi::find($id);
         $datawisata->refund = 'Pemesanan Berhasil Dibatalkan';
         $datawisata->save();
-        $dw = DaftarWisata::where('id', $datawisata->wisata_id)
-            ->first();
-        $dw->kuota +=(int)$datawisata->jumlah;
-        if($dw->kuota > 0)
-        {
-            $dw->keterangan = "Tersedia";
-        }
-        $dw->save();
+        // $dw = DaftarWisata::where('id', $datawisata->wisata_id)
+        //     ->first();
+        // $dw->kuota +=(int)$datawisata->jumlah;
+        // if($dw->kuota > 0)
+        // {
+        //     $dw->keterangan = "Tersedia";
+        // }
+        // $dw->save();
 
         return redirect('tbl_pemesanan');
     }
@@ -176,14 +176,14 @@ class PemesananController extends Controller
         $datawisata = Transaksi::find($id);
         $datawisata->status_pemesanan = 'Pemesanan Selesai';
         $datawisata->save();
-        $dw = Wisata::where('id', $datawisata->wisata_id)
-            ->first();
-        $dw->kuota +=(int)$datawisata->jumlah;
-        if($dw->kuota > 0)
-        {
-            $dw->keterangan = "Tersedia";
-        }
-        $dw->save();
+        // $dw = Wisata::where('id', $datawisata->wisata_id)
+        //     ->first();
+        // $dw->kuota +=(int)$datawisata->jumlah;
+        // if($dw->kuota > 0)
+        // {
+        //     $dw->keterangan = "Tersedia";
+        // }
+        // $dw->save();
 
         return redirect('/pemesananselesai');
     }
@@ -202,8 +202,8 @@ class PemesananController extends Controller
             case 'table':
 
                 $data = Transaksi::all()
-                    ->whereBetween('Tanggal_Kunjungan', [$startDate, $endDate]);
-             
+                    ->whereBetween('Tanggal_Kunjungan', [$startDate, $endDate])
+                    ->where('status_pemesanan', $request->status_pemesanan);
                 return view('admin2.pemesanan.cetak', compact( 'data', 'startDate', 'endDate'));
                 break;
         }
