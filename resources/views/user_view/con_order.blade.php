@@ -58,60 +58,27 @@
         <div class="col-md-8">
           <div class="card-body">
             <h5 class="card-title" align="center">Form Pemesanan</h5>
-            {{-- FORM CHECK --}}
-              <form action="check" method="post">
-              @csrf
-                  <div class="mb-3">
-                    <label>Nama Wisata</label>
-                    <select name="wisata_id"class="form-control input-lg dynamic" placeholder="Nama Wisata" required>
-                      <option value=""> -- Pilih --</option>
-                        @foreach ($wisata_list as $wis)
-                          @if($wis->wisata->kuota > 0 )
-                            <option value="{{ $wis->wisata_id }}" data-harga="{{ $wis->wisata->harga }}">{{ $wis->wisata->nama_wisata }}</option>
-                          @endif
-                        @endforeach
-                    </select>
-                  </div>
-                  <div class="mb-3">
-                    <label>Tanggal Kunjungan</label>
-                    <input value ="" name="cek" type="date" class="form-control" id="Tanggal_Kunjungan" required></input>
-                  </div>
-                  <div class="mb-3">
-                    <label>Jam Kunjungan</label>
-                    <select name="cek_jam"class="form-control input-lg dynamic" placeholder="Jam Kunjungan" required>
-                      <option value=""> -- Pilih --</option>
-                        <option value="08.00">08.00</option>
-                        <option value="13.00">13.00</option>
-                    </select>
-                  </div>
-                  <button type="submit" name="submit" class="btn btn-primary">Cek Ketersediaan</button>
-                  </form>
-                  
                   {{-- FORM ORDER --}}
                   <form class="forms-sample" action="{{ url('pemesanan') }}" method="post">
+                    @foreach($data_tr as $value)
                   <div class="mb-3">
                     <label>Nama Wisata</label>
                     <select name="wisata_id" data-dependent="fasilitas_id" class="form-control input-lg dynamic" id="wisata_id" placeholder="Nama Wisata" required>
-                      <option value=""> -- Pilih --</option>
-                        @foreach ($wisata_list as $wis)
-                          @if($wis->wisata->kuota > 0 )
-                            <option value="{{ $wis->wisata_id }}" data-harga="{{ $wis->wisata->harga }}">{{ $wis->wisata->nama_wisata }}</option>
-                          @endif
-                        @endforeach
+                      <option value="{{ $value->wisata_id }}">{{ $value->wisata->nama_wisata }}</option>
+                      @foreach($wisata_list as $wis)
+                            <option value="{{ $wis->wisata_id }}">{{ $wis->wisata->nama_wisata }}</option>
+                    @endforeach
                     </select>
                   </div>
                   <div class="mb-3">
                     <label>Tanggal Kunjungan</label>
-                    <input name="Tanggal_Kunjungan" type="date" class="form-control" id="Tanggal_Kunjungan" required></input>
+                    <input value="{{$value->Tanggal_Kunjungan}}" name="Tanggal_Kunjungan" type="date" class="form-control" id="Tanggal_Kunjungan" required></input>
                   </div>
                   <div class="mb-3">
                     <label>Jam Kunjungan</label>
-                    <select name="jam" class="form-control input-lg dynamic" placeholder="Jam Kunjungan" required>
-                      <option value=""> -- Pilih --</option>
-                        <option value="08.00">08.00</option>
-                        <option value="13.00">13.00</option>
-                    </select>
+                    <input value="{{$value->jam}}" name="jam" class="form-control input-lg dynamic" placeholder="Jam Kunjungan" required>
                   </div>
+                  @endforeach
                   <div class="mb-3">
                     <label>Fasilitas Wisata</label>
                     <select name="fasilitas_id[]" data-dependent="tagihan" class="form-control input-lg dynamic js-example-basic-single" id="fasilitas_id" multiple="multiple" placeholder="Fasilitas Wisata" required>

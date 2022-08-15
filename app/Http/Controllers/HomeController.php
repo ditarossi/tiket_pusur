@@ -37,7 +37,7 @@ class HomeController extends Controller
     {
 
         return view('user_view.isi', [
-            'datas' => Wisata::all(),
+            'datas' => Wisata::groupBy('nama_wisata')->get(),
             'keg' => Kegiatan::all(),
             'f' => Fasilitas::all()
         ]);
@@ -50,9 +50,17 @@ class HomeController extends Controller
 
         $datas = Transaksi::where('id', $id)->get();
         //view()->share('datas', $datas);
-        $pdf = PDF::loadView('user_view.tiket-pdf',['datas'=>$datas]);
+        $pdf = PDF::loadView('user_view.tiket-pdf',['datas'=>$datas])->setPaper('a6', 'landscape');;
         return $pdf->download('tiket-pusur.pdf');
 
+    }
+
+    public function lihat($id)
+    {
+        $datas = Transaksi::where('id', $id)->get();
+        return view('user_view.tiket-pdf', compact(
+            'datas'
+        ));
     }
 
     public function tiket()
@@ -156,6 +164,11 @@ class HomeController extends Controller
 
         $daf_wisata = DaftarWisata::first();
 
+        $pending = Transaksi::select('*')
+            ->where('users_id', $user->id)
+            ->Where('status_pemesanan', 'Pending')
+            ->get();
+
         $verif = Transaksi::select('*')
             ->where('users_id', $user->id)
             ->Where('status_pemesanan', 'Menunggu Verifikasi')
@@ -179,9 +192,9 @@ class HomeController extends Controller
             ->where('users_id', $user->id)
             ->where('status_pemesanan', '=', 'Pemesanan Selesai')
             ->get();
-        
+            
         return view('user_view.riwayat_pemesanan', compact(
-            'verif', 'proses', 'riwayat', 'daf_wisata'
+            'pending', 'verif', 'proses', 'riwayat', 'daf_wisata'
         ));
     }
 }

@@ -256,6 +256,72 @@
   <script src="{{asset('dashboard2')}}/js/dashboard.js"></script>
   <script src="{{asset('dashboard2')}}/js/Chart.roundedBarCharts.js"></script>
   <!-- End custom js for this page-->
+
+  {{-- SCRIPT SCANNER --}}
+<script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
+<script>
+  function onScanSuccess(decodedText, decodedResult) {
+
+  $("#result").val(decodedText);
+
+  let id = decodedText
+  csrf_token = $('meta[name="csrf-token"]'), attr('content');
+
+  $wal.fire({
+    title: 'Success',
+    text : 'Berhasil Scanner',
+    showCancelButton : true,
+    confirmButtonColor : '#3085d6',
+    cancelButtonColor : '#d33',
+    confirmButtonText: 'Ok'
+  }).then((result) => {
+    if(result.value){
+      $.ajax({
+        url : "{{route('validasiqrcode')}}",
+        type : "POST", 
+        data :{
+          '_method' : 'POST',
+          '_token' : csrf_token,
+          'qr_code' : id
+        },
+        success: function(response){
+          $wal.fire({
+            icon: 'success',
+            type : 'succes',
+            title: 'Success!',
+            text:'Data has been deleted!'
+          });
+        },
+        error: function(xhr){
+          $wal.fire({
+            type:'error',
+            title:'Oppss...',
+            text:'something went wrong!'
+          });
+        }
+      })
+    }
+  })
+}
+
+// function onScanFailure(error) {
+//   // handle scan failure, usually better to ignore and keep scanning.
+//   // for example:
+//   console.warn(`Code scan error = ${error}`);
+// }
+
+// let html5QrcodeScanner = new Html5QrcodeScanner(
+//   "reader",
+//   { fps: 10, qrbox: {width: 250, height: 250} },
+//   /* verbose= */ false);
+// html5QrcodeScanner.render(onScanSuccess, onScanFailure);
+
+setTimeout( () => {
+        let html5QrcodeScanner = new Html5QrcodeScanner(
+            "reader", { fps: 10, qrbox: 250 });
+        html5QrcodeScanner.render(onScanSuccess);
+    }, 1000)
+</script>
 </body>
 
 

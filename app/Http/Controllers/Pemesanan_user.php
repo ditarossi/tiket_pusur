@@ -14,6 +14,7 @@ use App\Models\FasilitasWisata;
 
 // use Auth;
 use App\Models\DaftarWisata;
+use DateTime;
 
 class Pemesanan_user extends Controller
 {
@@ -66,8 +67,9 @@ class Pemesanan_user extends Controller
         // $data = DB::table('daftar_wisata')->where('id', $request->wisata_id)->first();
 
         $terpesan = Transaksi::where('Tanggal_Kunjungan', $request->Tanggal_Kunjungan)
-            ->where('status_pemesanan', 'Berhasil Pesan')
+            ->where('status_pemesanan', 'Pending')->orWhere('status_pemesanan', 'Menunggu Verifikasi')->orWhere('status_pemesanan', 'Berhasil Pesan')
             ->where('wisata_id', $request->wisata_id)
+            ->where('jam', $request->jam)
             ->sum('jumlah');
         
         $kuota_awal = DB::table('daftar_wisata')->select('*')->where('id', $request->wisata_id)->first();
@@ -78,14 +80,19 @@ class Pemesanan_user extends Controller
             return redirect('order')->with('warning', 'Melebihi Kuota!');
         } else {
             $model->users_id = Auth::user()->id;
+            $huruf = "WP-";
+            $model->kode_tr = $huruf.uniqid();
+            $model->jam = $request->jam;
             $model->Tanggal_Kunjungan = $request->Tanggal_Kunjungan;
             $model->tagihan = $request->tagihan;
             $model->jumlah = $request->jumlah;
             $model->wisata_id = $request->wisata_id;
-            $model->status_pemesanan = 'Menunggu Verifikasi';
+            $model->status_pemesanan = 'Pending';
             $model->reschedule = '-';
-            $model->refund = '-';
             $model->bukti_transaksi = "Belum Melakukan Transaksi";
+            date_default_timezone_set("Asia/Jakarta");
+            $model->waktu_transaksi = new DateTime();
+            $model->note = "-";
             $model->save();
 
             $size = count(collect($request)->get('fasilitas_id'));
@@ -138,22 +145,23 @@ class Pemesanan_user extends Controller
     {
         $model = Transaksi::find($id);
 
-        $terpesan = Transaksi::where('Tanggal_Kunjungan', $model->Tanggal_Kunjungan)
-            ->where('status_pemesanan', 'Berhasil Pesan')
-            ->where('wisata_id', $model->wisata->id)
-            ->sum('jumlah');
+        // $terpesan = Transaksi::where('Tanggal_Kunjungan', $model->Tanggal_Kunjungan)
+        //     ->where('status_pemesanan', 'Berhasil Pesan') ->orWhere('status_pemesanan', 'Pending') -> orWhere('status_pemesanan', 'Menunggu Verifikasi')
+        //     ->where('wisata_id', $model->wisata->id)
+        //     ->where('wisata_id', $model->jam)
+        //     ->sum('jumlah');
         
-        $kuota_awal = DB::table('daftar_wisata')->select('*')->where('id', $model->wisata_id)->first();
+        // $kuota_awal = DB::table('daftar_wisata')->select('*')->where('id', $model->wisata_id)->first();
 
-        $sisa = $kuota_awal->kuota - $terpesan;
+        // $sisa = $kuota_awal->kuota - $terpesan;
 
-        if($model->jumlah <= $sisa){
+        // if($model->jumlah <= $sisa){
             return view('user_view.informasi_pembayaran', compact(
                 'model'
             ));
-        } else {
-            return redirect('riwayat_pemesanan')->with('warning', 'kuota sudah penuh!');
-        }
+        // } else {
+        //     return redirect('riwayat_pemesanan')->with('warning', 'kuota sudah penuh!');
+        // }
     }
 
     /**
@@ -170,27 +178,18 @@ class Pemesanan_user extends Controller
         $terpesan = Transaksi::where('Tanggal_Kunjungan', $request->Tanggal_Kunjungan)
             ->where('status_pemesanan', 'Berhasil Pesan')
             ->where('wisata_id', $model->wisata->id)
+            ->where('jam', $request->jam)
             ->sum('jumlah');
         
         $kuota_awal = DB::table('daftar_wisata')->select('*')->where('id', $model->wisata_id)->first();
 
         $sisa = $kuota_awal->kuota - $terpesan;
-        
-        // if($request->file('bukti_transaksi'))
-        // {
-        //     $path = $request->file('bukti_transaksi')->move('fotowisata', $request->file('bukti_transaksi')->getClientOriginalName());
-        //     $model['bukti_transaksi'] = $path;
-        // } else if($model->jumlah < $sisa) {
-        //     $model->Tanggal_Kunjungan = $request->Tanggal_Kunjungan;
-        //     $model->reschedule = 'Berhasil Reschedule';
-        // } else{
-        //     return redirect('riwayat_pemesanan')->with('warning', 'Melebihi Kuota!');
-        // }
 
             if($request->file('bukti_transaksi'))
             {
                 $path = $request->file('bukti_transaksi')->move('fotowisata', $request->file('bukti_transaksi')->getClientOriginalName());
                 $model['bukti_transaksi'] = $path;
+                $model->status_pemesanan = 'Menunggu Verifikasi';
                 $model->save();
                 return redirect('riwayat_pemesanan');
             } 
@@ -198,6 +197,7 @@ class Pemesanan_user extends Controller
             if($model->jumlah < $sisa)
             {
                 $model->Tanggal_Kunjungan = $request->Tanggal_Kunjungan;
+                $model->jam = $request->jam;
                 $model->reschedule = 'Berhasil Reschedule';
                 $model->save();
                 return redirect('riwayat_pemesanan')->with('success', 'Berhasil Reschedule');
@@ -219,6 +219,13 @@ class Pemesanan_user extends Controller
         // $model->update($data);
         // $model->save();
         // return redirect('riwayat_pemesanan')->with('success', 'Berhasil Reschedule');
+        $now = now();
+        $enddate = date('Y-m-d H:i:s', strtotime('+1 day', strtotime($model->waktu_transaksi)));
+        if($now > $enddate){
+            $model->status_pemesanan = 'Pemesanan Dibatalkan';
+            $model->save();
+            return redirect('riwayat_pemesanan');
+        }
     }
 
     public function refund($id)

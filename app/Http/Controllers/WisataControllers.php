@@ -47,6 +47,7 @@ class WisataControllers extends Controller
         $model = new Wisata;
         $model->nama_wisata = $request->nama_wisata;
         $model->deskripsi = $request->deskripsi;
+        $model->jam = $request->jam;
         $model->kuota = $request->kuota;
         $model->harga = $request->harga;
         // $model->keterangan = $request->keterangan;

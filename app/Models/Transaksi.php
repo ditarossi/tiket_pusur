@@ -12,14 +12,17 @@ class Transaksi extends Model
     protected $primaryKey = 'id';
     protected $fillable = [
         'users_id',
+        'kode_tr',
         'wisata_id',
         'Tanggal_Kunjungan',
+        'jam',
         'jumlah',
         'tagihan',
         'status_pemesanan',
         'reschedule',
-        'refund', 
-        'bukti_transaksi'
+        'bukti_transaksi',
+        'waktu_transaksi',
+        'note'
     ];
 
     public function user()

@@ -75,7 +75,14 @@
               @csrf
               <label>Cek Ketersediaan</label>
               <input name="cek" type="date" class="form-control" id="cek"></input>
-              <br>
+              <div class="mb-3">
+                    <label>Jam Kunjungan</label>
+                    <select name="cek_jam"class="form-control input-lg dynamic" placeholder="Jam Kunjungan" required>
+                      <option value=""> -- Pilih --</option>
+                        <option value="08.00">08.00</option>
+                        <option value="13.00">13.00</option>
+                    </select>
+                  </div>
               <button type="submit" name="submit" class="btn btn-primary">Check</button>
             </form>
           </div>
@@ -94,6 +101,14 @@
                   <div class="mb-3">
                     <label>Reschedule Tanggal Kunjungan</label>
                     <input name="Tanggal_Kunjungan" value="{{$model->Tanggal_Kunjungan}}" type="date" class="form-control" id="Tanggal_Kunjungan"></input>
+                  </div>
+                  <div class="mb-3">
+                    <label>Jam Kunjungan</label>
+                    <select name="jam"class="form-control input-lg dynamic" placeholder="Jam Kunjungan" required>
+                      <option value="{{$model->jam}}">{{$model->jam}}</option>
+                        <option value="08.00">08.00</option>
+                        <option value="13.00">13.00</option>
+                    </select>
                   </div>
                   <div class="mb-3">
                     <label>Jumlah</label>

@@ -15,15 +15,18 @@ class Transaksi extends Migration
     {
         Schema::create('transaksi', function (Blueprint $table) {
             $table->id();
+            $table->string('kode_tr');
             $table->foreignID('users_id');
             $table->string('wisata_id');
-            $table->date('Tanggal_Kunjungan');         
+            $table->date('Tanggal_Kunjungan');    
+            $table->string('jam');      
             $table->integer('jumlah');  
             $table->char('tagihan', 15);  
             $table->string('status_pemesanan'); 
             $table->string('reschedule'); 
-            $table->string('refund'); 
             $table->string('bukti_transaksi'); 
+            $table->string('waktu_transaksi');
+            $table->string('note'); 
             $table->timestamps();
         });
     }

@@ -38,10 +38,11 @@
       21 => 'Illuminate\\View\\ViewServiceProvider',
       22 => 'Barryvdh\\DomPDF\\ServiceProvider',
       23 => 'RealRashid\\SweetAlert\\SweetAlertServiceProvider',
-      24 => 'App\\Providers\\AppServiceProvider',
-      25 => 'App\\Providers\\AuthServiceProvider',
-      26 => 'App\\Providers\\EventServiceProvider',
-      27 => 'App\\Providers\\RouteServiceProvider',
+      24 => 'Milon\\Barcode\\BarcodeServiceProvider',
+      25 => 'App\\Providers\\AppServiceProvider',
+      26 => 'App\\Providers\\AuthServiceProvider',
+      27 => 'App\\Providers\\EventServiceProvider',
+      28 => 'App\\Providers\\RouteServiceProvider',
     ),
     'aliases' => 
     array (
@@ -85,6 +86,8 @@
       'View' => 'Illuminate\\Support\\Facades\\View',
       'PDF' => 'Barryvdh\\DomPDF\\Facade',
       'Alert' => 'RealRashid\\SweetAlert\\Facades\\Alert',
+      'DNS1D' => 'Milon\\Barcode\\Facades\\DNS1DFacade',
+      'DNS2D' => 'Milon\\Barcode\\Facades\\DNS2DFacade',
     ),
   ),
   'auth' => 

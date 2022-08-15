@@ -223,6 +223,12 @@ class PemesananController extends Controller
         //return view('admin2.pemesanan.cetak-pertanggal', compact('data'));
     }
 
+    public function pending(){
+        $datas = Transaksi::where('status_pemesanan', 'Pending')->get();
+        return view('admin2.pemesanan.pending', compact(
+            'datas'
+        ));
+    }
     public function verifikasi(){
         $datas = Transaksi::where('status_pemesanan', 'Menunggu Verifikasi')->get();
         return view('admin2.pemesanan.verifikasi', compact(
@@ -236,6 +242,20 @@ class PemesananController extends Controller
             'datas'
         ));
     }
+
+    public function validasiqrcode(Request $request)
+    {
+        dd($request->qr_code);
+    }
+
+    public function cek_qr(Request $request)
+    {
+        $datas = Transaksi::where('kode_tr', $request->kode_tr)->get();
+        return view('admin2.pemesanan.cek', compact(
+            'datas'
+        ));
+    }
+
     public function pemesananselesai(){
         $datas = Transaksi::where('status_pemesanan', 'Pemesanan Selesai')->get();
         return view('admin2.pemesanan.selesai', compact(

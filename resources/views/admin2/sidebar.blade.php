@@ -45,6 +45,7 @@
             <div class="collapse" id="icons">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item"> <a class="nav-link" href="tbl_transaksiFasilitas">Transaksi Fasilitas</a></li>
+                <li class="nav-item"> <a class="nav-link" href="/pending">Pending</a></li>
                 <li class="nav-item"> <a class="nav-link" href="/verifikasi">Verifikasi</a></li>
                 <li class="nav-item"> <a class="nav-link" href="/reschedule">Proses</a></li>
                 <li class="nav-item"> <a class="nav-link" href="/pemesananselesai">Selesai</a></li>

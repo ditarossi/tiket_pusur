@@ -4,6 +4,7 @@
 @endsection
 
 @section('content')
+@include('sweetalert::alert')
 <!-- partial -->
 <div class="main-panel">
         <div class="content-wrapper">
@@ -20,9 +21,11 @@
                       <thead>
                         <tr>
                             <th>ID Transaksi</th>
+                            <th>Kode Transaksi</th>
                             <th>ID User</th>
                             <th>ID Wisata</th>
                             <th>Tanggal Kunjungan</th>
+                            <th>Jam Kunjungan</th>
                             <th>Jumlah</th>
                             <th>Tagihan</th>
                             <th>Status Pemesanan</th>
@@ -37,12 +40,16 @@
                               {{ $value->id }}
                             </td>
                             <td>
+                              {{ $value->kode_tr }}
+                            </td>
+                            <td>
                               {{ $value->user->name }}
                             </td>
                             <td>
                               {{ $value->wisata->nama_wisata }}
                             </td>
                             <td>{{ $value->Tanggal_Kunjungan }}</td>
+                            <td>{{ $value->jam }}</td>
                             <td>{{ $value->jumlah }}</td>
                             <td>{{ $value->tagihan }}</td>
                             <td>{{ $value->status_pemesanan }}</td>
@@ -61,6 +68,14 @@
                       </tbody>
                     </table>
                   </div>
+                  <div id="reader" width="300px"></div>
+                    <form action="{{ url('cek_qr') }}" method="get" enctype="multipart/form-data">
+                      <div class="form-group">
+                          <label for="exampleInputUsername1">Kode Transaksi</label>
+                          <input name="kode_tr" type="text" class="form-control" id="result">
+                      </div>
+                      <button type="submit" class="btn btn-primary me-2">Submit</button>
+                    </form>
                 </div>
               </div>
             </div>

@@ -17,6 +17,7 @@ class DaftarWisata extends Migration
             $table->id();
             $table->string('nama_wisata');
             $table->text('deskripsi'); 
+            $table->string('jam'); 
             $table->integer('kuota');  
             $table->char('harga', 15);  
             $table->string('foto');      

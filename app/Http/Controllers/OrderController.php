@@ -6,17 +6,35 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\FasilitasWisata;
 use App\Models\DaftarWisata;
+use App\Models\Wisata;
 use App\Models\Transaksi;
 use Fasilitas;
 
 class OrderController extends Controller
 {
-    public function index(DaftarWisata $daftarWisata)
+    public function index(DaftarWisata $daftarWisata, Request $request)
     {
          return view ('user_view.form_order',[
                 'wisata_list' => FasilitasWisata::groupBy('wisata_id')->get(),
-                'datas' => DaftarWisata::all()
+                'datas' => DaftarWisata::orderBy('created_at', 'desc')->first(), 
                 ]);
+    }
+
+    public function con_order(Request $request)
+    {
+        $data_tr = Transaksi::where('Tanggal_Kunjungan', $request->cek)
+            ->where('status_pemesanan', 'Berhasil Pesan') ->orWhere('status_pemesanan', 'Pending') -> orWhere('status_pemesanan', 'Menunggu Verifikasi')
+            ->where('wisata_id', $request->wisata_id)
+            ->where('jam', $request->cek_jam)
+            ->get();
+        
+        $wisata_list = FasilitasWisata::groupBy('wisata_id')->get();
+
+        // dd($data_tr);
+
+        return view('user_view.con_order', compact(
+            'data_tr', 'wisata_list'
+        ));
     }
 
     public function fetch(Request $request)
@@ -63,22 +81,27 @@ class OrderController extends Controller
 
     public function check(Request $request)
     {
-        // $request->cek;
+        $tgl_kunjungan = $request->cek;
+        $wisata = Wisata::where('id',$request->wisata_id)->first();
+        $jam_kunjungan = $request->cek_jam;
+
         $data_tr = Transaksi::where('Tanggal_Kunjungan', $request->cek)
-            ->where('status_pemesanan', 'Berhasil Pesan')
             ->where('wisata_id', $request->wisata_id)
+            ->where('jam', $request->cek_jam)
+            ->whereIn('status_pemesanan', ['Pending', 'Menunggu Verifikasi', 'Berhasil Pesan'])
             ->get();
 
         $terpesan = Transaksi::where('Tanggal_Kunjungan', $request->cek)
-            ->where('status_pemesanan', 'Berhasil Pesan')
+            ->where('jam', $request->cek_jam)
             ->where('wisata_id', $request->wisata_id)
+            ->whereIn('status_pemesanan', ['Pending', 'Menunggu Verifikasi', 'Berhasil Pesan'])
             ->sum('jumlah');
 
         $kuota_awal = DB::table('daftar_wisata')->select('*')->where('id', $request->wisata_id)->first();
         $sisa = $kuota_awal->kuota - $terpesan;
 
         return view('user_view.ketersediaan', compact(
-            'data_tr', 'terpesan', 'sisa', 'kuota_awal'
+            'data_tr', 'terpesan', 'sisa', 'kuota_awal', 'tgl_kunjungan', 'wisata', 'jam_kunjungan'
         ));
     }
 
@@ -88,11 +111,13 @@ class OrderController extends Controller
         $data_tr = Transaksi::where('Tanggal_Kunjungan', $request->cek)
             ->where('status_pemesanan', 'Berhasil Pesan')
             ->where('wisata_id', $model->wisata->id)
+            ->where('jam', $request->cek_jam)
             ->get();
         
         $terpesan = Transaksi::where('Tanggal_Kunjungan', $request->cek)
             ->where('status_pemesanan', 'Berhasil Pesan')
             ->where('wisata_id', $model->wisata->id)
+            ->where('jam', $request->cek_jam)
             ->sum('jumlah');
 
         $kuota_awal = DB::table('daftar_wisata')->select('*')->where('id', $model->wisata_id)->first();

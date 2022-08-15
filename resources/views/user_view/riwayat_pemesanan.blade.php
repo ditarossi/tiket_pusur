@@ -47,6 +47,7 @@
             <div class="col-lg-12">
             <ul id="portfolio-flters">
                  <li data-filter="*" class="filter-active">All</li>
+                 <li data-filter=".filter-pending">Pending</li>
                  <li data-filter=".filter-verif">Proses Verifikasi</li>
                 <li data-filter=".filter-app">Dalam Proses</li>
                 <li data-filter=".filter-card">Riwayat Pemesanan</li>
@@ -55,6 +56,76 @@
         </div>
         <div class="row portfolio-container" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
         
+        {{-- PERULANGAN PENDING --}}
+        <div class="portfolio-wrap filter-pending" >
+                @foreach($pending as $value)
+                <div class="card mb-3" style="max-width: 1300px;">
+                  <div class="row g-0">
+                    <div class="col-md-4">
+                      <div class="card-body">
+                                  <h5 class="card-title"></h5>
+                                        <p class="card-text">
+                                            <br>
+                                            Nama Pemesan : {{$value->user->name}}
+                                            <br>
+                                            Status     : {{$value->status_pemesanan}}
+                                            <br>
+                                            @php 
+                                              $now = now();
+                                              $enddate = date('Y-m-d H:i:s', strtotime('+1 day', strtotime($value->waktu_transaksi)));
+                                            @endphp
+                                            Deadline     : {{$enddate}}
+                                        </p>
+                                        @if($value->status_pemesanan =="Pending"  
+                                        && $now < $enddate)
+                                          <a class="btn btn-primary" href="informasi_pembayaran/{{$value->id}}">Informasi Pembayaran</a>
+                                          <br> 
+                                        @endif
+                                        
+                      </div>
+                    </div>
+                    <div class="col-md-8">
+                      <div class="card-body">
+                        <h5 class="card-title" align="center">Rincian Pemesanan</h5>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                <th scope="col">Nama Wisata</th>
+                                <th scope="col">Tanggal Kunjungan</th>
+                                <th scope="col">Jam Kunjungan</th>
+                                <th scope="col">Jumlah</th>
+                                <th scope="col">Tagihan</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                <td>{{$value->wisata->nama_wisata}}</td>
+                                <td>{{$value->Tanggal_Kunjungan}}</td>
+                                <td>{{$value->jam}}</td>
+                                <td>{{$value->jumlah}}</td>
+                                <td>Rp {{$value->tagihan}}</td>
+                                </tr>
+                            </tbody>
+                            </table>
+                      </div>
+                      <div class="row">
+                        @foreach(App\Models\DaftarWisata::where('id', $value->wisata_id)->get() as $aa)
+                        <div class="col-sm-5">
+                          {{-- <span>Sisa Kuota : {{$aa->kuota}}</span> --}}
+                        </div>
+                        <div class="col-md-5">
+                          {{-- <span>Keterangan : {{$aa->keterangan}}</span> --}}
+                        </div>
+                        @endforeach
+                      </div>
+                      <p>
+                    </div>
+                  </div>
+                </div>
+                @endforeach
+            </div>
+
+
 
         <!--PERULANGAN SEDANG PROSES VERIFIKASI-->  
 
@@ -71,14 +142,14 @@
                                             <br>
                                             Status     : {{$value->status_pemesanan}}
                                         </p>
-                                        @foreach(App\Models\DaftarWisata::where('id', $value->wisata_id)->get() as $dd)
+                                        {{-- @foreach(App\Models\DaftarWisata::where('id', $value->wisata_id)->get() as $dd)
                                         @if($value->status_pemesanan =="Menunggu Verifikasi"  
                                         && $value->bukti_transaksi == "Belum Melakukan Transaksi" 
                                         && $value->jumlah <= $dd->kuota)
                                           <a class="btn btn-primary" href="informasi_pembayaran/{{$value->id}}">Informasi Pembayaran</a>
                                           <br> 
                                           @endif
-                                        @endforeach
+                                        @endforeach --}}
                       </div>
                     </div>
                     <div class="col-md-8">
@@ -143,9 +214,10 @@
                                         && $value->reschedule != "Berhasil Reschedule"
                                         && $value->jumlah <= $kk->kuota)
                                             <a class="btn btn-white" href="{{ url('pemesanan/'.$value->id.'/edit') }}"><i class="ti-pencil text-primary"></i> Reschedule</i></a>
-                                            <a class="btn btn-white" href="cetak/{{$value->id}}"><i class="ti-download text-primary"></i> Cetak</a>
+                                            <a class="btn btn-white" href="lihat/{{$value->id}}"><i class="ti-eye text-primary"></i> Tiket</a>
                                         @else
-                                          <a class="btn btn-white" href="cetak/{{$value->id}}"><i class="ti-download text-primary"></i> Cetak</a>
+                                          {{-- <a class="btn btn-white" href="cetak/{{$value->id}}"><i class="ti-download text-primary"></i> Tiket</a> --}}
+                                          <a class="btn btn-white" href="lihat/{{$value->id}}"><i class="ti-eye text-primary"></i> Tiket</a>
                                         @endif
                                         @endforeach
                       </div>

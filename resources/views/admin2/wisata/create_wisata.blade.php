@@ -23,6 +23,10 @@
                       <input name="deskripsi" type="text" class="form-control" id="exampleInputUsername1" placeholder="Deskripsi">
                     </div>
                     <div class="form-group">
+                      <label for="exampleInputUsername1">Jam</label>
+                      <input name="jam" type="text" class="form-control" id="exampleInputUsername1" placeholder="Jam Kunjungan">
+                    </div>
+                    <div class="form-group">
                       <label for="exampleInputPassword1">Kuota</label>
                       <input name="kuota" type="text" class="form-control" id="exampleInputPassword1" placeholder="Kuota">
                     </div>

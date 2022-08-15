@@ -20,9 +20,11 @@
                       <thead>
                         <tr>
                             <th>ID Transaksi</th>
+                            <th>Kode Transaksi</th>
                             <th>ID User</th>
                             <th>ID Wisata</th>
                             <th>Tanggal Kunjungan</th>
+                            <th>Jam Kunjungan</th>
                             <th>Jumlah</th>
                             <th>Tagihan</th>
                             <th>Status Pemesanan</th>
@@ -37,12 +39,16 @@
                               {{ $value->id }}
                             </td>
                             <td>
+                              {{ $value->kode_tr }}
+                            </td>
+                            <td>
                               {{ $value->user->name }}
                             </td>
                             <td>
                               {{ $value->wisata->nama_wisata }}
                             </td>
                             <td>{{ $value->Tanggal_Kunjungan }}</td>
+                            <td>{{ $value->jam }}</td>
                             <td>{{ $value->jumlah }}</td>
                             <td>{{ $value->tagihan }}</td>
                             <td>{{ $value->status_pemesanan }}</td>

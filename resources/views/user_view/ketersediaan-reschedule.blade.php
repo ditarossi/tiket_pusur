@@ -20,57 +20,56 @@
   <link rel="stylesheet" href="{{asset('dashboard2')}}/css/vertical-layout-light/style.css">
   <!-- endinject -->
   <link rel="shortcut icon" href="images/favicon.png" />
+  <style>
+    .col-md-4{
+      padding: 10px;
+    }
+  </style>
 </head>
 <body>
     <div class="container" align="center">
     <div class="main-panel">
         <div class="content-wrapper">
           <div class="card">
+            {{-- <a type="button" href="{{url('pemesanan')}}" class="btn btn-light"><i class="ti ti-arrow-left"></i> Back</a> --}}
             <div class="card-body">
               <div class="row">
                 <div class="col-12"></div>
-                  <div class="table-responsive">
-                    <table id="order-listing" class="table">
-                      <thead>
-                        <tr>
-                            <th>Pemesanan</th>
-                            <th>Wisata</th>
-                            <th>Tanggal Kunjungan</th>
-                            <th>Jumlah</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        @foreach($data_tr as $value)
-                        <tr>
-                            <td>{{ $value->user->name }}</td>
-                            <td>{{ $value->wisata->nama_wisata }}</td>
-                            <td>{{ $value->Tanggal_Kunjungan }}</td>
-                            <td>{{ $value->jumlah }}</td>
-                        </tr>
-                        @endforeach
-                      </tbody>
-                    </table>
-                    <div class="form-group">
-                      <label for="exampleInputUsername1">Tiket Terpesan</label>
-                      <input type="text" class="form-control" value=<?php echo $terpesan; ?> readonly>
+                   @foreach($data_tr as $value)
+                <div class="row">
+                  <label for="exampleInputUsername1">Nama Wisata</label>
+                  <input type="text" class="form-control" value="{{$value->wisata->nama_wisata}}" readonly>
+                </div>
+                <div class="row">
+                  <label for="exampleInputUsername1">Tanggal Kunjungan</label>
+                  <input type="text" class="form-control" value="{{$value->Tanggal_Kunjungan}}" readonly>
+                </div>
+                <div class="row">
+                  <label for="exampleInputUsername1">Jam Kunjungan</label>
+                  <input type="text" class="form-control" value="{{$value->jam}}" readonly>
+                </div>
+                @endforeach
+                    <div class="row">
+                      <div class="col-md-4">
+                        <label for="exampleInputUsername1">Tiket Terpesan</label>
+                        <input type="text" class="form-control" value=<?php echo $terpesan; ?> readonly>
+                      </div>
+                      <div class="col-md-4">
+                        <label for="exampleInputUsername1">Sisa Tiket</label>
+                        <input type="text" class="form-control" value=<?php echo $sisa; ?> readonly>
+                      </div>
+                     @if($sisa > 0)
+                      <div class="col-md-4">
+                        <label for="exampleInputUsername1">Keterangan</label>
+                        <input type="text" class="form-control" value="Tersedia" readonly>
+                      </div>
+                      @else
+                      <div class="col-md-3">
+                        <label for="exampleInputUsername1">Keterangan</label>
+                        <input type="text" class="form-control" value="Tidak Tersedia" readonly>
+                      </div>
+                      @endif
                     </div>
-
-                    <div class="form-group">
-                      <label for="exampleInputUsername1">Sisa Tiket</label>
-                      <input type="text" class="form-control" value=<?php echo $sisa; ?> readonly>
-                    </div>
-
-                    @if($sisa > 0)
-                    <div class="form-group">
-                      <label for="exampleInputUsername1">Keterangan</label>
-                      <input type="text" class="form-control" value="Tersedia" readonly>
-                    </div>
-                    @else
-                    <div class="form-group">
-                      <label for="exampleInputUsername1">Keterangan</label>
-                      <input type="text" class="form-control" value="Tidak Tersedia" readonly>
-                    </div>
-                    @endif
 
                   </div>
                 </div>

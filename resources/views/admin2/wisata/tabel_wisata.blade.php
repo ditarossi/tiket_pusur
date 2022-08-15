@@ -22,6 +22,7 @@
                         <tr>
                             <th>Nama Wisata</th>
                             <th>Deskripsi</th>
+                            <th>Jam</th>
                             <th>Kuota</th>
                             <th>Harga</th>
                             <th>Foto</th>
@@ -33,6 +34,7 @@
                           <tr>
                               <td>{{ $value->nama_wisata }}</td>
                               <td>{{ $value->deskripsi }}</td>
+                              <td>{{ $value->jam }}</td>
                               <td>{{ $value->kuota }}</td>
                               <td>{{ $value->harga }}</td>
                               <td>

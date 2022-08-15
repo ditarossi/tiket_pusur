@@ -14,7 +14,8 @@
                 <div class="col-12"></div>
                   <div class="table-responsive">
                   {{-- <a class="btn btn-outline-success" href="{{ url('tbl_pemesanan/create') }}">Tambah Data</a> --}}
-
+                    <br>
+                    <br>
                     <table id="order-listing" class="table">
                       <thead>
                         <tr>
@@ -23,13 +24,11 @@
                             <th>ID User</th>
                             <th>ID Wisata</th>
                             <th>Tanggal Kunjungan</th>
+                            <th>Jam Kunjungan</th>
                             <th>Jumlah</th>
                             <th>Tagihan</th>
                             <th>Status Pemesanan</th>
-                            <th>Pengajuan Reschedule</th>
-                            <th>Pengajuan Refund</th>
                             <th>Bukti Transaksi</th>
-                            {{-- <th>Actions</th> --}}
                         </tr>
                       </thead>
                       <tbody>
@@ -48,12 +47,19 @@
                               {{ $value->wisata->nama_wisata }}
                             </td>
                             <td>{{ $value->Tanggal_Kunjungan }}</td>
+                            <td>{{ $value->jam }}</td>
                             <td>{{ $value->jumlah }}</td>
                             <td>{{ $value->tagihan }}</td>
                             <td>{{ $value->status_pemesanan }}</td>
-                            <td>{{ $value->reschedule }}</td>
-                            <td>{{ $value->refund }}</td>
-                            <td>{{ $value->bukti_transaksi }}</td>
+                            @if($value->bukti_transaksi == "Belum Melakukan Transaksi")
+                            {
+                              <td>{{ $value->bukti_transaksi }}</td>
+                            }
+                            @else
+                            <td>
+                                <img src="{{ asset($value->bukti_transaksi) }}" alt="" width="40 px">
+                            </td>
+                            @endif
                         </tr>
                         @endforeach
                       </tbody>

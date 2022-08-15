@@ -902,7 +902,7 @@ Banner Style
 
 .main-banner:after {
   content: '';
-  background-image: linear-gradient(rgba(100, 100, 100, 0.527),rgba(100, 100, 100, 0.5)) , url(../images/home.jpg);
+  background-image: linear-gradient(rgba(100, 100, 100, 0.527),rgba(100, 100, 100, 0.5)) , url(../images/home3.jpg);
   opacity: 75%;
   background-repeat: no-repeat;
   background-size: 100%;

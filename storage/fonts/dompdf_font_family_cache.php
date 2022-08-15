@@ -86,5 +86,23 @@ return array (
     'bold' => $fontDir . '/roboto_bold_8db5cb5d0586c1e891426d13097b1d04',
     '900' => $fontDir . '/roboto_900_7bf41cacaff90e7097ddd49fb9296601',
   ),
+  'cabin' => array(
+    'normal' => $fontDir . '/cabin_normal_98ed25c17b39cfb876563e40f9888118',
+  ),
+  'indie flower' => array(
+    'normal' => $fontDir . '/indie_flower_normal_2635d27d067269c24e48cd42a09e3ede',
+  ),
+  'inknut antiqua' => array(
+    'normal' => $fontDir . '/inknut_antiqua_normal_28ba730173205a7bfee999c014e2190c',
+  ),
+  'lora' => array(
+    'normal' => $fontDir . '/lora_normal_aaf30eb5ffc39aed292af5d122577ecc',
+  ),
+  'ravi prakash' => array(
+    'normal' => $fontDir . '/ravi_prakash_normal_68fc009e5a878799b7410477ae2da47d',
+  ),
+  'fontawesome' => array(
+    'normal' => $fontDir . '/fontawesome_normal_7ea195556637d817f455524c7885b526',
+  ),
 );
 }; ?>
