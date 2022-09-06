@@ -12,12 +12,25 @@ class LandingController extends Controller
 {
     public function index()
     {
-        $datas = Wisata::all();
+        $datas = Wisata::groupBy('nama_wisata')->get();
         $keg = Kegiatan::all();
         
         return view('landing.isi', compact(
             'datas','keg'
         ));
+    }
+
+    public function profile(){
+        return view('landing.profile');
+    }
+    public function portfoliodetails(){
+        return view('landing.portofolio1');
+    }
+    public function portfoliodetails2(){
+        return view('landing.portofolio2');
+    }
+    public function portfoliodetails3(){
+        return view('landing.portofolio3');
     }
 
     public function detail($id)

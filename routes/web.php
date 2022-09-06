@@ -26,6 +26,10 @@ use App\Http\Controllers\OrderController;
 
 Route::get('/', [App\Http\Controllers\LandingController::class, 'index']);
 Route::get('detail', [App\Http\Controllers\LandingController::class, 'detail']);
+Route::get('profile', [App\Http\Controllers\LandingController::class, 'profile']);
+Route::get('portfolio-details', [App\Http\Controllers\LandingController::class, 'portfoliodetails']);
+Route::get('portfolio-details2', [App\Http\Controllers\LandingController::class, 'portfoliodetails2']);
+Route::get('portfolio-details3', [App\Http\Controllers\LandingController::class, 'portfoliodetails3']);
 Route::match(['get', 'post'], 'contact', [App\Http\Controllers\LandingController::class,  'storeContactForm']);
 // Route::get('contact-form', [App\Http\Controllers\LandingController::class, 'contactForm'])->name('contact-form');
 // Route::post('contact-form', [App\Http\Controllers\LandingController::class,  'storeContactForm'])->name('contact-form.store');

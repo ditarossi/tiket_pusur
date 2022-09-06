@@ -203,5 +203,14 @@
     <script src="{{asset('caraousel')}}/assets/js/isotope.pkgd.min.js"></script>
     <script src="{{asset('caraousel')}}/assets/js/lightbox.min.js"></script>
     <script src="{{asset('caraousel')}}/assets/js/main.js"></script>
+
+    <script type="text/javascript">
+    window.onload = function () {
+        OpenBootstrapPopup();
+    };
+    function OpenBootstrapPopup() {
+        $("#simpleModal").modal('show');
+    }
+</script>
 </body>
 </html>
